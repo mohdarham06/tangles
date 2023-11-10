@@ -57,23 +57,15 @@ html {
 :root {
     /* --COLORS */
     --hue-color: 234;
-    --background: rgb(0, 0, 0);
+    --background: #000000;
     --font: #ffffff;
+    --accent-color: #fff;
     --transparent: transparent;
     --scrollbar: #47beb1;
     --scrollbar-hover: #52d1c2;
     --scrollbar-active: #62e2d3;
     --inline-link: #42eba4;
-    --blue: #4625ff;
-    --gradient: linear-gradient(90deg, #4625ff 0%, #48dfbe 100%);
-    --header-background: hsl(var(--hue-color), 76%, 11%);
     --nav-item-active: #4f78ff;
-    --home-background: linear-gradient(rgb(25, 24, 92), rgb(5, 8, 36));
-    --item-backround: hsl(234, 58%, 17%);
-    --item-backround-hover: hsl(234, 50%, 26%);
-    --positive-price-change: rgb(95, 243, 127);
-    --negative-price-change: rgb(255, 58, 58);
-    --number-pagi-btn: rgba(91, 107, 255, 0.3);
 
     /* --TYPOGRAPHY */
     --h1-font-size: 3rem;
@@ -136,6 +128,7 @@ body {
 #root {
     position: relative;
     width: 100%;
+    min-height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: row;
@@ -151,8 +144,6 @@ main {
     display: flex;
     flex-direction: column;
     border: 1px solid rgb(35, 182, 255);
-    text-align: center;
-    justify-content: center;
 }
 
 
@@ -168,14 +159,22 @@ main {
 }
 
 .header__container {
-    padding: 1rem;
     width: 200px;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .header__brand {
     padding: 0.75rem;
-    margin: 0.25rem 0;
+    margin-top: 0.25rem;
     margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.header__nav {
+    flex-grow: 1;
 }
 
 
@@ -191,10 +190,32 @@ main {
     margin: 0.25rem 0;
     border-radius: 0.5rem;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .nav__item:hover,
 .nav__item:active {
-    background-color: rgb(35, 35, 36);
+    background-color: rgb(40, 40, 41);
+}
+
+.nav__item__icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+}
+
+.nav__item__text {
+    padding-left: 0.75rem
+}
+
+
+
+.header__logout {
+    padding: 0.75rem;
+    color: rgb(233, 88, 83);
+    margin-top: auto;
 }
 
