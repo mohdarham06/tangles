@@ -1,10 +1,17 @@
 
 
+import OutletWrapper from './OutletWrapper'
 
 import Home from './routes/Home';
+import Search from './routes/Search'
+import Explore from './routes/Explore';
+import Saved from './routes/Saved';
+import Profile from './routes/Profile';
+import Post from './routes/Post';
+import NotFound from './routes/NotFound';
+
 import { Routes, Route } from 'react-router-dom';
 
-// import Loader from "./components/Loader";
 
 // import { GoHome } from 'react-icons/go'
 // import { GoHomeFill } from 'react-icons/go'
@@ -17,14 +24,24 @@ function App() {
     return (
         <>
             <Routes>
-                <Route path='/' element={<Home />} />
-
-                
-            </Routes>
-
             
+                <Route path='/' element={<OutletWrapper />} >
+                    <Route index element={<Home />} />
 
+                    <Route path='search' element={<Search />} />
 
+                    <Route path='explore' element={<Explore />} />
+
+                    <Route path='saved' element={<Saved />} />
+
+                    <Route path='profile' element={<Profile />} />
+
+                    <Route path='post' element={<Post />} />
+
+                    <Route path='*' element={<NotFound />} />
+                </Route>
+
+            </Routes>
         </>
     );
 }
