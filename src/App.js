@@ -1,6 +1,5 @@
 
-
-import OutletWrapper from './OutletWrapper'
+import AppLayout from './AppLayout';
 
 import Home from './routes/Home';
 import Search from './routes/Search'
@@ -25,7 +24,7 @@ function App() {
         <>
             <Routes>
             
-                <Route path='/' element={<OutletWrapper />} >
+                <Route path='/' element={<AppLayout />} >
                     <Route index element={<Home />} />
 
                     <Route path='search' element={<Search />} />

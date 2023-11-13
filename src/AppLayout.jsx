@@ -4,7 +4,8 @@ import Header from './components/Header'
 
 import { Outlet } from 'react-router-dom'
 
-const OutletWrapper = () => {
+
+const AppLayout = () => {
     return (
         <>
             <Header />
@@ -14,8 +15,7 @@ const OutletWrapper = () => {
             </main>
 
         </>
-
     )
 }
 
-export default OutletWrapper
+export default AppLayout
