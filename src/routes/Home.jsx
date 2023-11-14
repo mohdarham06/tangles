@@ -6,7 +6,7 @@ import user1post1 from '../assets/jasonstothampost1.jpg'
 import { OutlineHeart, FillHeart } from '../assets/CustomIcons';
 import { OutlineComment } from '../assets/CustomIcons';
 import { OutlineShare } from '../assets/CustomIcons';
-import { OutlineSave } from '../assets/CustomIcons';
+import { OutlineSave, FillSave } from '../assets/CustomIcons';
 
 const Home = () => {
     return (

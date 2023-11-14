@@ -57,8 +57,8 @@ html {
 :root {
     /* --COLORS */
     --hue-color: 234;
-    --background: #ffffff;
-    --font: #000000;
+    --background: #fff;
+    --font: #000;
     --accent-color: #fff;
     --transparent: transparent;
     --scrollbar: #47beb1;
@@ -112,6 +112,9 @@ nav ul {
     list-style: none;
 }
 
+svg {
+    display: block;
+}
 
 
 
@@ -189,10 +192,10 @@ main {
     padding: 0.75rem;
     margin: 0.25rem 0;
     border-radius: 0.5rem;
-    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
 }
 
 .nav__item:hover,
@@ -201,22 +204,25 @@ main {
 }
 
 .nav__item__icon {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: var(--font);
+    font-size: 1.5rem;
 }
+.nav__item__image {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+}
+
+
 
 .nav__item__text {
     padding-left: 0.75rem
 }
 
-
-
 .header__logout {
     padding: 0.75rem;
     color: rgb(221, 65, 59);
     margin-top: auto;
+    cursor: pointer;
 }
 
 
@@ -259,16 +265,14 @@ main {
     border: none;
     outline: none;
     font: inherit;
-    cursor: pointer;
     padding: 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
-.post__actions__icons {
-    display: block;
-    width: 1.5rem;
-    height: 1.5rem;
-}
 
 .post__likes {
     font-weight: var(--font-bold);
+    cursor: pointer;
 }
+
