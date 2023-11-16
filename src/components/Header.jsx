@@ -1,23 +1,25 @@
 import React from 'react'
 
 import { Link } from 'react-router-dom';
-import user1avatar from '../assets/jasonstotham.jpg'
+import user1avatar from '../assets/images/jasonstotham.jpg'
 
 
-import { OutlineHome, FillHome, OutlineSearch, OutlineExplore, OutlineSaved, FillSaved, OutlineAdd } from '../assets/CustomIcons'
+import { OutlineHome, FillHome, OutlineSearch, OutlineExplore, FillExplore, OutlineSaved, FillSaved, OutlineAdd } from '../assets/CustomIcons'
 
 const Header = () => {
     return (
         <header className="header">
             <div className="header__container">
 
+
                 <div className="header__brand">Brand</div>
+
 
                 <nav className="header__nav">
                     <ul className="nav__list">
                         <Link to={`/`}>
                             <li className="nav__item">
-                                <span className="nav__item__icon"><OutlineHome /></span>
+                                <span className="nav__item__icon"><FillHome /></span>
                                 <span className="nav__item__text">Home</span>
                             </li>
                         </Link>

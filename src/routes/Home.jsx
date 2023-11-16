@@ -1,7 +1,8 @@
 import React from 'react'
 
-import user1avatar from '../assets/jasonstotham.jpg'
-import user1post1 from '../assets/jasonstothampost1.jpg'
+import user1avatar from '../assets/images/jasonstotham.jpg';
+import user1post1 from '../assets/images/jasonstothampost1.jpg';
+import user1post2 from '../assets/images/jasonstothampost2.jpg';
 
 import { OutlineHeart, FillHeart } from '../assets/CustomIcons';
 import { OutlineComment } from '../assets/CustomIcons';
@@ -45,6 +46,44 @@ const Home = () => {
                         4,548,258 Likes
                     </div>
                 </article>
+
+
+
+
+                <article className="post">
+                    <div className="post__header">
+                        <img className="post__user-avatar" src={user1avatar} alt="jasonstotham" />
+
+                        <div className="post__user-info">
+                            {/* <div className="post__author">Jason Stotham</div> */}
+                            <div className="post__username">jasonstotham</div>
+                        </div>
+
+                    </div>
+
+                    <div className="post__content">
+                        <p className="post__text">
+                            #Meg2 #freedive
+                            📸@danielsmithphotography
+                        </p>
+
+                        <img className="post__image" src={user1post2} alt="" />
+
+                    </div>
+
+                    <div className="post__actions">
+                        <button className="post__actions__btn"><OutlineHeart /></button>
+                        <button className="post__actions__btn"><OutlineComment /></button>
+                        <button className="post__actions__btn"><OutlineShare /></button>
+                        <button className="post__actions__btn"><OutlineSave /></button>
+                    </div>
+
+                    <div className="post__likes">
+                        1,297,325 Likes
+                    </div>
+                </article>
+
+
             </div>
 
 
