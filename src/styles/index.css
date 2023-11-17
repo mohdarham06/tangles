@@ -277,9 +277,15 @@ main {
     margin-right: 0.75rem;
 }
 
+.post__image {
+    width: 480px;
+    max-width: 100%;
+}
+
 
 .post__actions {
     margin: 0.25rem 0;
+    white-space: nowrap;
 }
 
 .post__actions__btn {
