@@ -187,6 +187,7 @@ body {
     flex-direction: row;
     align-items: center;
     cursor: pointer;
+    transition: var(--transition-hover);
 }
 
 .nav__item:hover,
@@ -196,6 +197,7 @@ body {
 
 .nav__item__icon {
     font-size: 1.5rem;
+    transition: var(--transition-hover);
 }
 
 .nav__item__image {
@@ -211,11 +213,17 @@ body {
 
 .header__logout {
     padding: 0.75rem;
+    border-radius: 0.5rem;
     color: rgb(221, 65, 59);
     margin-top: auto;
     cursor: pointer;
+    transition: var(--transition-hover);
 }
 
+.header__logout:hover,
+.header__logout:active {
+    background-color: rgb(227, 231, 235);
+}
 
 
 
@@ -267,7 +275,7 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
 }
 
 .post__user-avatar {
@@ -275,6 +283,11 @@ main {
     height: 2rem;
     border-radius: 50%;
     margin-right: 0.75rem;
+}
+
+.post__text {
+    padding-bottom: 0.75rem;
+    white-space: pre-line;
 }
 
 .post__image {
@@ -297,6 +310,12 @@ main {
     padding: 0.5rem;
     font-size: 1.5rem;
     cursor: pointer;
+}
+.post__actions__btn:hover {
+    color: #747474;
+}
+.post__actions__btn:active {
+    color: #aaaaaa;
 }
 
 

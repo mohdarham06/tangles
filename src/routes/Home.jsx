@@ -14,10 +14,31 @@ import { OutlineSave, FillSave } from '../assets/CustomIcons';
 const Home = () => {
 
 
-    const [instagramPosts, setInstagramPosts] = useState([
+    const [posts, setPosts] = useState([
         {
             id: 1,
+            username: 'mohdarham',
+            verified: true,
+            avatar: user1avatar,
+            image: null,
+            text: 'I do not believe in tired.\n\nI do not believe in low energy.\n\nI AM BINARY.\n\nI am either AWAKE or I AM ASLEEP.\n\nDo you understand?',
+            liked: false,
+            likes: 2548257,
+            saved: false,
+            comments: [
+                {
+                    id: 101,
+                    username: 'user1',
+                    text: 'Amazing shot!',
+                },
+                // More comments...
+            ],
+        },
+        
+        {
+            id: 2,
             username: 'jasonstotham',
+            verified: true,
             avatar: user1avatar,
             image: user1post1,
             text: 'Shanghai 🇨🇳',
@@ -34,8 +55,9 @@ const Home = () => {
             ],
         },
         {
-            id: 2,
+            id: 3,
             username: 'jasonstotham',
+            verified: true,
             avatar: user1avatar,
             image: user1post2,
             text: '#Meg2 #freedive 📸@danielsmithphotography',
@@ -54,22 +76,36 @@ const Home = () => {
         // More posts...
     ]);
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     const handleLike = (postId) => {
-        setInstagramPosts((prevPosts) =>
+        setPosts((prevPosts) =>
             prevPosts.map((post) =>
                 (post.id === postId)
-                    ? { ...post, likes: post.liked ? post.likes - 1 : post.likes + 1, liked: !post.liked }
+                    // Update post
+                    ? {
+                        ...post,
+                        likes: post.liked ? (post.likes - 1) : (post.likes + 1),
+                        liked: !post.liked
+                    }
+                    // No modification
                     : post
             )
         );
     };
 
     const handleSave = (postId) => {
-        setInstagramPosts((prevPosts) =>
+        setPosts((prevPosts) =>
             prevPosts.map((post) =>
-                post.id === postId
-                    ? { ...post, saved: !post.saved }
+                (post.id === postId)
+                    // Update post
+                    ? {
+                        ...post,
+                        saved: !post.saved
+                    }
+                    // No modification
                     : post
             )
         );
@@ -80,7 +116,7 @@ const Home = () => {
         <section id='home' className='section section--home'>
             <div className="posts-wrapper">
 
-                {instagramPosts.map((post) => (
+                {posts.map((post) => (
                     <article className="post" key={post.id}>
                         <div className="post__header">
                             <img className="post__user-avatar" src={post.avatar} alt={post.username} />
@@ -92,12 +128,15 @@ const Home = () => {
 
                         <div className="post__content">
                             <p className="post__text">{post.text}</p>
-                            <img className="post__image" src={post.image} alt="" />
+                            {post.image ?
+                                <img className="post__image" src={post.image} alt={post.username} />
+                                : null
+                            }
                         </div>
 
                         <div className="post__actions">
                             <button className="post__actions__btn" onClick={() => handleLike(post.id)}>
-                                {!post.liked ? <FillHeart /> : <OutlineHeart />}
+                                {!post.liked ? <OutlineHeart /> : <FillHeart />}
                             </button>
 
                             <button className="post__actions__btn"><OutlineComment /></button>
@@ -109,7 +148,7 @@ const Home = () => {
                         </div>
 
                         <div className="post__likes">
-                            {post.likes} Likes
+                            {numberWithCommas(post.likes)} Likes
                         </div>
                     </article>
                 ))}
