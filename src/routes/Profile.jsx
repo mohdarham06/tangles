@@ -2,7 +2,8 @@ import React from 'react'
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <section className='section section--'>Profile</section>
+
   )
 }
 

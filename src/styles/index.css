@@ -67,7 +67,8 @@ html {
     --inline-link: #42eba4;
     --nav-item-active: #4f78ff;
 
-    --nav-wide-width: 244px; /* 335px */
+    --nav-wide-width: 244px;
+    /* 335px */
     --nav-medium-width: 200px;
     --nav-narrow-width: 72px;
 
@@ -200,16 +201,16 @@ body {
     transition: var(--transition-hover);
 }
 
+.nav__item__text {
+    padding-left: 0.75rem
+}
+
 .nav__item__image {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
 }
 
-
-.nav__item__text {
-    padding-left: 0.75rem
-}
 
 .header__logout {
     padding: 0.75rem;
@@ -222,7 +223,7 @@ body {
 
 .header__logout:hover,
 .header__logout:active {
-    background-color: rgb(227, 231, 235);
+    background-color: rgb(227, 229, 231);
 }
 
 
@@ -239,23 +240,22 @@ main {
 
 
 
+.section {
+    background: #4d86be;
+    border: 1px solid rgb(255, 79, 35);
+}
 
-
-/* --HOME */
 .section--home {
+    /* --HOME */
     width: 100%;
-    background: #3f7ebd;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 1px solid rgb(255, 79, 35);
 }
 
 /* --POSTS */
 .posts-wrapper {
-    width: 600px;
     max-width: 100%;
-    background: #d8dfe6;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -267,7 +267,7 @@ main {
     max-width: 100%;
     padding: 1rem 0;
     background: var(--background);
-    border: 1px solid rgb(255, 35, 237);
+    border-top: 1px solid rgb(191, 196, 199);
     overflow: hidden;
 }
 
@@ -285,8 +285,20 @@ main {
     margin-right: 0.75rem;
 }
 
+.post__user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post__user-verified {
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+}
+
 .post__text {
     padding-bottom: 0.75rem;
+    margin-left: 0.5rem;
     white-space: pre-line;
 }
 
@@ -311,9 +323,11 @@ main {
     font-size: 1.5rem;
     cursor: pointer;
 }
+
 .post__actions__btn:hover {
     color: #747474;
 }
+
 .post__actions__btn:active {
     color: #aaaaaa;
 }
@@ -321,6 +335,6 @@ main {
 
 .post__likes {
     font-weight: var(--font-bold);
+    margin-left: 0.5rem;
     cursor: pointer;
 }
-
