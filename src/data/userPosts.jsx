@@ -4,7 +4,6 @@ import user1post1 from '../assets/images/jasonstothampost1.jpg';
 import user1post2 from '../assets/images/jasonstothampost2.jpg';
 
 
-
 const userPosts = [
     {
         id: 1,
