@@ -1,8 +1,17 @@
 import React from 'react'
 
+
 const Profile = () => {
+
   return (
-    <div>Profile</div>
+    <section className='section section--profile'>
+
+        <div className=""></div>
+
+        
+
+    </section>
+
   )
 }
 

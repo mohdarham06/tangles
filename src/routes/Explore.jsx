@@ -2,7 +2,8 @@ import React from 'react'
 
 const Explore = () => {
   return (
-    <div>Explore</div>
+    <section className='section section--'>Explore</section>
+
   )
 }
 

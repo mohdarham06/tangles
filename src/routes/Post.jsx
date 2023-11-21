@@ -2,7 +2,8 @@ import React from 'react'
 
 const Post = () => {
   return (
-    <div>Post</div>
+    <section className='section section--'>Post</section>
+
   )
 }
 

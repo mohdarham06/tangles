@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Link } from 'react-router-dom';
-import user1avatar from '../assets/images/jasonstotham.jpg'
+import user1avatar from '../data/avatars/jasonstotham.jpg'
 
 
 import { OutlineHome, FillHome, OutlineSearch, OutlineExplore, FillExplore, OutlineSaved, FillSaved, OutlineAdd } from '../assets/CustomIcons'
