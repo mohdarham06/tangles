@@ -73,8 +73,8 @@ const Home = () => {
                         {/* Content */}
                         <div className="post__content">
                             <p className="post__text">{post.text}</p>
-                            {
-                                post.image ? <img src={post.image} alt="" />
+                            {post.image
+                                ? <img className="post__image" src={post.image} alt="" />
                                 : null
                             }
                         </div>
