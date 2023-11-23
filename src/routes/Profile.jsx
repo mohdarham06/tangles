@@ -8,7 +8,7 @@ const Profile = () => {
 
         <div className=""></div>
 
-        
+
 
     </section>
 
