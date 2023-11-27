@@ -83,11 +83,12 @@ const Search = () => {
                             <div className="user__info">
                                 <div className="user__header">
                                     <div className="user__names-box">
-                                        <span className="user__username">{user.username}
+                                        <div className="user__username">
+                                            {user.username}
                                             <span className="user__verified">
                                                 {user.verified ? <VerifiedIcon /> : null}
                                             </span>
-                                        </span>
+                                        </div>
                                         <div className="user__name">{user.name}</div>
                                     </div>
 
@@ -99,8 +100,8 @@ const Search = () => {
                                             handleFollow(user.username)
                                         }}
                                     >
-                                        {!user.isFollowing ?
-                                            <div>Follow</div>
+                                        {!user.isFollowing
+                                            ? <div>Follow</div>
                                             : <div className="following">Following</div>
                                         }
                                     </div>

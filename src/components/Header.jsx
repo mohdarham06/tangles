@@ -47,7 +47,7 @@ const Header = () => {
                                 <span className="nav__item__text">Post</span>
                             </li>
                         </Link>
-                        <Link to={`/profile`}>
+                        <Link to={`/${"mohdarham"}`}>
                             <li className="nav__item">
                                 <img className="nav__item__image" src={user1avatar} alt="" />
                                 <span className="nav__item__text">Profile</span>

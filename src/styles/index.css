@@ -97,7 +97,7 @@ html {
     --z-navbar: 50;
 
     /* Transitions */
-    --transition-hover: 150ms ease-in-out;
+    --transition-hover: all 150ms ease-in-out;
     --transition-navigation-toggle: all 250ms ease-in-out;
 }
 
@@ -257,7 +257,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid rgb(35, 255, 53);
 }
 
 .post {
@@ -468,7 +467,7 @@ main {
     font-weight: 600;
     cursor: pointer;
     user-select: none;
-    transition: var(--transition-hover);
+    transition: all 100ms ease-in-out;
 }
 .user__follow-btn:active {
     width: calc(6.5rem - 6px);
@@ -477,6 +476,10 @@ main {
     font-size: calc(1em - 1px);
 }
 
+.user__follow-btn--following {
+    color: #999999;
+    
+}
 .user__follow-btn .following {
     color: #999999;
 }
@@ -495,5 +498,11 @@ main {
 
 
 /* Profile */
+.profile {
+    background: var(--background);
+}
 
-
+.profile__follow-btn {
+    cursor: pointer;
+    user-select: none;
+}

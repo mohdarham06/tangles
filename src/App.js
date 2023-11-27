@@ -33,7 +33,7 @@ function App() {
 
                     <Route path='saved' element={<Saved />} />
 
-                    <Route path='profile' element={<Profile />} />
+                    <Route path=':profileName' element={<Profile />} />
 
                     <Route path='post' element={<Post />} />
 
