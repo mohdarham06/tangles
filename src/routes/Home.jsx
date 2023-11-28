@@ -29,7 +29,7 @@ const Home = () => {
                         likes: post.liked ? (post.likes - 1) : (post.likes + 1),
                         liked: !post.liked
                     }
-                    // No modification
+                    // No update
                     : post
             )
         });
@@ -44,7 +44,7 @@ const Home = () => {
                         ...post,
                         saved: !post.saved
                     }
-                    // No modification
+                    // No update
                     : post
             )
         });

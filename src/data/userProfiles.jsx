@@ -21,7 +21,7 @@ const userProfiles = [
         verified: true,
         avatar: jasonstotham,
         bio: 'Photographer | Traveler',
-        followers: 5120450,
+        followers: 5350000,
         following: 100,
         postsCount: 100,
         isFollowing: false

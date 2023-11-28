@@ -21,7 +21,11 @@ const Search = () => {
             return prevUsers.map((user) =>
                 (user.username === userId)
                     // Update
-                    ? { ...user, isFollowing: !user.isFollowing }
+                    ? {
+                        ...user,
+                        followers: user.isFollowing ? (user.followers - 1) : (user.followers + 1),
+                        isFollowing: !user.isFollowing
+                    }
                     // No Update
                     : user
             )

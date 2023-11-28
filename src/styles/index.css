@@ -73,8 +73,8 @@ html {
     --nav-narrow-width: 72px;
 
     /* --TYPOGRAPHY */
-    --h1-font-size: 3rem;
-    --h2-font-size: 1.75rem;
+    --h1-font-size: 2rem;
+    --h2-font-size: 1.5rem;
     --h3-font-size: 1.5rem;
     /* 13px */
     --font-size-small: 0.8125rem;
@@ -91,6 +91,7 @@ html {
     --font-medium: 400;
     --font-semi-bold: 500;
     --font-bold: 600;
+    --font-extra-bold: 700;
 
     /* Z-INDEX */
     --z-header: 100;
@@ -393,6 +394,7 @@ main {
     outline: none;
     border: none;
 }
+
 .search__input::placeholder {
     color: rgb(180, 180, 180);
 }
@@ -439,6 +441,7 @@ main {
     align-items: center;
     padding-bottom: 0.5rem;
 }
+
 .user__names-box {
     display: flex;
     flex-direction: column;
@@ -450,6 +453,7 @@ main {
     align-items: center;
     font-weight: 600;
 }
+
 .user__verified {
     font-size: 0.75rem;
     margin-left: 0.25rem;
@@ -473,6 +477,7 @@ main {
     user-select: none;
     transition: all 100ms ease-in-out;
 }
+
 .user__follow-btn:active {
     width: calc(6.5rem - 6px);
     height: calc(2rem - 2px);
@@ -480,10 +485,6 @@ main {
     font-size: calc(1em - 1px);
 }
 
-.user__follow-btn--following {
-    color: #999999;
-    
-}
 .user__follow-btn .following {
     color: #999999;
 }
@@ -503,19 +504,118 @@ main {
 
 /* Profile */
 .profile {
+    max-width: 600px;
+    width: 100%;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
     background: var(--background);
 }
 
-.profile__follow-btn {
-    cursor: pointer;
-    user-select: none;
+/* header */
+.profile__header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile__name {
+    font-size: var(--h2-font-size);
+    font-weight: var(--font-extra-bold);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile__verified {
+    margin-left: 0.5rem;
 }
 
 .profile__avatar {
-   width: 7rem;
-   height: 7rem;
-   border-radius: 50%;
-   overflow: hidden;
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+
+/* stats */
+.profile__stats {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.stats__stat {
+    display: flex;
+    flex-direction: row;
+}
+
+.stats__followers {
+    margin-right: 1rem;
+}
+
+.stat__count {
+    font-weight: var(--font-bold);
+    margin-right: 0.25rem;
+}
+
+.stat__label {
+    color: #777777;
+}
+
+/* bio */
+.profile__bio {
+    margin-top: 1rem;
+}
+
+
+
+/* actions */
+.profile__actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+.profile__actions-btn {
+    font-weight: var(--font-bold);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 2.25rem;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 10px;
+    user-select: none;
+    transition: all 100ms ease-in-out, background 0ms ease-in-out, color 0ms ease-in-out;
+}
+
+.profile__actions-btn:active {
+    font-size: calc(1em - 0.5px);
+    height: calc(2.25rem - 2px);
+    margin: 1px 3px;
+}
+
+.profile__follow-btn {
+    background: var(--font);
+    color: var(--background);
+    cursor: pointer;
+}
+.profile__follow-btn--following {
+    background: var(--background);
+    color: var(--font);
+    border: 1px solid #999999;
+}
+
+.profile__share-btn {
+    cursor: pointer;
+    border: 1px solid #999999;
 }
 
 

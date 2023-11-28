@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { useState } from 'react'
 import { useParams } from "react-router-dom";
 import NotFound from './NotFound';
 
@@ -10,15 +11,38 @@ import noUserImage from '../data/avatars/noimage.jpg';
 
 const Profile = () => {
     const { profileName } = useParams();
-    console.log(profileName)
-
     const filteredProfile = (username) => {
         return userProfiles.find((profile) => profile.username === username);
     }
+    const [profile, setProfile] = useState(filteredProfile(profileName) ? filteredProfile(profileName) : undefined);
+
+    const handleFollow = () => {
+        setProfile((prevProfile) => ({
+            ...prevProfile,
+            followers: profile.isFollowing ? (profile.followers - 1) : (profile.followers + 1),
+            isFollowing: !profile.isFollowing
+        }))
+    };
 
 
-    const profile = filteredProfile(profileName) ? filteredProfile(profileName) : undefined;
-    console.log(profile)
+
+    const formatNumberScale = (number) => {
+        if (number >= 1e12) {
+            return `${Math.floor(number / 1e12)}T`; // Convert to trillions
+        } else if (number >= 1e9) {
+            return `${Math.floor(number / 1e9)}B`; // Convert to billions
+        } else if (number >= 1e6) {
+            return `${Math.floor(number / 1e6)}M`; // Convert to millions
+        } else if (number >= 1e4) {
+            return `${Math.floor(number / 1e3)}K`; // Convert to thousands
+        } else {
+            return `${number}`; // Keep it as is if less than 10,000
+        }
+    };
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     return (
         <>
@@ -28,19 +52,19 @@ const Profile = () => {
                         {/* header */}
                         <div className="profile__header">
                             <div className="profile__info">
-                                <div className="profile__name">
+                                <h2 className="profile__name">
                                     {profile.name}
                                     <span className="profile__verified">
                                         {profile.verified ? <VerifiedIcon /> : null}
                                     </span>
-                                </div>
+                                </h2>
                                 <div className="profile__username">{profile.username}</div>
                             </div>
 
                             <div className="profile__avatar-box">
                                 <img
                                     className="profile__avatar"
-                                    src={profile.avatar ? profile.avatar : noUserImage} 
+                                    src={profile.avatar ? profile.avatar : noUserImage}
                                     alt={profile.username}
                                 />
                             </div>
@@ -49,40 +73,41 @@ const Profile = () => {
                         {/* bio */}
                         <div className="profile__bio">{profile.bio}</div>
 
+                        {/* stats */}
+                        <div className="profile__stats">
+                            <div className="stats__stat stats__followers">
+                                <div className="stat__count">
+                                    {numberWithCommas(formatNumberScale(profile.followers))}
+                                </div>
+                                <div className="stat__label">followers</div>
+                            </div>
+                            <div className="stats__stat stats__following">
+                                <div className="stat__count">{profile.following}</div>
+                                <div className="stat__label">following</div>
+                            </div>
+                        </div>
+
                         {/* actions */}
                         <div className="profile__actions">
                             <div
-                                className="profile__follow-btn"
+                                className={`profile__actions-btn ${!profile.isFollowing ? "profile__follow-btn" : "profile__follow-btn--following"}`}
                                 onClick={(e) => {
-                                    console.log(e)
+                                    e.preventDefault()
+                                    handleFollow()
                                 }}
                             >
                                 {!profile.isFollowing
                                     ? <div>Follow</div>
-                                    : <div className="following">Following</div>
+                                    : <div>Following</div>
                                 }
                             </div>
-                            <div className="profile__share-btn">Share profile</div>
-                        </div>
-
-                        {/* stats */}
-                        <div className="profile__stats">
-                            <div className="stats__followers">
-                                <div className="stats__count">{profile.followers}</div>
-                                <div className="stats__label">followers</div>
-                            </div>
-                            <div className="stats__following">
-                                <div className="stats__count">{profile.following}</div>
-                                <div className="stats__label">following</div>
-                            </div>
+                            <div className="profile__actions-btn profile__share-btn">Share profile</div>
                         </div>
 
                         {/* content */}
                         <div className="profile__content">
                             <div className="profile__posts">
-                                <div className="profile__posts__post">Post</div>
-                                <div className="profile__posts__post">Post2</div>
-                                <div className="profile__posts__post">Post3</div>
+                                {/* <div className="profile__posts__post">Post</div> */}
                             </div>
                         </div>
 
