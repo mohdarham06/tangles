@@ -59,7 +59,11 @@ const Home = () => {
                     <article className="post" key={post.id}>
                         {/* Header */}
                         <Link to={`/${post.username}`} className="post__header">
-                            <img className="post__user-avatar" src={post.avatar ? post.avatar : noUserImage} alt={post.username} />
+                            <img
+                                className="post__user-avatar"
+                                src={post.avatar ? post.avatar : noUserImage}
+                                alt={post.username}
+                            />
 
                             <div className="post__user-info">
                                 <div className="post__username">{post.username}</div>

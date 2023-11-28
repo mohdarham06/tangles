@@ -77,7 +77,11 @@ const Search = () => {
                     {users.map((user) => (
                         <Link to={`/${user.username}`} key={user.username} className="user">
                             <div className="user__avatar-box">
-                                <img className="user__avatar" src={user.avatar ? user.avatar : noUserImage} alt={user.username} />
+                                <img
+                                    className="user__avatar"
+                                    src={user.avatar ? user.avatar : noUserImage}
+                                    alt={user.username}
+                                />
                             </div>
 
                             <div className="user__info">

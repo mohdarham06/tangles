@@ -277,10 +277,12 @@ main {
 }
 
 .post__user-avatar {
+    max-width: 2rem;
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
     margin-right: 0.75rem;
+    overflow: hidden;
 }
 
 .post__user-info {
@@ -419,9 +421,11 @@ main {
 }
 
 .user__avatar {
+    max-width: 2.25rem;
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 50%;
+    overflow: hidden;
 }
 
 .user__info {
@@ -506,3 +510,12 @@ main {
     cursor: pointer;
     user-select: none;
 }
+
+.profile__avatar {
+   width: 7rem;
+   height: 7rem;
+   border-radius: 50%;
+   overflow: hidden;
+}
+
+

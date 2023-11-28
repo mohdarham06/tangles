@@ -40,7 +40,8 @@ const Profile = () => {
                             <div className="profile__avatar-box">
                                 <img
                                     className="profile__avatar"
-                                    src={profile.avatar ? profile.avatar : noUserImage} alt={profile.username}
+                                    src={profile.avatar ? profile.avatar : noUserImage} 
+                                    alt={profile.username}
                                 />
                             </div>
                         </div>

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Link } from 'react-router-dom';
 import user1avatar from '../data/avatars/jasonstotham.jpg'
+import noUserImage from '../data/avatars/noimage.jpg'
 
 
 import { OutlineHome, FillHome, OutlineSearch, OutlineExplore, FillExplore, OutlineSaved, FillSaved, OutlineAdd } from '../assets/CustomIcons'
@@ -49,7 +50,11 @@ const Header = () => {
                         </Link>
                         <Link to={`/${"mohdarham"}`}>
                             <li className="nav__item">
-                                <img className="nav__item__image" src={user1avatar} alt="" />
+                                <img
+                                    className="nav__item__image"
+                                    src={user1avatar ? user1avatar : noUserImage}
+                                    alt=""
+                                />
                                 <span className="nav__item__text">Profile</span>
                             </li>
                         </Link>
