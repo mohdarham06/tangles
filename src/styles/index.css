@@ -195,7 +195,7 @@ body {
 
 .nav__item:hover,
 .nav__item:active {
-    background-color: rgb(227, 231, 235);
+    background-color: rgb(228, 230, 233);
 }
 
 .nav__item__icon {
@@ -290,6 +290,9 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+.post__username {
+    font-weight: var(--font-semi-bold);
 }
 
 .post__user-verified {
@@ -451,7 +454,7 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-weight: 600;
+    font-weight: var(--font-bold);
 }
 
 .user__verified {
@@ -472,7 +475,7 @@ main {
     justify-content: center;
     border: 1px solid #aaaaaa;
     border-radius: 0.5rem;
-    font-weight: 600;
+    font-weight: var(--font-bold);
     cursor: pointer;
     user-select: none;
     transition: all 100ms ease-in-out;
