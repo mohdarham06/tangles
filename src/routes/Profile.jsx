@@ -2,21 +2,17 @@ import React from 'react'
 
 import { useState } from 'react'
 import { useParams } from "react-router-dom";
-import { Link } from 'react-router-dom';
-import NotFound from './NotFound';
 
+import NotFound from './NotFound';
 import userProfiles from '../data/userProfiles';
 import userPosts from '../data/userPosts'
 import { VerifiedIcon } from '../assets/CustomIcons';
 import noUserImage from '../data/avatars/noimage.jpg';
 
 
-import { OutlineHeart, FillHeart } from '../assets/CustomIcons';
-import { OutlineComment } from '../assets/CustomIcons';
-import { OutlineShare } from '../assets/CustomIcons';
-import { OutlineSave, FillSave } from '../assets/CustomIcons';
 
 import { Outlet } from 'react-router-dom'
+import PostsWrapper from '../components/PostsWrapper';
 
 
 
@@ -29,10 +25,10 @@ const Profile = () => {
     const [profile, setProfile] = useState(
         filteredProfile(profileName) ? filteredProfile(profileName) : undefined
     );
-    const [profilePosts, setProfilePosts] = useState(
-        profile ? userPosts.filter((post) => post.username === profile.username) : null
-    );
 
+    const [profilePosts, setProfilePosts] = useState(
+        userPosts.filter((post) => post.username === profile?.username.pepe)
+    );
 
 
     // Follow
@@ -44,38 +40,7 @@ const Profile = () => {
         }))
     };
 
-    // Like
-    const handleLike = (postId) => {
-        setProfilePosts((prevPosts) => {
-            return prevPosts.map((post) =>
-                (post.id === postId)
-                    // Update post
-                    ? {
-                        ...post,
-                        likes: post.liked ? (post.likes - 1) : (post.likes + 1),
-                        liked: !post.liked
-                    }
-                    // No update
-                    : post
-            )
-        });
-    };
 
-    // Save
-    const handleSave = (postId) => {
-        setProfilePosts((prevPosts) => {
-            return prevPosts.map((post) =>
-                (post.id === postId)
-                    // Update post
-                    ? {
-                        ...post,
-                        saved: !post.saved
-                    }
-                    // No update
-                    : post
-            )
-        });
-    };
 
 
     const formatNumberScale = (number) => {
@@ -157,14 +122,14 @@ const Profile = () => {
                         </div>
 
                         {/* content */}
-                        <div className="profile__content">
-                            <div className="profile__content__header">
-                                <Link to={`/${profile.username}`}>
-                                    <div className="content__header__type active">Posts</div>
-                                </Link>
-                                <Link to={`/${profile.username}/videos`}>
-                                    <div className="content__header__type inactive">Videos</div>
-                                </Link>
+                        <div className="profile__posts">
+                            <div className="profile__posts__nav">
+                                <div
+                                    className="profile__posts__nav__type active"
+                                >Posts</div>
+                                <div
+                                    className="profile__posts__nav__type inactive"
+                                >Videos</div>
                             </div>
 
 
@@ -172,55 +137,10 @@ const Profile = () => {
 
 
                             {/* Posts */}
-                            <div className="posts-wrapper">
-                                {profilePosts.map((post) => (
-                                    <article className="post" key={post.id}>
-                                        {/* Header */}
-                                        <Link to={`/${post.username}`} className="post__header">
-                                            <img
-                                                className="post__user-avatar"
-                                                src={post.avatar ? post.avatar : noUserImage}
-                                                alt={post.username}
-                                            />
-
-                                            <div className="post__user-info">
-                                                <div className="post__username">{post.username}</div>
-                                                <div className="post__user-verified">
-                                                    {post.verified ? <VerifiedIcon /> : null}
-                                                </div>
-
-                                            </div>
-                                        </Link>
-
-                                        {/* Content */}
-                                        <div className="post__content">
-                                            <p className="post__text">{post.text}</p>
-                                            {post.image
-                                                ? <img className="post__image" src={post.image} alt="" />
-                                                : null
-                                            }
-                                        </div>
-
-                                        {/* Actions */}
-                                        <div className="post__actions">
-                                            <button className="post__actions__btn" onClick={() => handleLike(post.id)}>
-                                                {!post.liked ? <OutlineHeart /> : <FillHeart />}
-                                            </button>
-
-                                            <button className="post__actions__btn"><OutlineComment /></button>
-                                            <button className="post__actions__btn"><OutlineShare /></button>
-
-                                            <button className="post__actions__btn" onClick={() => handleSave(post.id)}>
-                                                {!post.saved ? <OutlineSave /> : <FillSave />}
-                                            </button>
-                                        </div>
-                                        <div className="post__likes">
-                                            {numberWithCommas(post.likes)} Likes
-                                        </div>
-                                    </article>
-                                ))}
-
-                            </div>
+                            <PostsWrapper
+                                posts={profilePosts}
+                                setPosts={setProfilePosts}
+                            />
 
                             {
                                 (profilePosts.length === 0)

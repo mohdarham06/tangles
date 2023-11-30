@@ -252,6 +252,57 @@ main {
 
 
 /* --HOME */
+.home {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+}
+
+.home__post__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #bfc4c7;
+}
+
+.home__post__nav__btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.post__nav__btn__text {
+    position: relative;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.post__nav__btn__text::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 4px;
+    min-width: 56px;
+    width: 100%;
+    border-radius: 10rem;
+    background: var(--accent-color);
+    transition: var(--transition-hover);
+    transform-origin: center;
+}
+
+.post__nav__btn__text.inactive::after {
+    transform: scaleX(0);
+}
+
+.post__nav__btn__text.active::after {
+    transform: scaleX(1);
+
+}
+
 /* --POSTS */
 .posts-wrapper {
     max-width: 100%;
@@ -264,8 +315,7 @@ main {
     width: 480px;
     max-width: 100%;
     padding: 1rem 0;
-    background: var(--background);
-    border-bottom: 1px solid rgb(191, 196, 199);
+    border-bottom: 1px solid #bfc4c7;
     overflow: hidden;
 }
 
@@ -291,6 +341,7 @@ main {
     flex-direction: row;
     align-items: center;
 }
+
 .post__username {
     font-weight: var(--font-semi-bold);
 }
@@ -610,6 +661,7 @@ main {
     background: var(--font);
     color: var(--background);
 }
+
 .profile__follow-btn--following {
     background: var(--background);
     color: var(--font);
@@ -622,17 +674,17 @@ main {
 
 
 /* content */
-.profile__content {
+.profile__posts {
     display: flex;
     flex-direction: column;
 }
 
-.profile__content__header {
+.profile__posts__nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.content__header__type {
+.profile__posts__nav__type {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -642,29 +694,28 @@ main {
     cursor: pointer;
 }
 
-/* .content__header__type:hover,
-.content__header__type:active {
+/* .profile__posts__nav__type:hover,
+.profile__posts__nav__type:active {
     background: #f3f3f3;
 } */
 
-.content__header__type::after {
+.profile__posts__nav__type::after {
     content: "";
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 4px;
-    background: var(--accent-color);
     border-radius: 10rem;
+    background: var(--accent-color);
     transition: var(--transition-hover);
-    transform-origin: left;
-    transform-origin:center;
+    transform: scaleX(0);
+    transform-origin: center;
 }
-.content__header__type.inactive::after {
+
+.profile__posts__nav__type.inactive::after {
     transform: scaleX(0);
 }
-.content__header__type.active::after {
+
+.profile__posts__nav__type.active::after {
     transform: scaleX(1);
 }
-
-
-
