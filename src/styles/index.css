@@ -59,7 +59,7 @@ html {
     --hue-color: 234;
     --background: #fff;
     --font: #000;
-    --accent-color: #fff;
+    --accent-color: rgb(39, 155, 240);
     --transparent: transparent;
     --scrollbar: #47beb1;
     --scrollbar-hover: #52d1c2;
@@ -265,7 +265,7 @@ main {
     max-width: 100%;
     padding: 1rem 0;
     background: var(--background);
-    border-top: 1px solid rgb(191, 196, 199);
+    border-bottom: 1px solid rgb(191, 196, 199);
     overflow: hidden;
 }
 
@@ -597,6 +597,7 @@ main {
     border-radius: 10px;
     user-select: none;
     transition: all 100ms ease-in-out, background 0ms ease-in-out, color 0ms ease-in-out;
+    cursor: pointer;
 }
 
 .profile__actions-btn:active {
@@ -608,7 +609,6 @@ main {
 .profile__follow-btn {
     background: var(--font);
     color: var(--background);
-    cursor: pointer;
 }
 .profile__follow-btn--following {
     background: var(--background);
@@ -617,8 +617,54 @@ main {
 }
 
 .profile__share-btn {
-    cursor: pointer;
     border: 1px solid #999999;
 }
+
+
+/* content */
+.profile__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile__content__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.content__header__type {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    font-weight: var(--font-bold);
+    cursor: pointer;
+}
+
+/* .content__header__type:hover,
+.content__header__type:active {
+    background: #f3f3f3;
+} */
+
+.content__header__type::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 10rem;
+    transition: var(--transition-hover);
+    transform-origin: left;
+    transform-origin:center;
+}
+.content__header__type.inactive::after {
+    transform: scaleX(0);
+}
+.content__header__type.active::after {
+    transform: scaleX(1);
+}
+
 
 
