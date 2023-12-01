@@ -15,11 +15,20 @@ const Home = () => {
         setPostType(type)
     }
 
+
     useEffect(() => {
         if (postType === 'foryou') {
-            setPosts(userPosts)
+            const shuffledPosts = userPosts.sort(() => Math.random() - 0.5);
+            setPosts(shuffledPosts);
+
+            // do this
         } else if (postType === 'following') {
-            setPosts(userPosts.filter((post) => userProfiles.find((profile) => profile.username === post.username)?.isFollowing))
+            const followingPosts = userPosts.filter(
+                (post) => userProfiles.find(
+                    (profile) => profile.username === post.username
+                )?.isFollowing
+            )
+            setPosts(followingPosts)
         }
     }, [postType])
 

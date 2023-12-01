@@ -271,7 +271,13 @@ main {
     flex-direction: row;
     justify-content: center;
     cursor: pointer;
+    transition: var(--transition-hover);
 }
+
+.home__post__nav__btn:hover {
+    background: #e7e9eb;
+}
+
 
 .post__nav__btn__text {
     position: relative;
@@ -291,6 +297,7 @@ main {
     border-radius: 10rem;
     background: var(--accent-color);
     transition: var(--transition-hover);
+    transform: scaleX(0);
     transform-origin: center;
 }
 
@@ -302,6 +309,9 @@ main {
     transform: scaleX(1);
 
 }
+
+
+
 
 /* --POSTS */
 .posts-wrapper {
@@ -560,14 +570,17 @@ main {
 .profile {
     max-width: 600px;
     width: 100%;
-    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
     background: var(--background);
 }
 
-/* header */
-.profile__header {
+.profile__information {
+    padding: 2rem 1rem 0;
+}
+
+/* identity */
+.profile__identity {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -673,38 +686,50 @@ main {
 }
 
 
+
+
+
 /* content */
 .profile__posts {
     display: flex;
     flex-direction: column;
 }
 
-.profile__posts__nav {
+.profile__post__nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #bfc4c7;
 }
 
-.profile__posts__nav__type {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
+.profile__post__nav__type {
     font-weight: var(--font-bold);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     cursor: pointer;
+    transition: var(--transition-hover);
 }
 
-/* .profile__posts__nav__type:hover,
-.profile__posts__nav__type:active {
-    background: #f3f3f3;
-} */
+.profile__post__nav__type:hover {
+    background: #e7e9eb;
+}
 
-.profile__posts__nav__type::after {
+
+.post__nav__type__text {
+    position: relative;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.post__nav__type__text::after {
     content: "";
     position: absolute;
     bottom: 0;
-    width: 100%;
     height: 4px;
+    min-width: 48px;
+    width: 100%;
     border-radius: 10rem;
     background: var(--accent-color);
     transition: var(--transition-hover);
@@ -712,10 +737,10 @@ main {
     transform-origin: center;
 }
 
-.profile__posts__nav__type.inactive::after {
+.post__nav__type__text.inactive::after {
     transform: scaleX(0);
 }
 
-.profile__posts__nav__type.active::after {
+.post__nav__type__text.active::after {
     transform: scaleX(1);
 }

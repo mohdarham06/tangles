@@ -51,7 +51,7 @@ const userPosts = [
         avatar: user2avatar,
         text: '#Meg2 #freedive 📸@danielsmithphotography',
         image: user2post2,
-        liked: false,
+        liked: true,
         likes: 1297324,
         saved: false,
         comments: [

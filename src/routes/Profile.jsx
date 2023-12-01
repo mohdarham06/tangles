@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 
 import NotFound from './NotFound';
@@ -22,13 +22,29 @@ const Profile = () => {
     const filteredProfile = (username) => {
         return userProfiles.find((profile) => profile.username === username);
     }
-    const [profile, setProfile] = useState(
-        filteredProfile(profileName) ? filteredProfile(profileName) : undefined
-    );
+    const [profile, setProfile] = useState(filteredProfile(profileName));
 
     const [profilePosts, setProfilePosts] = useState(
-        userPosts.filter((post) => post.username === profile?.username.pepe)
+        userPosts.filter((post) => post.username === profile?.username)
     );
+
+    const [postType, setPostType] = useState('posts');
+
+    const switchPostType = (type) => {
+        setPostType(type)
+    }
+
+    useEffect(() => {
+        if (postType === 'posts') {
+            const filteredPosts = userPosts.filter((post) => post.username === profile?.username);
+            setProfilePosts(filteredPosts);
+
+        } else if (postType === 'videos') {
+            const filteredVideos = userPosts.filter((post) => post.username === profile?.username && post.liked);
+            setProfilePosts(filteredVideos);
+        }
+    }, [postType, profile]);
+
 
 
     // Follow
@@ -39,8 +55,6 @@ const Profile = () => {
             isFollowing: !profile.isFollowing
         }))
     };
-
-
 
 
     const formatNumberScale = (number) => {
@@ -66,72 +80,91 @@ const Profile = () => {
             {profile ?
                 <section className='section section--profile'>
                     <div className="profile">
-                        {/* header */}
-                        <div className="profile__header">
-                            <div className="profile__info">
-                                <h2 className="profile__name">
-                                    {profile.name}
-                                    <span className="profile__verified">
-                                        {profile.verified ? <VerifiedIcon /> : null}
-                                    </span>
-                                </h2>
-                                <div className="profile__username">{`@${profile.username}`}</div>
-                            </div>
-
-                            <div className="profile__avatar-box">
-                                <img
-                                    className="profile__avatar"
-                                    src={profile.avatar ? profile.avatar : noUserImage}
-                                    alt={profile.username}
-                                />
-                            </div>
-                        </div>
-
-                        {/* bio */}
-                        <div className="profile__bio">{profile.bio}</div>
-
-                        {/* stats */}
-                        <div className="profile__stats">
-                            <div className="stats__stat stats__followers">
-                                <div className="stat__count">
-                                    {numberWithCommas(formatNumberScale(profile.followers))}
+                        <div className="profile__information">
+                            {/* identity */}
+                            <div className="profile__identity">
+                                <div className="profile__">
+                                    <h2 className="profile__name">
+                                        {profile.name}
+                                        <span className="profile__verified">
+                                            {profile.verified ? <VerifiedIcon /> : null}
+                                        </span>
+                                    </h2>
+                                    <div className="profile__username">{`@${profile.username}`}</div>
                                 </div>
-                                <div className="stat__label">followers</div>
+
+                                <div className="profile__avatar-box">
+                                    <img
+                                        className="profile__avatar"
+                                        src={profile.avatar ? profile.avatar : noUserImage}
+                                        alt={profile.username}
+                                    />
+                                </div>
                             </div>
-                            <div className="stats__stat stats__following">
-                                <div className="stat__count">{profile.following}</div>
-                                <div className="stat__label">following</div>
+
+                            {/* bio */}
+                            <div className="profile__bio">{profile.bio}</div>
+
+                            {/* stats */}
+                            <div className="profile__stats">
+                                <div className="stats__stat stats__followers">
+                                    <div className="stat__count">
+                                        {numberWithCommas(formatNumberScale(profile.followers))}
+                                    </div>
+                                    <div className="stat__label">followers</div>
+                                </div>
+                                <div className="stats__stat stats__following">
+                                    <div className="stat__count">{profile.following}</div>
+                                    <div className="stat__label">following</div>
+                                </div>
+                            </div>
+
+                            {/* actions */}
+                            <div className="profile__actions">
+                                <div
+                                    className={`profile__actions-btn ${!profile.isFollowing ? "profile__follow-btn" : "profile__follow-btn--following"}`}
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        handleFollow()
+                                    }}
+                                >
+                                    {!profile.isFollowing
+                                        ? <div>Follow</div>
+                                        : <div>Following</div>
+                                    }
+                                </div>
+                                <div className="profile__actions-btn profile__share-btn">Share profile</div>
                             </div>
                         </div>
 
-                        {/* actions */}
-                        <div className="profile__actions">
-                            <div
-                                className={`profile__actions-btn ${!profile.isFollowing ? "profile__follow-btn" : "profile__follow-btn--following"}`}
-                                onClick={(e) => {
-                                    e.preventDefault()
-                                    handleFollow()
-                                }}
-                            >
-                                {!profile.isFollowing
-                                    ? <div>Follow</div>
-                                    : <div>Following</div>
-                                }
-                            </div>
-                            <div className="profile__actions-btn profile__share-btn">Share profile</div>
-                        </div>
+
+
+
 
                         {/* content */}
                         <div className="profile__posts">
-                            <div className="profile__posts__nav">
-                                <div
-                                    className="profile__posts__nav__type active"
-                                >Posts</div>
-                                <div
-                                    className="profile__posts__nav__type inactive"
-                                >Videos</div>
-                            </div>
+                            <div className="profile__post__nav">
+                            
 
+
+                                <div
+                                    className="profile__post__nav__type"
+                                    onClick={() => switchPostType('posts')}
+                                >
+                                    <span className={
+                                        `post__nav__type__text ${postType === 'posts' ? "active" : "inactive"}`
+                                    }>Posts</span>
+                                </div>
+
+                                <div
+                                    className="profile__post__nav__type"
+                                    onClick={() => switchPostType('videos')}
+                                >
+                                    <span className={
+                                        `post__nav__type__text ${postType === 'videos' ? "active" : "inactive"}`
+                                    }>Videos</span>
+                                </div>
+                            </div>
 
 
 
@@ -147,11 +180,7 @@ const Profile = () => {
                                     ? <div className="no-posts">No Posts Yet</div>
                                     : null
                             }
-
                         </div>
-
-
-
 
                     </div>
                 </section>
