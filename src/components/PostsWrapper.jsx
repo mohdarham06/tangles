@@ -10,7 +10,7 @@ import { OutlineShare } from '../assets/CustomIcons';
 import { OutlineSave, FillSave } from '../assets/CustomIcons';
 import { VerifiedIcon } from '../assets/CustomIcons';
 
-const PostsWrapper = ({posts, setPosts}) => {
+const PostsWrapper = ({ posts, setPosts }) => {
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
@@ -75,7 +75,9 @@ const PostsWrapper = ({posts, setPosts}) => {
                     <div className="post__content">
                         <p className="post__text">{post.text}</p>
                         {post.image
-                            ? <img className="post__image" src={post.image} alt="" />
+                            ? <div className="post__media">
+                                <img className="post__image" src={post.image} alt="" />
+                            </div>
                             : null
                         }
                     </div>

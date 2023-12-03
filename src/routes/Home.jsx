@@ -1,20 +1,27 @@
 import React from 'react'
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import { OutlineImage } from '../assets/CustomIcons';
 
 import userProfiles from '../data/userProfiles';
 import userPosts from '../data/userPosts';
+
+import noUserImage from '../data/avatars/noimage.jpg';
+
 import PostsWrapper from '../components/PostsWrapper';
 
 
 const Home = () => {
     const [posts, setPosts] = useState(userPosts);
     const [postType, setPostType] = useState('foryou');
+    const [postText, setPostText] = useState('');
+    const [mediaFile, setMediaFile] = useState(null);
 
     const switchPostType = (type) => {
         setPostType(type)
     }
-
 
     useEffect(() => {
         if (postType === 'foryou') {
@@ -31,6 +38,30 @@ const Home = () => {
             setPosts(followingPosts)
         }
     }, [postType])
+
+
+    const handleFocus = () => {
+        const placeHolderDiv = document.querySelector('.__textarea__placeholder');
+        const editableDiv = document.querySelector('.__textarea__editable');
+
+        if (editableDiv.innerHTML === '') {
+            placeHolderDiv.innerHTML = '';
+        }
+    }
+
+    const handleBlur = () => {
+        const placeHolderDiv = document.querySelector('.__textarea__placeholder');
+        const editableDiv = document.querySelector('.__textarea__editable');
+
+        if (editableDiv.innerHTML === '') {
+            placeHolderDiv.innerHTML = 'What is happening?!'; // Show the placeholder when blurred
+        }
+    }
+    
+    const handleTextChange = (e) => {
+        setPostText(e.target.innerHTML);
+        console.log(e.target.innerHTML)
+    };
 
 
     return (
@@ -56,10 +87,62 @@ const Home = () => {
                             }>Following</span>
                         </div>
                     </div>
+                </div>
 
 
 
 
+                <div className="home__post-option">
+                    <div className="">
+                        <Link to={`/${"mohdarham"}`} className="">
+                            <img
+                                className=""
+                                src={true ? noUserImage : noUserImage}
+                                alt={''}
+                            />
+                        </Link>
+
+                        <div className="">
+
+                            <div
+                                className="__textarea"
+                            >
+                                <div className="textarea__placeholder">
+                                    What is happening?!
+                                </div>
+                                <div
+                                    contentEditable
+                                    className="__textarea__editable"
+                                    onInput={handleTextChange}
+                                    onFocus={handleFocus}
+                                    onBlur={handleBlur}
+                                >
+                                </div>
+                            </div>
+
+
+
+
+                            <label htmlFor="media-input" className="custom-media-label">
+                                <div className="custom-icon"><OutlineImage /></div>
+                            </label>
+                            <input
+                                id="media-input"
+                                className="media-input"
+                                type="file"
+                                accept="image/*, video/*"
+                            // onChange={}
+                            />
+
+
+                            <button
+                                className="post-button"
+                            // onClick={''} 
+                            >
+                                Post
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
 

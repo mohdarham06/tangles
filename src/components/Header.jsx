@@ -12,8 +12,10 @@ const Header = () => {
         <header className="header">
             <div className="header__container">
 
-
-                <div className="header__brand">Brand</div>
+                <Link
+                    className="header__brand"
+                    to={`/`}
+                >Brand</Link>
 
 
                 <nav className="header__nav">

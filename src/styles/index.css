@@ -313,6 +313,38 @@ main {
 
 
 
+/* --HOME POST OPTION */
+.__textarea {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.textarea__placeholder {
+    position: absolute;
+    color: #536471;
+    pointer-events: none;
+}
+
+.__textarea__editable {
+    border: none;
+    outline: none;
+    padding: 0.125rem 0;
+}
+
+.__textarea__editable:focus {
+    border: none;
+    outline: none;
+}
+.custom-icon {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+
+
 /* --POSTS */
 .posts-wrapper {
     max-width: 100%;
@@ -361,10 +393,21 @@ main {
     margin-left: 0.25rem;
 }
 
+.post__content {
+    margin: 0 1rem;
+}
+
 .post__text {
     padding-bottom: 0.75rem;
-    margin-left: 0.5rem;
     white-space: pre-line;
+}
+
+.post__media {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border: 1px solid #00000066;
+    border-radius: 0.5rem;
 }
 
 .post__image {
@@ -385,7 +428,7 @@ main {
     outline: none;
     font: inherit;
     padding: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     cursor: pointer;
 }
 
@@ -396,6 +439,8 @@ main {
 .post__actions__btn:active {
     color: #aaaaaa;
 }
+
+
 
 
 .post__likes {
@@ -744,3 +789,4 @@ main {
 .post__nav__type__text.active::after {
     transform: scaleX(1);
 }
+
