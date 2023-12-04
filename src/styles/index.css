@@ -61,7 +61,6 @@ html {
     --font: #000;
     --hue-accent: 205;
     --accent-color: hsl(var(--hue-accent), 87%, 55%);
-    --accent-hover: hsl(var(--hue-accent), 87%, 45%);
     --thin-border: #d7dcdf;
     --transparent: transparent;
     --scrollbar: #47beb1;
@@ -387,6 +386,8 @@ main {
     outline: none;
 }
 
+.form__media-preview {}
+
 .form__footer {
     display: flex;
     flex-direction: row;
@@ -412,10 +413,12 @@ main {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    transform: scale(0);
     background: hsl(var(--hue-accent), 87%, 55%, 0.15);
+    transform: scale(0);
+    transform-origin: center;
     transition: var(--transition-hover);
 }
+
 .form__media-label:hover::before,
 .form__media-label:active::before {
     transform: scale(1);
@@ -426,6 +429,8 @@ main {
     color: var(--accent-color);
     cursor: pointer;
 }
+
+
 
 .form__media-input {
     display: none;
@@ -444,11 +449,19 @@ main {
     transition: var(--transition-hover);
 }
 
-.form__post-button:hover {
-    background: var(--accent-hover);
+.form__post-button.disabled {
+    background: hsl(var(--hue-accent), 87%, 75%);
+    pointer-events: none;
 }
 
-.form__post-button:active {}
+.form__post-button:hover {
+    background: hsl(var(--hue-accent), 87%, 45%);
+}
+
+.form__post-button:active {
+    background: hsl(var(--hue-accent), 87%, 40%);
+
+}
 
 
 
@@ -531,6 +544,10 @@ main {
 
 
 .post__actions {
+    display: flex;
+    flex-direction: row;
+    padding: 0.75rem 1rem;
+    gap: 1.5rem;
     margin: 0.25rem 0;
     white-space: nowrap;
 }
@@ -540,27 +557,55 @@ main {
     background: none;
     border: none;
     outline: none;
-    font: inherit;
-    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
     font-size: 1.4rem;
     cursor: pointer;
+    transition: var(--transition-hover);
 }
 
-.post__actions__btn:hover {
-    color: #747474;
+.post__actions__btn:first-child {
+    margin-left: -0.25rem;
 }
 
+.post__actions__btn::before {
+    position: absolute;
+    content: "";
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: hsl(var(--hue-accent), 87%, 55%, 0.15);
+    transform: scale(0);
+    transform-origin: center;
+    transition: var(--transition-hover);
+}
+
+.post__actions__btn[data-style="like"]::before {
+    background: hsla(355, 100%, 59%, 0.15);
+}
+
+.post__actions__btn:hover,
 .post__actions__btn:active {
-    color: #aaaaaa;
+    color: var(--accent-color);
 }
 
+.post__actions__btn[data-style="like"]:hover {
+    color: #ff3040;
+}
+
+.post__actions__btn:hover::before {
+    transform: scale(1);
+}
 
 
 
 .post__likes {
     font-weight: var(--font-bold);
-    margin-left: 0.5rem;
-    cursor: pointer;
+    margin-left: 1rem;
 }
 
 

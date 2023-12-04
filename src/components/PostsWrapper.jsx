@@ -84,7 +84,11 @@ const PostsWrapper = ({ posts, setPosts }) => {
 
                     {/* Actions */}
                     <div className="post__actions">
-                        <button className="post__actions__btn" onClick={() => handleLike(post.id)}>
+                        <button
+                            className="post__actions__btn"
+                            data-style="like"
+                            onClick={() => handleLike(post.id)}
+                        >
                             {!post.liked ? <OutlineHeart /> : <FillHeart />}
                         </button>
 

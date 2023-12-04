@@ -141,7 +141,7 @@ const Home = () => {
                                 />
 
                                 <div
-                                    className="form__post-button"
+                                    className="form__post-button disabled"
                                     onClick={handlePostButtonClick}
                                 >
                                     Post
