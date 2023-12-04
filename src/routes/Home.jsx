@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import DOMPurify from 'dompurify'; // Import DOMPurify
 
 import { OutlineImage } from '../assets/CustomIcons';
 
@@ -18,6 +19,8 @@ const Home = () => {
     const [postType, setPostType] = useState('foryou');
     const [postText, setPostText] = useState('');
     const [mediaFile, setMediaFile] = useState(null);
+    const editableTextRef = useRef(null);
+    const mediaInputRef = useRef(null);
 
     const switchPostType = (type) => {
         setPostType(type)
@@ -40,28 +43,20 @@ const Home = () => {
     }, [postType])
 
 
-    const handleFocus = () => {
-        const placeHolderDiv = document.querySelector('.__textarea__placeholder');
-        const editableDiv = document.querySelector('.__textarea__editable');
 
-        if (editableDiv.innerHTML === '') {
-            placeHolderDiv.innerHTML = '';
-        }
-    }
-
-    const handleBlur = () => {
-        const placeHolderDiv = document.querySelector('.__textarea__placeholder');
-        const editableDiv = document.querySelector('.__textarea__editable');
-
-        if (editableDiv.innerHTML === '') {
-            placeHolderDiv.innerHTML = 'What is happening?!'; // Show the placeholder when blurred
-        }
-    }
-    
     const handleTextChange = (e) => {
-        setPostText(e.target.innerHTML);
-        console.log(e.target.innerHTML)
+        const text = e.target.innerHTML;
+        setPostText(text);
+        console.log(text);
     };
+
+    const handleMediaInputChange = (e) => {
+        const file = e.target.files[0];
+        setMediaFile(file);
+        console.log(file);
+    };
+
+    const handlePostButtonClick = () => { }
 
 
     return (
@@ -93,54 +88,66 @@ const Home = () => {
 
 
                 <div className="home__post-option">
-                    <div className="">
-                        <Link to={`/${"mohdarham"}`} className="">
-                            <img
-                                className=""
-                                src={true ? noUserImage : noUserImage}
-                                alt={''}
-                            />
-                        </Link>
+                    <div className="post-option">
+                        <div className="admin-avatar-box">
+                            <Link to={`/${"mohdarham"}`} className="admin-avatar-link">
+                                <img
+                                    className="admin-avatar"
+                                    src={true ? noUserImage : noUserImage}
+                                    alt={''}
+                                />
+                            </Link>
+                        </div>
 
-                        <div className="">
 
+                        <div className="post-option__form">
                             <div
-                                className="__textarea"
+                                className="form__textarea__wrapper"
+                                onClick={() => editableTextRef.current.focus()}
                             >
-                                <div className="textarea__placeholder">
-                                    What is happening?!
-                                </div>
-                                <div
-                                    contentEditable
-                                    className="__textarea__editable"
-                                    onInput={handleTextChange}
-                                    onFocus={handleFocus}
-                                    onBlur={handleBlur}
-                                >
+                                <div className="form__textarea">
+                                    <div className="form__textarea__placeholder">
+                                        {postText === '' ? 'What is happening?!' : null}
+                                    </div>
+                                    <div
+                                        contentEditable
+                                        className="form__textarea__editable"
+                                        ref={editableTextRef}
+                                        onInput={handleTextChange}
+                                    >
+                                    </div>
                                 </div>
                             </div>
 
 
+                            <div className="form__media-preview">
+                            </div>
 
+                            <div className="form__footer">
+                                <label
+                                    htmlFor="form__media-input"
+                                    className="form__media-label"
+                                    onClick={() => mediaInputRef.current.click()}
+                                >
+                                    <div className="form__custom-icon"><OutlineImage /></div>
+                                </label>
+                                <input
+                                    id="media-input"
+                                    className="form__media-input"
+                                    type="file"
+                                    accept="image/*, video/*"
+                                    onChange={handleMediaInputChange}
+                                    ref={mediaInputRef}
+                                />
 
-                            <label htmlFor="media-input" className="custom-media-label">
-                                <div className="custom-icon"><OutlineImage /></div>
-                            </label>
-                            <input
-                                id="media-input"
-                                className="media-input"
-                                type="file"
-                                accept="image/*, video/*"
-                            // onChange={}
-                            />
+                                <div
+                                    className="form__post-button"
+                                    onClick={handlePostButtonClick}
+                                >
+                                    Post
+                                </div>
+                            </div>
 
-
-                            <button
-                                className="post-button"
-                            // onClick={''} 
-                            >
-                                Post
-                            </button>
                         </div>
                     </div>
                 </div>
