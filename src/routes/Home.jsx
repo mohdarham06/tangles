@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import DOMPurify from 'dompurify'; // Import DOMPurify
 
-import { OutlineImage } from '../assets/CustomIcons';
+import { OutlineImage, OutlineClose } from '../assets/CustomIcons';
 
 import userProfiles from '../data/userProfiles';
 import userPosts from '../data/userPosts';
@@ -58,6 +58,11 @@ const Home = () => {
         setMediaFile(file);
         console.log(file);
 
+        // Create a preview URL for images and videos
+        const previewURL = file.type.startsWith('image/') || file.type.startsWith('video/')
+            ? URL.createObjectURL(file)
+            : null;
+        setMediaPreview(previewURL)
     };
 
 
@@ -141,9 +146,24 @@ const Home = () => {
                             </div>
 
 
-                            <div className="form__media-preview">
-                                
-                            </div>
+                            {mediaPreview && (
+                                <div className="form__media-preview">
+                                    <div className="media-preview__box">
+                                        <img className="media-preview__img" src={mediaPreview} alt="Media Preview" />
+
+
+                                        <div
+                                            className="media-preview__remove-btn"
+                                            onClick={() => {
+                                                setMediaFile(null)
+                                                setMediaPreview(null)
+                                            }}
+                                        >
+                                            <OutlineClose />
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
 
 
                             <div className="form__footer">

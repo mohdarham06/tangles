@@ -1,5 +1,6 @@
 
 import jasonstotham from './avatars/jasonstotham.jpg';
+import davidgoggins from './avatars/davidgoggins.jpg';
 import cristiano from './avatars/cristiano.jpg';
 
 
@@ -12,7 +13,6 @@ const userProfiles = [
         bio: 'Software Developer | React Enthusiast',
         followers: 12410,
         following: 500,
-        postsCount: 10,
         isFollowing: true
     },
     {
@@ -23,7 +23,16 @@ const userProfiles = [
         bio: 'Photographer | Traveler',
         followers: 5350000,
         following: 100,
-        postsCount: 100,
+        isFollowing: false
+    },
+    {
+        username: 'davidgoggins',
+        name: 'David Goggins',
+        verified: true,
+        avatar: davidgoggins,
+        bio: 'Photographer | Traveler',
+        followers: 9000000,
+        following: 100,
         isFollowing: false
     },
     {
@@ -31,10 +40,9 @@ const userProfiles = [
         name: 'Cristiano Ronaldo',
         verified: true,
         avatar: cristiano,
-        bio: 'Join my NFT journey on @Binance.',
-        followers: 612000000,
+        bio: '',
+        followers: 613500000,
         following: 573,
-        postsCount: 100,
         isFollowing: false
     },
 ];

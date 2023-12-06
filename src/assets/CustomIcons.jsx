@@ -92,6 +92,14 @@ export const OutlineImage = () => {
 
     )
 }
+export const OutlineClose = () => {
+    return (
+        <svg aria-label="Close" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
+            <title>Remove</title>
+            <polyline fill="none" points="20.643 3.357 12 12 3.353 20.647" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" x1="20.649" x2="3.354" y1="20.649" y2="3.354"></line>
+        </svg>
+    )
+}
 
 
 

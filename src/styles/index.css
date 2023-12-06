@@ -350,11 +350,14 @@ main {
 }
 
 .post-option__form {
-    width: 100%;
+    width: 520px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
 }
 
+
+/* textarea */
 .form__textarea__wrapper {
     padding: 0.75rem 0;
     margin: 0 0.125rem;
@@ -377,7 +380,6 @@ main {
 }
 
 .form__textarea__editable {
-    width: 100%;
     border: none;
     outline: none;
     white-space: pre-wrap;
@@ -388,10 +390,54 @@ main {
     outline: none;
 }
 
+
+/* media preview */
 .form__media-preview {
+    max-width: 100%;
+    overflow: hidden;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--thin-border);
 }
 
+.media-preview__box {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.media-preview__img {
+    width: 520px;
+    max-width: 100%;
+    border-radius: 0.5rem;
+}
+
+/* media preview tools */
+.media-preview__remove-btn {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    right: 4px;
+    top: 4px;
+    border-radius: 50%;
+    background: rgba(24, 30, 36, 0.7);
+    color: #fff;
+    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-hover);
+}
+
+.media-preview__remove-btn:hover, 
+.media-preview__remove-btn:active {
+    background: rgba(47, 54, 61, 0.7);
+}
+
+
+
+/* post footer */
 .form__footer {
     display: flex;
     flex-direction: row;
