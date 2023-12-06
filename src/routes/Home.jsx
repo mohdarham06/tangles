@@ -19,6 +19,7 @@ const Home = () => {
     const [postType, setPostType] = useState('foryou');
     const [postText, setPostText] = useState('');
     const [mediaFile, setMediaFile] = useState(null);
+    const [mediaPreview, setMediaPreview] = useState(null);
     const editableTextRef = useRef(null);
     const mediaInputRef = useRef(null);
 
@@ -46,17 +47,37 @@ const Home = () => {
 
     const handleTextChange = (e) => {
         const text = e.target.innerHTML;
-        setPostText(text);
-        console.log(text);
+        // Replace newline characters with \n
+        const sanitizedText = DOMPurify.sanitize(text, { ALLOWED_TAGS: [] }).replace(/<br>/g, '\n');
+        setPostText(sanitizedText);
+        console.log(sanitizedText);
     };
 
     const handleMediaInputChange = (e) => {
         const file = e.target.files[0];
         setMediaFile(file);
         console.log(file);
+
     };
 
-    const handlePostButtonClick = () => { }
+
+    const isPostButtonDisabled = () => {
+        const text = postText.trim();
+        // Disable the button if there are 0 characters and no media
+        if (text.length === 0 && !mediaFile) {
+            return true;
+        }
+        // Disable the button if the character count is more than 280
+        if (text.length > 280) {
+            return true;
+        }
+        // Enable the button in all other cases
+        return false;
+    };
+
+    const handlePostButtonClick = () => {
+        console.log('post')
+    }
 
 
     return (
@@ -121,9 +142,12 @@ const Home = () => {
 
 
                             <div className="form__media-preview">
+                                
                             </div>
 
+
                             <div className="form__footer">
+                                {/* Media Select */}
                                 <label
                                     htmlFor="form__media-input"
                                     className="form__media-label"
@@ -140,8 +164,12 @@ const Home = () => {
                                     ref={mediaInputRef}
                                 />
 
+
+                                {/* Post Button */}
                                 <div
-                                    className="form__post-button disabled"
+                                    className={
+                                        `form__post-button ${isPostButtonDisabled() ? 'disabled' : ''}`
+                                    }
                                     onClick={handlePostButtonClick}
                                 >
                                     Post
@@ -151,9 +179,6 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-
-
-
 
                 <PostsWrapper
                     posts={posts}
