@@ -13,38 +13,6 @@
 }
 
 
-/* Firefox */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: var(--scrollbar) #ffffff;
-}
-
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-    width: 13px;
-    height: 10px;
-}
-
-*::-webkit-scrollbar-track {
-    background: #ffffff;
-}
-
-*::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar);
-    border-radius: 20px;
-    border-left: 2px solid #ffffff;
-    border-right: 2px solid #ffffff;
-    border-top: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-    background-color: var(--scrollbar-hover);
-}
-
-*::-webkit-scrollbar-thumb:active {
-    background-color: var(--scrollbar-active);
-}
 
 
 
@@ -57,10 +25,17 @@ html {
 :root {
     /* --COLORS */
     --hue-color: 234;
-    --background: #fff;
-    --font: #000;
+    --background: #ffffff;
+    --font: #000000;
+    /* --accent-color: #ffd400;
+    --accent-color: #f91880;
+    --accent-color: #7856ff;
+    --accent-color: #ff7a00;
+    --accent-color: #00ba7c; */
     --hue-accent: 205;
     --accent-color: hsl(var(--hue-accent), 87%, 55%);
+
+    
     --thin-border: #d7dcdf;
     --transparent: transparent;
     --scrollbar: #47beb1;
@@ -69,8 +44,8 @@ html {
     --inline-link: #42eba4;
     --nav-item-active: #4f78ff;
 
+    /* --NAV SIZES */
     --nav-wide-width: 244px;
-    /* 335px */
     --nav-medium-width: 200px;
     --nav-narrow-width: 72px;
 
@@ -227,7 +202,7 @@ body {
 
 .header__logout:hover,
 .header__logout:active {
-    background-color: rgb(227, 229, 231);
+    background: rgb(227, 229, 231);
 }
 
 
@@ -237,7 +212,8 @@ body {
 /* --MAIN */
 main {
     position: relative;
-    width: calc(100% - var(--nav-medium-width));
+    --main-width: calc(100% - var(--nav-medium-width));
+    width: var(--main-width);
     margin-left: auto;
     display: flex;
     flex-direction: column;
@@ -257,11 +233,66 @@ main {
 
 
 /* --POST EDITOR */
-.post-editor-modal {
+.post-editor-modal-wrapper {
+    position: fixed;
     z-index: var(--z-modal);
-    background: var(--background);
-    width: 90%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
+
+.post-editor-modal {
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow: auto;
+    background: var(--background);
+    border-radius: 1rem;
+}
+
+.post-editor-modal__header {
+    padding: 0.5rem 1rem;
+}
+
+.post-editor-modal__header__btn {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    margin-left: -0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.post-editor-modal__header__btn::before {
+    position: absolute;
+    content: "";
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: rgba(102, 105, 107, 0.15);
+    transform: scale(0);
+    transform-origin: center;
+    transition: var(--transition-hover);
+}
+
+.post-editor-modal__header__btn:hover::before,
+.post-editor-modal__header__btn:active::before {
+    transform: scale(1);
+}
+
+.post-editor-modal .form__textarea__wrapper {
+    min-height: 120px;
+}
+
+
+
 
 
 .post-editor {
@@ -433,7 +464,7 @@ main {
 .form__post-button {
     display: inline-block;
     background: var(--accent-color);
-    color: var(--background);
+    color: #ffffff;
     font-weight: var(--font-bold);
     padding: 0.5rem 1rem;
     border-radius: 10rem;

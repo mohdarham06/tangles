@@ -7,7 +7,7 @@ import noUserImage from '../data/avatars/noimage.jpg'
 
 import { OutlineHome, FillHome, OutlineSearch, OutlineExplore, FillExplore, OutlineSaved, FillSaved, OutlineAdd } from '../assets/CustomIcons'
 
-const Header = () => {
+const Header = ({ openPostModal }) => {
     return (
         <header className="header">
             <div className="header__container">
@@ -44,7 +44,7 @@ const Header = () => {
                                 <span className="nav__item__text">Saved</span>
                             </li>
                         </Link>
-                        <Link to={`/post`} >
+                        <Link to={`/post`} onClick={openPostModal}>
                             <li className="nav__item">
                                 <span className="nav__item__icon"><OutlineAdd /></span>
                                 <span className="nav__item__text">Post</span>

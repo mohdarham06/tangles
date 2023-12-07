@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import DOMPurify from 'dompurify'; // Import DOMPurify
 
 // icons
-import { OutlineImage, OutlineClose } from '../assets/CustomIcons';
+import { OutlineImage, OutlineRemove } from '../assets/CustomIcons';
 
 import noUserImage from '../data/avatars/noimage.jpg';
 
@@ -100,7 +100,7 @@ const PostEditor = () => {
                                     setMediaPreview(null)
                                 }}
                             >
-                                <OutlineClose />
+                                <OutlineRemove />
                             </div>
                         </div>
                     </div>
