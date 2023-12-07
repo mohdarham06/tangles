@@ -44,7 +44,7 @@ const Header = () => {
                                 <span className="nav__item__text">Saved</span>
                             </li>
                         </Link>
-                        <Link to={`/post`}>
+                        <Link to={`/post`} >
                             <li className="nav__item">
                                 <span className="nav__item__icon"><OutlineAdd /></span>
                                 <span className="nav__item__text">Post</span>

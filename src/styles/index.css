@@ -96,8 +96,8 @@ html {
     --font-extra-bold: 700;
 
     /* Z-INDEX */
-    --z-header: 100;
-    --z-navbar: 50;
+    --z-fixed: 100;
+    --z-modal: 200;
 
     /* Transitions */
     --transition-hover: all 150ms ease-in-out;
@@ -236,6 +236,7 @@ body {
 
 /* --MAIN */
 main {
+    position: relative;
     width: calc(100% - var(--nav-medium-width));
     margin-left: auto;
     display: flex;
@@ -254,92 +255,35 @@ main {
 
 
 
-/* --HOME */
-.home {
-    max-width: 600px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+
+/* --POST EDITOR */
+.post-editor-modal {
+    z-index: var(--z-modal);
     background: var(--background);
-}
-
-.home__post__nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--thin-border);
-}
-
-.home__post__nav__btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition-hover);
-}
-
-.home__post__nav__btn:hover {
-    background: #e7e9eb;
+    width: 90%;
 }
 
 
-.post__nav__btn__text {
-    position: relative;
-    padding: 1rem 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.post__nav__btn__text::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 4px;
-    min-width: 56px;
-    width: 100%;
-    border-radius: 10rem;
-    background: var(--accent-color);
-    transition: var(--transition-hover);
-    transform: scaleX(0);
-    transform-origin: center;
-}
-
-.post__nav__btn__text.inactive::after {
-    transform: scaleX(0);
-}
-
-.post__nav__btn__text.active::after {
-    transform: scaleX(1);
-
-}
-
-
-
-
-/* --HOME POST OPTION */
-.home__post-option {
-    border-bottom: 1px solid var(--thin-border);
-}
-
-.post-option {
+.post-editor {
     display: flex;
     flex-direction: row;
     padding: 0.5rem 1rem;
 }
 
-.admin-avatar-box {
+/* admin avatar area */
+.post-editor__admin-avatar-box {
     margin-top: 0.75rem;
     margin-right: 0.75rem;
 }
 
-.admin-avatar-link {
+.post-editor__admin-avatar-link {
     display: block;
     width: 2.25rem;
     height: 2.25rem;
     cursor: pointer;
 }
 
-.admin-avatar {
+.post-editor__admin-avatar {
     max-width: 2.25rem;
     width: 2.25rem;
     height: 2.25rem;
@@ -349,8 +293,10 @@ main {
     overflow: hidden;
 }
 
-.post-option__form {
-    width: 520px;
+/* post form */
+.post-editor__form {
+    width: calc(100% - 48px);
+    margin-left: auto;
     max-width: 100%;
     display: flex;
     flex-direction: column;
@@ -370,7 +316,7 @@ main {
     flex-direction: column;
     justify-content: center;
     font-size: 1.25rem;
-    padding: 0.3125rem 0;
+    padding: 0.34375rem 0;
 }
 
 .form__textarea__placeholder {
@@ -430,14 +376,14 @@ main {
     transition: var(--transition-hover);
 }
 
-.media-preview__remove-btn:hover, 
+.media-preview__remove-btn:hover,
 .media-preview__remove-btn:active {
     background: rgba(47, 54, 61, 0.7);
 }
 
 
 
-/* post footer */
+/* post-editor footer */
 .form__footer {
     display: flex;
     flex-direction: row;
@@ -509,6 +455,80 @@ main {
 .form__post-button:active {
     background: hsl(var(--hue-accent), 87%, 40%);
 
+}
+
+
+
+
+
+
+
+
+/* --HOME */
+.home {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+}
+
+.home__post__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--thin-border);
+}
+
+.home__post__nav__btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-hover);
+}
+
+.home__post__nav__btn:hover {
+    background: #e7e9eb;
+}
+
+
+.post__nav__btn__text {
+    position: relative;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.post__nav__btn__text::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 4px;
+    min-width: 56px;
+    width: 100%;
+    border-radius: 10rem;
+    background: var(--accent-color);
+    transition: var(--transition-hover);
+    transform: scaleX(0);
+    transform-origin: center;
+}
+
+.post__nav__btn__text.inactive::after {
+    transform: scaleX(0);
+}
+
+.post__nav__btn__text.active::after {
+    transform: scaleX(1);
+
+}
+
+
+
+
+/* --HOME POST EDITOR */
+.home__post-editor {
+    border-bottom: 1px solid var(--thin-border);
 }
 
 
