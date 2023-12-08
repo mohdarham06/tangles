@@ -1,20 +1,20 @@
 import React from 'react'
 
-
 import PostEditor from './PostEditor'
+import Modal from './Modal'
 import { OutlineClose } from '../assets/CustomIcons'
 
 
-const PostEditorModal = ({ closePostModal }) => {
+const ModalPostEditor = ({ closePostModal }) => {
     return (
-        <div className="post-editor-modal-wrapper">
+        <Modal>
 
-            <div className="post-editor-modal">
+            <div className="modal__post-editor">
                 <div
-                    className="post-editor-modal__header"
+                    className="modal__post-editor__header"
                     onClick={closePostModal}
                 >
-                    <div className="post-editor-modal__header__btn">
+                    <div className="modal__post-editor__header__btn">
                         <OutlineClose />
                         {/* <OutlineBack /> */}
                     </div>
@@ -22,8 +22,9 @@ const PostEditorModal = ({ closePostModal }) => {
 
                 <PostEditor />
             </div>
-        </div>
+
+        </Modal>
     )
 }
 
-export default PostEditorModal
+export default ModalPostEditor

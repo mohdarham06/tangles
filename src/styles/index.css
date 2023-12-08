@@ -230,10 +230,8 @@ main {
 }
 
 
-
-
-/* --POST EDITOR */
-.post-editor-modal-wrapper {
+/* --MODAL */
+.modal {
     position: fixed;
     z-index: var(--z-modal);
     width: 100%;
@@ -241,24 +239,25 @@ main {
     background: rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
 }
 
-.post-editor-modal {
+
+/* --POST EDITOR*/
+.modal__post-editor {
     width: 100%;
     max-width: 600px;
     max-height: 90vh;
+    margin: auto;
     overflow: auto;
     background: var(--background);
     border-radius: 1rem;
 }
 
-.post-editor-modal__header {
+.modal__post-editor__header {
     padding: 0.5rem 1rem;
 }
 
-.post-editor-modal__header__btn {
+.modal__post-editor__header__btn {
     position: relative;
     width: 2rem;
     height: 2rem;
@@ -270,7 +269,7 @@ main {
     cursor: pointer;
 }
 
-.post-editor-modal__header__btn::before {
+.modal__post-editor__header__btn::before {
     position: absolute;
     content: "";
     width: 2.25rem;
@@ -282,12 +281,12 @@ main {
     transition: var(--transition-hover);
 }
 
-.post-editor-modal__header__btn:hover::before,
-.post-editor-modal__header__btn:active::before {
+.modal__post-editor__header__btn:hover::before,
+.modal__post-editor__header__btn:active::before {
     transform: scale(1);
 }
 
-.post-editor-modal .form__textarea__wrapper {
+.modal__post-editor .form__textarea__wrapper {
     min-height: 120px;
 }
 

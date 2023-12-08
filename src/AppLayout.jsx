@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import Header from './components/Header'
-import PostEditorModal from './components/PostEditorModal'
+import ModalPostEditor from './components/ModalPostEditor'
 
 
 
@@ -27,7 +27,7 @@ const AppLayout = () => {
                 <Outlet />
             </main>
 
-            {isPostModalOpen && <PostEditorModal closePostModal={closePostModal} />}
+            {isPostModalOpen && <ModalPostEditor closePostModal={closePostModal} />}
         </>
     )
 }
