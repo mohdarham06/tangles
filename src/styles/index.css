@@ -25,6 +25,8 @@ html {
 :root {
     /* --COLORS */
     --hue-color: 234;
+    /* --background: #000000;
+    --font: #ffffff; */
     --background: #ffffff;
     --font: #000000;
     /* --accent-color: #ffd400;
@@ -35,7 +37,7 @@ html {
     --hue-accent: 205;
     --accent-color: hsl(var(--hue-accent), 87%, 55%);
 
-    
+
     --thin-border: #d7dcdf;
     --transparent: transparent;
     --scrollbar: #47beb1;
@@ -73,6 +75,7 @@ html {
     /* Z-INDEX */
     --z-fixed: 100;
     --z-modal: 200;
+    --z-toast: 500;
 
     /* Transitions */
     --transition-hover: all 150ms ease-in-out;
@@ -234,7 +237,7 @@ main {
 .modal {
     position: fixed;
     z-index: var(--z-modal);
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.4);
     display: flex;
@@ -488,6 +491,32 @@ main {
 }
 
 
+
+/* --TOAST */
+.toast {
+    position: fixed;
+    z-index: var(--z-toast);
+    background: rgba(43, 43, 43, 0.75);
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    /* Centering */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 500ms ease-in-out;
+}
+
+.toast.hidden {
+    top: 55%;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.toast.visible {
+    visibility: visible;
+    opacity: 1;
+}
 
 
 

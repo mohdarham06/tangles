@@ -6,9 +6,9 @@ import DOMPurify from 'dompurify'; // Import DOMPurify
 
 // icons
 import { OutlineImage, OutlineRemove } from '../assets/CustomIcons';
-
 import noUserImage from '../data/avatars/noimage.jpg';
 
+import { useToast } from '../context/ToastContext';
 
 
 const PostEditor = () => {
@@ -17,6 +17,7 @@ const PostEditor = () => {
     const [mediaPreview, setMediaPreview] = useState(null);
     const editableTextRef = useRef(null);
     const mediaInputRef = useRef(null);
+    const { showToast } = useToast();
 
 
 
@@ -45,12 +46,13 @@ const PostEditor = () => {
         const text = postText.trim();
         // Disable the button if there are 0 characters and no media 
         // or if the character count is more than 280
-    return (text.length === 0 && !mediaFile) || (text.length > 280);
+        return (text.length === 0 && !mediaFile) || (text.length > 280);
     };
 
     const handlePostButtonClick = () => {
-        console.log('post')
+        showToast('Error! No DataBase Available')
     }
+
 
 
 
@@ -131,10 +133,14 @@ const PostEditor = () => {
                         className={
                             `form__post-button ${isPostButtonDisabled() ? 'disabled' : ''}`
                         }
-                        onClick={handlePostButtonClick}
+                        onClick={() => handlePostButtonClick()}
                     >
                         Post
                     </div>
+
+
+
+
                 </div>
 
             </div>

@@ -11,7 +11,7 @@ import noUserImage from '../data/avatars/noimage.jpg';
 
 
 
-import { Outlet } from 'react-router-dom'
+
 import PostsWrapper from '../components/PostsWrapper';
 
 
@@ -46,7 +46,6 @@ const Profile = () => {
     }, [postType, profile]);
 
 
-
     // Follow
     const handleFollow = () => {
         setProfile((prevProfile) => ({
@@ -54,6 +53,25 @@ const Profile = () => {
             followers: profile.isFollowing ? (profile.followers - 1) : (profile.followers + 1),
             isFollowing: !profile.isFollowing
         }))
+    };
+
+
+    // Share Profile
+    const handleShare = async () => {
+        try {
+            if (navigator.share) {
+                await navigator.share({
+                    title: profile.name,
+                    text: `Check out ${profile.name}'s profile on our app!`,
+                    url: window.location.href,
+                });
+            } else {
+                // Fallback for browsers that do not support the Web Share API
+                alert('Sharing is not supported on this browser.');
+            }
+        } catch (error) {
+            console.error('Error sharing:', error);
+        }
     };
 
 
@@ -122,7 +140,9 @@ const Profile = () => {
                             {/* actions */}
                             <div className="profile__actions">
                                 <div
-                                    className={`profile__actions-btn ${!profile.isFollowing ? "profile__follow-btn" : "profile__follow-btn--following"}`}
+                                    className={`profile__actions-btn 
+                                    ${!profile.isFollowing ? "profile__follow-btn" : "profile__follow-btn--following"}`
+                                    }
                                     onClick={(e) => {
                                         e.preventDefault()
                                         handleFollow()
@@ -133,7 +153,10 @@ const Profile = () => {
                                         : <div>Following</div>
                                     }
                                 </div>
-                                <div className="profile__actions-btn profile__share-btn">Share profile</div>
+                                <div
+                                    className="profile__actions-btn profile__share-btn"
+                                    onClick={() => handleShare()}
+                                >Share profile</div>
                             </div>
                         </div>
 
@@ -144,7 +167,7 @@ const Profile = () => {
                         {/* content */}
                         <div className="profile__posts">
                             <div className="profile__post__nav">
-                            
+
 
 
                                 <div

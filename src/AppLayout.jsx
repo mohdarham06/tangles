@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom'
 
 import Header from './components/Header'
 import ModalPostEditor from './components/ModalPostEditor'
+import Toast from './components/Toast'
 
 
 
@@ -19,6 +20,9 @@ const AppLayout = () => {
         setIsPostModalOpen(false);
     };
 
+    
+
+
     return (
         <>
             <Header openPostModal={openPostModal} />
@@ -28,6 +32,8 @@ const AppLayout = () => {
             </main>
 
             {isPostModalOpen && <ModalPostEditor closePostModal={closePostModal} />}
+
+            <Toast />
         </>
     )
 }
