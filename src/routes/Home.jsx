@@ -39,15 +39,15 @@ const Home = () => {
     useEffect(() => {
 
         const options = {
-            method: 'POST',
-            url: 'https://instagram120.p.rapidapi.com/api/instagram/highlights',
-            headers: {
-              'content-type': 'application/json',
-              'X-RapidAPI-Key': 'd9b652efb4msh6e4040368154c25p1c68bejsn16303a787b72',
-              'X-RapidAPI-Host': 'instagram120.p.rapidapi.com'
+            method: 'GET',
+            url: 'https://instagram210.p.rapidapi.com/clients/api/ig/media_by_id',
+            params: {
+              shortcode: 'CL60h4SMCHJ',
+              response_type: 'feeds'
             },
-            data: {
-              username: 'instagram'
+            headers: {
+              'X-RapidAPI-Key': 'd9b652efb4msh6e4040368154c25p1c68bejsn16303a787b72',
+              'X-RapidAPI-Host': 'instagram210.p.rapidapi.com'
             }
           };
 
