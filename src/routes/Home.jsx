@@ -8,6 +8,7 @@ import userPosts from '../data/userPosts';
 
 import PostEditor from '../components/PostEditor';
 import PostsWrapper from '../components/PostsWrapper';
+import axios from 'axios';
 
 
 const Home = () => {
@@ -35,6 +36,32 @@ const Home = () => {
     }, [postType])
 
 
+    useEffect(() => {
+
+        const options = {
+            method: 'POST',
+            url: 'https://instagram120.p.rapidapi.com/api/instagram/highlights',
+            headers: {
+              'content-type': 'application/json',
+              'X-RapidAPI-Key': 'd9b652efb4msh6e4040368154c25p1c68bejsn16303a787b72',
+              'X-RapidAPI-Host': 'instagram120.p.rapidapi.com'
+            },
+            data: {
+              username: 'instagram'
+            }
+          };
+
+
+        async function getData() {
+            try {
+                const response = await axios.request(options);
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getData()
+    }, [])
 
 
     return (

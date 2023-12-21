@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Link } from 'react-router-dom'
 import { OutlineSearch, VerifiedIcon } from '../assets/CustomIcons'
 import userProfiles from '../data/userProfiles';
@@ -8,16 +8,21 @@ import noUserImage from '../data/avatars/noimage.jpg';
 
 const Search = () => {
     const [searchQuery, setSearchQuery] = useState('');
-    const [users, setUsers] = useState(userProfiles);
     const [searchResults, SetSearchResults] = useState(userProfiles);
 
     const handleSearch = (query) => {
         setSearchQuery(query)
+        const filteredUsers = userProfiles.filter((user) => {
+            const usernameMatch = user.username.toLowerCase().includes(query.toLowerCase());
+            const nameMatch = user.name.toLowerCase().includes(query.toLowerCase());
+            return usernameMatch || nameMatch;
+        })
+        SetSearchResults(filteredUsers)
         console.log(query)
     }
 
     const handleFollow = (userId) => {
-        setUsers((prevUsers) => {
+        SetSearchResults((prevUsers) => {
             return prevUsers.map((user) =>
                 (user.username === userId)
                     // Update
@@ -77,53 +82,65 @@ const Search = () => {
 
 
 
-                <div className="search__result">
-                    {users.map((user) => (
-                        <Link to={`/${user.username}`} key={user.username} className="user">
-                            <div className="user__avatar-box">
-                                <img
-                                    className="user__avatar"
-                                    src={user.avatar ? user.avatar : noUserImage}
-                                    alt={user.username}
-                                />
-                            </div>
 
-                            <div className="user__info">
-                                <div className="user__header">
-                                    <div className="user__names-box">
-                                        <div className="user__username">
-                                            {user.username}
-                                            <span className="user__verified">
-                                                {user.verified ? <VerifiedIcon /> : null}
-                                            </span>
+
+                <div className="search__results">
+                    {searchResults.length === 0 ? (
+                        <div className="search__results__empty">No results found.</div>
+                    ) : (
+                        searchResults.map((user) => (
+                            <Link
+                                className="user"
+                                to={`/${user.username}`}
+                                key={user.username}
+                            >
+                                <div className="user__avatar-box">
+                                    <img
+                                        className="user__avatar"
+                                        src={user.avatar ? user.avatar : noUserImage}
+                                        alt={user.username}
+                                    />
+                                </div>
+
+                                <div className="user__info">
+                                    <div className="user__header">
+                                        <div className="user__names-box">
+                                            <div className="user__username">
+                                                {user.username}
+                                                <span className="user__verified">
+                                                    {user.verified ? <VerifiedIcon /> : null}
+                                                </span>
+                                            </div>
+                                            <div className="user__name">{user.name}</div>
                                         </div>
-                                        <div className="user__name">{user.name}</div>
+
+
+                                        <div
+                                            className="user__follow-btn"
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                handleFollow(user.username)
+                                            }}
+                                        >
+                                            {!user.isFollowing
+                                                ? <div>Follow</div>
+                                                : <div className="following">Following</div>
+                                            }
+                                        </div>
                                     </div>
 
 
-                                    <div
-                                        className="user__follow-btn"
-                                        onClick={(e) => {
-                                            e.preventDefault()
-                                            handleFollow(user.username)
-                                        }}
-                                    >
-                                        {!user.isFollowing
-                                            ? <div>Follow</div>
-                                            : <div className="following">Following</div>
-                                        }
+                                    <div className="user__followers">
+                                        {numberWithCommas(formatNumberScale(user.followers))} followers
                                     </div>
                                 </div>
 
-
-                                <div className="user__followers">
-                                    {numberWithCommas(formatNumberScale(user.followers))} followers
-                                </div>
-                            </div>
-
-                        </Link>
-                    ))}
+                            </Link>
+                        ))
+                    )}
                 </div>
+
+                
             </div>
         </section>
     )
