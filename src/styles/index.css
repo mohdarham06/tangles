@@ -24,18 +24,23 @@ html {
 /* || ROOT || */
 :root {
     /* --COLORS */
-    --hue-color: 234;
-    /* --background: #000000;
-    --font: #ffffff; */
+    /* light */
     --background: #ffffff;
     --font: #000000;
-    /* --accent-color: #ffd400;
-    --accent-color: #f91880;
-    --accent-color: #7856ff;
-    --accent-color: #ff7a00;
-    --accent-color: #00ba7c; */
-    --hue-accent: 205;
-    --accent-color: hsl(var(--hue-accent), 87%, 55%);
+    /* dark */
+    /* --background: #000000;
+    --font: #ffffff; */
+
+    /* accent colors */
+    --blue-accent: rgb(40, 157, 240);
+    --yellow-accent: rgb(255, 213, 0);
+    --pink-accent: rgb(249, 26, 130);
+    --purple-accent: rgb(120, 87, 255);
+    --orange-accent: rgb(255, 123, 0);
+    --green-accent: rgb(0, 184, 122);
+    
+    --accent-rgb: 40, 157, 240;
+    --accent-color: rgb(40, 157, 240);
 
 
     --thin-border: #d7dcdf;
@@ -84,6 +89,56 @@ html {
 
 
 
+
+body {
+    background: var(--background);
+    color: var(--font);
+    font-size: var(--font-size-regular);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme--light {
+    background: var(--background);
+    color: var(--font);
+}
+
+.theme--dark {
+    background: var(--background);
+    color: var(--font);
+}
+
+
+#root {
+    position: relative;
+    width: 100%;
+}
+
+.App {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid red; */
+}
+
+
+
+/* --MAIN */
+main {
+    position: relative;
+    --main-width: calc(100% - var(--nav-medium-width));
+    width: var(--main-width);
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
 /* --REUSABLE */
 a {
     text-decoration: none;
@@ -102,27 +157,45 @@ svg {
     display: block;
 }
 
-
-
-
-body {
-    background: var(--background);
-    color: var(--font);
-    font-size: var(--font-size-regular);
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#root {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+/* --MODAL */
+.modal {
+    position: fixed;
+    z-index: var(--z-modal);
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: row;
-    /* border: 1px solid red; */
 }
+
+
+/* --TOAST */
+.toast {
+    position: fixed;
+    z-index: var(--z-toast);
+    background: rgba(43, 43, 43, 0.75);
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    /* Centering */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 500ms ease-in-out;
+}
+
+.toast.hidden {
+    top: 53%;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.toast.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+
 
 
 
@@ -145,6 +218,9 @@ body {
 }
 
 .header__brand {
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-bold);
+    font-family: cursive;
     padding: 0.75rem;
     margin-top: 0.25rem;
     margin-bottom: 1rem;
@@ -162,6 +238,14 @@ body {
     white-space: nowrap;
 }
 
+.nav__list [aria-current='page'] .nav__item {
+    outline: 1px solid rgb(209, 209, 209);
+}
+
+.nav__list [aria-current='page'] .nav__item .nav__item__avatar {
+    outline-offset: 1px;
+    outline: 1px solid var(--font);
+}
 
 .nav__item {
     padding: 0.75rem;
@@ -187,7 +271,7 @@ body {
     padding-left: 0.75rem
 }
 
-.nav__item__image {
+.nav__item__avatar {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
@@ -212,19 +296,7 @@ body {
 
 
 
-/* --MAIN */
-main {
-    position: relative;
-    --main-width: calc(100% - var(--nav-medium-width));
-    width: var(--main-width);
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-
 .section {
-    background: #4d86be;
     border: 1px solid rgb(255, 79, 35);
     width: 100%;
     display: flex;
@@ -233,16 +305,6 @@ main {
 }
 
 
-/* --MODAL */
-.modal {
-    position: fixed;
-    z-index: var(--z-modal);
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-direction: row;
-}
 
 
 /* --POST EDITOR*/
@@ -252,7 +314,7 @@ main {
     max-height: 90vh;
     margin: auto;
     overflow: auto;
-    background: var(--background);
+    background: #ffffff;
     border-radius: 1rem;
 }
 
@@ -442,7 +504,7 @@ main {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: hsl(var(--hue-accent), 87%, 55%, 0.15);
+    background: rgba(var(--accent-rgb), 0.15);
     transform: scale(0);
     transform-origin: center;
     transition: var(--transition-hover);
@@ -477,46 +539,18 @@ main {
 }
 
 .form__post-button.disabled {
-    background: hsl(var(--hue-accent), 87%, 75%);
+    background: rgba(var(--accent-rgb), 0.6);
+    color: hsla(0, 0%, 100%, 0.8);
     pointer-events: none;
 }
 
 .form__post-button:hover {
-    background: hsl(var(--hue-accent), 87%, 45%);
-}
-
-.form__post-button:active {
-    background: hsl(var(--hue-accent), 87%, 40%);
-
+    transform: scale(0.95);
 }
 
 
 
-/* --TOAST */
-.toast {
-    position: fixed;
-    z-index: var(--z-toast);
-    background: rgba(43, 43, 43, 0.75);
-    color: #fff;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    /* Centering */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 500ms ease-in-out;
-}
 
-.toast.hidden {
-    top: 55%;
-    visibility: hidden;
-    opacity: 0;
-}
-
-.toast.visible {
-    visibility: visible;
-    opacity: 1;
-}
 
 
 
@@ -529,7 +563,6 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background: var(--background);
 }
 
 .home__post__nav {
@@ -705,7 +738,7 @@ main {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: hsl(var(--hue-accent), 87%, 55%, 0.15);
+    background: rgba(var(--accent-rgb), 0.15);
     transform: scale(0);
     transform-origin: center;
     transition: var(--transition-hover);
@@ -748,7 +781,7 @@ main {
 
 /* --SEARCH */
 .section--search {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .search {
@@ -756,7 +789,6 @@ main {
     max-width: 600px;
     width: 100%;
     padding: 2rem 1rem;
-    background: #ffffff;
     display: flex;
     flex-direction: column;
 }
@@ -921,7 +953,6 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background: var(--background);
 }
 
 .profile__information {

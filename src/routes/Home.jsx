@@ -36,32 +36,31 @@ const Home = () => {
     }, [postType])
 
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     const options = {
+    //         method: 'GET',
+    //         url: 'https://instagram210.p.rapidapi.com/clients/api/ig/media_by_id',
+    //         params: {
+    //           shortcode: 'CL60h4SMCHJ',
+    //           response_type: 'feeds'
+    //         },
+    //         headers: {
+    //           'X-RapidAPI-Key': 'd9b652efb4msh6e4040368154c25p1c68bejsn16303a787b72',
+    //           'X-RapidAPI-Host': 'instagram210.p.rapidapi.com'
+    //         }
+    //       };
 
-        const options = {
-            method: 'GET',
-            url: 'https://instagram210.p.rapidapi.com/clients/api/ig/media_by_id',
-            params: {
-              shortcode: 'CL60h4SMCHJ',
-              response_type: 'feeds'
-            },
-            headers: {
-              'X-RapidAPI-Key': 'd9b652efb4msh6e4040368154c25p1c68bejsn16303a787b72',
-              'X-RapidAPI-Host': 'instagram210.p.rapidapi.com'
-            }
-          };
 
-
-        async function getData() {
-            try {
-                const response = await axios.request(options);
-                console.log(response.data);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        getData()
-    }, [])
+    //     async function getData() {
+    //         try {
+    //             const response = await axios.request(options);
+    //             console.log(response.data);
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     }
+    //     getData()
+    // }, [])
 
 
     return (

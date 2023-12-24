@@ -18,7 +18,6 @@ const Search = () => {
             return usernameMatch || nameMatch;
         })
         SetSearchResults(filteredUsers)
-        console.log(query)
     }
 
     const handleFollow = (userId) => {
@@ -36,7 +35,6 @@ const Search = () => {
             )
         });
     };
-
 
 
     const formatNumberScale = (number) => {
@@ -140,7 +138,7 @@ const Search = () => {
                     )}
                 </div>
 
-                
+
             </div>
         </section>
     )

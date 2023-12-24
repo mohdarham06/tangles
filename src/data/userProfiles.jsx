@@ -1,5 +1,6 @@
 
 import jasonstotham from './avatars/jasonstotham.jpg';
+import lukebelmar from './avatars/lukebelmar.jpg';
 import davidgoggins from './avatars/davidgoggins.jpg';
 import cristiano from './avatars/cristiano.jpg';
 
@@ -26,6 +27,16 @@ const userProfiles = [
         isFollowing: false
     },
     {
+        username: 'lukebelmar',
+        name: 'Luke Belmar 👽',
+        verified: false,
+        avatar: lukebelmar,
+        bio: 'Photographer | Traveler',
+        followers: 385000,
+        following: 472,
+        isFollowing: true
+    },
+    {
         username: 'davidgoggins',
         name: 'David Goggins',
         verified: true,
@@ -45,6 +56,7 @@ const userProfiles = [
         following: 573,
         isFollowing: false
     },
+    
 ];
 
 export default userProfiles;
