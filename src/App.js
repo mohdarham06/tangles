@@ -17,58 +17,57 @@ import { useEffect } from 'react';
 
 function App() {
     const { theme, accentColor } = useTheme();
-    // theme--${theme} accent--${accentColor}
 
     useEffect(() => {
-        const root = document.documentElement;
+        const body = document.querySelector("body");
+        
         if (theme === 'light') {
-            root.style.setProperty('--background', '#ffffff');
-            root.style.setProperty('--font', '#000000');
+            body.setAttribute("data-theme", 'light')
         }
         if (theme === 'dark') {
-            root.style.setProperty('--background', '#000000');
-            root.style.setProperty('--font', '#ffffff');
+            body.setAttribute("data-theme", 'dark')
         }
+
         return () => {
-            // Reset CSS variables to their original values if needed
-            root.style.setProperty('--background', '#ffffff');
-            root.style.setProperty('--font', '#000000');
-            // Reset other CSS variables as needed
+            // Reset any other attributes as needed
+            body.removeAttribute("data-theme");
         };
     }, [theme])
 
     useEffect(() => {
-        const root = document.documentElement;
-        const updateAccentColor = (color, rgb) => {
-            root.style.setProperty('--accent-color', color);
-            root.style.setProperty('--accent-rgb', rgb);
-        };
+        const body = document.querySelector("body");
 
         switch (accentColor) {
             case 'blue':
-                updateAccentColor('#289df0', '40, 157, 240');
+                body.setAttribute("data-accent", accentColor)
+
                 break;
             case 'yellow':
-                updateAccentColor('#ffd400', '255, 212, 0');
+                body.setAttribute("data-accent", accentColor)
+
                 break;
             case 'pink':
-                updateAccentColor('#f91880', '249, 24, 128');
+                body.setAttribute("data-accent", accentColor)
+
                 break;
             case 'purple':
-                updateAccentColor('#7856ff', '120, 86, 255');
+                body.setAttribute("data-accent", accentColor)
+
                 break;
             case 'orange':
-                updateAccentColor('#ff7a00', '255, 122, 0');
+                body.setAttribute("data-accent", accentColor)
+
                 break;
             case 'green':
-                updateAccentColor('#00ba7c', '0, 186, 124');
+                body.setAttribute("data-accent", accentColor)
+
                 break;
             default:
                 break;
         }
     }, [accentColor])
 
-    
+
 
     return (
         <div className='App'>
