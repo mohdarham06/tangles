@@ -1,13 +1,14 @@
-import React, {
-    createContext, useContext,
-    useState
-} from 'react';
+import React from 'react';
+import { createContext, useContext } from 'react';
+// import { useState } from 'react';
+// LocalStorage Custom Hook
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-    const [theme, setTheme] = useState('light');
-    const [accentColor, setAccentColor] = useState('blue')
+    const [theme, setTheme] = useLocalStorage('theme', 'light');
+    const [accentColor, setAccentColor] = useLocalStorage('accentColor', 'blue')
 
     const toggleTheme = () => {
         setTheme(

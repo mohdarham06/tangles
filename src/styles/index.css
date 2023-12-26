@@ -24,29 +24,29 @@ html {
 /* || ROOT || */
 :root {
     /* --COLORS */
-    /* default */
+    /* default theme*/
     --background: #ffffff;
     --font: #000000;
-
-    /* accent colors */
-    --blue-accent: rgb(40, 157, 240);
-    --yellow-accent: rgb(255, 213, 0);
-    --pink-accent: rgb(249, 26, 130);
-    --purple-accent: rgb(120, 87, 255);
-    --orange-accent: rgb(255, 123, 0);
-    --green-accent: rgb(0, 184, 122);
-
-    --accent-rgb: 40, 157, 240;
-    --accent-color: rgb(40, 157, 240);
-
-
-    --thin-border: #d7dcdf;
+    --background-rgb: 255, 255, 255;
+    --font-rgb: 0, 0, 0;
+    /* new concept of using this balance variable
+    is introduced by "MohdArham" */
+    --balance: 100% -;
+    
+    --thin-border-color: hwb(0 calc(var(--balance) 75%) calc(var(--balance) 25%));
+    --neutral-gray: hsl(0, 0%, 50%);
     --transparent: transparent;
+    
     --scrollbar: #47beb1;
     --scrollbar-hover: #52d1c2;
     --scrollbar-active: #62e2d3;
     --inline-link: #42eba4;
-    --nav-item-active: #4f78ff;
+
+
+    /* accent color */
+    --accent-rgb: 40, 157, 240;
+    --accent-color: rgb(40, 157, 240);
+    
 
     /* --NAV SIZES */
     --nav-wide-width: 244px;
@@ -69,6 +69,7 @@ html {
     --font-size-extra-large: 1.375rem;
 
     /* Font Weight*/
+    --font-light: 300;
     --font-medium: 400;
     --font-semi-bold: 500;
     --font-bold: 600;
@@ -88,34 +89,52 @@ body[data-theme="light"] {
     /* light */
     --background: #ffffff;
     --font: #000000;
+    --background-rgb: 255, 255, 255;
+    --font-rgb: 0, 0, 0;
+    /* new concept of using this balance variable
+    is introduced by "MohdArham" */
+    --balance: 0% +;
+    --thin-border-color: hwb(0 calc(var(--balance) 75%) calc(var(--balance) 25%));
 }
 
 body[data-theme="dark"] {
     /* dark */
     --background: #000000;
     --font: #ffffff;
+    --background-rgb: 0, 0, 0;
+    --font-rgb: 255, 255, 255;
+    /* new concept of using this balance variable
+    is introduced by "MohdArham" */
+    --balance: 100% -;
+    --thin-border-color: hwb(0 calc(var(--balance) 75%) calc(var(--balance) 25%));
+
 }
 
 body[data-accent="blue"] {
     --accent-color: rgb(29, 155, 240);
     --accent-rgb: 29, 155, 240;
 }
+
 body[data-accent="yellow"] {
     --accent-color: rgb(255, 212, 0);
     --accent-rgb: 255, 212, 0;
 }
+
 body[data-accent="pink"] {
     --accent-color: rgb(249, 24, 128);
     --accent-rgb: 249, 24, 128;
 }
+
 body[data-accent="purple"] {
     --accent-color: rgb(120, 86, 255);
     --accent-rgb: 120, 86, 255;
 }
+
 body[data-accent="orange"] {
     --accent-color: rgb(255, 122, 0);
     --accent-rgb: 255, 122, 0;
 }
+
 body[data-accent="green"] {
     --accent-color: rgb(0, 186, 124);
     --accent-rgb: 0, 186, 124;
@@ -146,15 +165,11 @@ body {
 #root {
     position: relative;
     width: 100%;
-}
-
-.App {
-    position: relative;
-    width: 100%;
     display: flex;
     flex-direction: row;
     /* border: 1px solid red; */
 }
+
 
 
 
@@ -195,7 +210,7 @@ svg {
     z-index: var(--z-modal);
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(var(--font-rgb), 0.35);
     display: flex;
     flex-direction: row;
 }
@@ -206,7 +221,7 @@ svg {
     position: fixed;
     z-index: var(--z-toast);
     background: rgba(43, 43, 43, 0.75);
-    color: #fff;
+    color: #ffffff;
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
     /* Centering */
@@ -242,7 +257,8 @@ svg {
 
 .header__container {
     width: var(--nav-medium-width);
-    border-right: 1px solid #aaaaaa;
+    border-right: 1px solid var(--thin-border-color);
+
     height: 100%;
     padding: 1rem;
     display: flex;
@@ -270,14 +286,6 @@ svg {
     white-space: nowrap;
 }
 
-.nav__list [aria-current='page'] .nav__item {
-    outline: 1px solid rgb(209, 209, 209);
-}
-
-.nav__list [aria-current='page'] .nav__item .nav__item__avatar {
-    outline-offset: 1px;
-    outline: 1px solid var(--font);
-}
 
 .nav__item {
     padding: 0.75rem;
@@ -287,12 +295,16 @@ svg {
     flex-direction: row;
     align-items: center;
     cursor: pointer;
-    transition: var(--transition-hover);
+    transition: var(--transition-hover), outline 0ms ease-in-out;
+}
+
+.nav__list [aria-current='page'] .nav__item {
+    outline: 1px solid var(--thin-border-color);
 }
 
 .nav__item:hover,
 .nav__item:active {
-    background-color: rgb(228, 230, 233);
+    background: rgba(var(--font-rgb), 0.125);
 }
 
 .nav__item__icon {
@@ -309,6 +321,12 @@ svg {
     border-radius: 50%;
 }
 
+.nav__list [aria-current='page'] .nav__item .nav__item__avatar {
+    outline-offset: 1px;
+    outline: 1px solid var(--font);
+}
+
+
 
 .header__logout {
     padding: 0.75rem;
@@ -321,7 +339,7 @@ svg {
 
 .header__logout:hover,
 .header__logout:active {
-    background: rgb(227, 229, 231);
+    background: rgba(var(--font-rgb), 0.125);
 }
 
 
@@ -329,7 +347,7 @@ svg {
 
 
 .section {
-    border: 1px solid rgb(255, 79, 35);
+    /* border: 1px solid red; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -346,7 +364,7 @@ svg {
     max-height: 90vh;
     margin: auto;
     overflow: auto;
-    background: #ffffff;
+    background: var(--background);
     border-radius: 1rem;
 }
 
@@ -354,7 +372,7 @@ svg {
     padding: 0.5rem 1rem;
 }
 
-.modal__post-editor__header__btn {
+.modal__post-editor__header__close {
     position: relative;
     width: 2rem;
     height: 2rem;
@@ -366,20 +384,21 @@ svg {
     cursor: pointer;
 }
 
-.modal__post-editor__header__btn::before {
+.modal__post-editor__header__close::before {
     position: absolute;
     content: "";
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 50%;
-    background: rgba(102, 105, 107, 0.15);
     transform: scale(0);
     transform-origin: center;
+    background: rgba(var(--font-rgb), 0.125);
+    
     transition: var(--transition-hover);
 }
 
-.modal__post-editor__header__btn:hover::before,
-.modal__post-editor__header__btn:active::before {
+.modal__post-editor__header__close:hover::before,
+.modal__post-editor__header__close:active::before {
     transform: scale(1);
 }
 
@@ -469,7 +488,7 @@ svg {
     max-width: 100%;
     overflow: hidden;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--thin-border);
+    border-bottom: 1px solid var(--thin-border-color);
 }
 
 .media-preview__box {
@@ -572,7 +591,7 @@ svg {
 
 .form__post-button.disabled {
     background: rgba(var(--accent-rgb), 0.6);
-    color: hsla(0, 0%, 100%, 0.8);
+    color: rgba(255, 255, 255, 0.8);
     pointer-events: none;
 }
 
@@ -600,7 +619,7 @@ svg {
 .home__post__nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--thin-border);
+    border-bottom: 1px solid var(--thin-border-color);
 }
 
 .home__post__nav__btn {
@@ -612,7 +631,7 @@ svg {
 }
 
 .home__post__nav__btn:hover {
-    background: #e7e9eb;
+    background: hwb(0 calc(var(--balance) 88%) calc(var(--balance) 12%));
 }
 
 
@@ -652,7 +671,7 @@ svg {
 
 /* --HOME POST EDITOR */
 .home__post-editor {
-    border-bottom: 1px solid var(--thin-border);
+    border-bottom: 1px solid var(--thin-border-color);
 }
 
 
@@ -674,7 +693,7 @@ svg {
     width: 480px;
     max-width: 100%;
     padding: 1rem 0;
-    border-bottom: 1px solid var(--thin-border);
+    border-bottom: 1px solid var(--thin-border-color);
     overflow: hidden;
 }
 
@@ -777,7 +796,7 @@ svg {
 }
 
 .post__actions__btn[data-style="like"]::before {
-    background: hsla(355, 100%, 59%, 0.15);
+    background: rgba(255, 46, 63, 0.15);
 }
 
 .post__actions__btn:hover,
@@ -827,9 +846,8 @@ svg {
 
 .search__input-container {
     width: 100%;
-    background: rgb(250, 250, 250);
-    background: var(--background);
-    border: 1px solid #aaaaaa;
+    background: hwb(0 calc(var(--balance) 95%) calc(var(--balance) 5%));
+    border: 1px solid hwb(0 calc(var(--balance) 70%) calc(var(--balance) 30%));
     border-radius: 1rem;
     padding: 0.75rem 1rem;
 }
@@ -853,6 +871,7 @@ svg {
 
 .search__input {
     font-size: 1em;
+    color: var(--font);
     width: 100%;
     height: 2rem;
     background: none;
@@ -876,7 +895,7 @@ svg {
 }
 
 .search__results__empty {
-    color: #888888;
+    color: var(--neutral-gray);
     margin: auto;
 }
 
@@ -884,7 +903,7 @@ svg {
     display: flex;
     flex-direction: row;
     padding-top: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid hwb(0 calc(var(--balance) 85%) calc(var(--balance) 15%));
     cursor: pointer;
 }
 
@@ -938,7 +957,7 @@ svg {
 }
 
 .user__name {
-    color: #888888;
+    color: var(--neutral-gray);
 }
 
 .user__follow-btn {
@@ -948,7 +967,7 @@ svg {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border: 1px solid #aaaaaa;
+    border: 1px solid hwb(0 calc(var(--balance) 67%) calc(var(--balance) 33%));
     border-radius: 0.5rem;
     font-weight: var(--font-bold);
     cursor: pointer;
@@ -964,11 +983,12 @@ svg {
 }
 
 .user__follow-btn .following {
-    color: #999999;
+    color: var(--neutral-gray);
 }
 
 .user__followers {
     padding-bottom: 0.75rem;
+    font-weight: var(--font-light);
 }
 
 
@@ -1047,7 +1067,7 @@ svg {
 }
 
 .stat__label {
-    color: #777777;
+    color: hsl(0, 0%, 50%);
 }
 
 /* bio */
@@ -1094,11 +1114,11 @@ svg {
 .profile__follow-btn--following {
     background: var(--background);
     color: var(--font);
-    border: 1px solid #999999;
+    border: 1px solid var(--thin-border-color);
 }
 
 .profile__share-btn {
-    border: 1px solid #999999;
+    border: 1px solid var(--thin-border-color);
 }
 
 
@@ -1114,7 +1134,7 @@ svg {
 .profile__post__nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--thin-border);
+    border-bottom: 1px solid var(--thin-border-color);
 }
 
 .profile__post__nav__type {
@@ -1127,7 +1147,7 @@ svg {
 }
 
 .profile__post__nav__type:hover {
-    background: #e7e9eb;
+    background: hwb(0 calc(var(--balance) 88%) calc(var(--balance) 12%));
 }
 
 

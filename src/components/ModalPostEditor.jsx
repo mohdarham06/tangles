@@ -4,7 +4,7 @@ import PostEditor from './PostEditor'
 import Modal from './Modal'
 import { OutlineClose } from '../assets/CustomIcons'
 
-
+// closePostModal from AppLayout
 const ModalPostEditor = ({ closePostModal }) => {
     return (
         <Modal>
@@ -14,7 +14,7 @@ const ModalPostEditor = ({ closePostModal }) => {
                     className="modal__post-editor__header"
                     onClick={closePostModal}
                 >
-                    <div className="modal__post-editor__header__btn">
+                    <div className="modal__post-editor__header__close">
                         <OutlineClose />
                         {/* <OutlineBack /> */}
                     </div>
