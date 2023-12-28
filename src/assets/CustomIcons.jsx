@@ -94,15 +94,6 @@ export const FillSaved = () => {
 
 
 
-export const OutlineImage = () => {
-    return (
-        <svg aria-label="Media" aria-hidden="true" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
-            <title>Media</title>
-            <g><path d="M3 5.5C3 4.119 4.119 3 5.5 3h13C19.881 3 21 4.119 21 5.5v13c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 21 3 19.881 3 18.5v-13zM5.5 5c-.276 0-.5.224-.5.5v9.086l3-3 3 3 5-5 3 3V5.5c0-.276-.224-.5-.5-.5h-13zM19 15.414l-3-3-5 5-3-3-3 3V18.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-3.086zM9.75 7C8.784 7 8 7.784 8 8.75s.784 1.75 1.75 1.75 1.75-.784 1.75-1.75S10.716 7 9.75 7z"></path></g>
-        </svg>
-
-    )
-}
 
 export const OutlineRemove = () => {
     return (
@@ -121,6 +112,37 @@ export const OutlineClose = () => {
         </svg>
     )
 }
+
+// Twitter
+export const OutlineImage = () => {
+    return (
+        <svg aria-label="Media" aria-hidden="true" width="1em" height="1em" viewBox="0 0 24 24">
+            <title>Media</title>
+            <g><path d="M3 5.5C3 4.119 4.119 3 5.5 3h13C19.881 3 21 4.119 21 5.5v13c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 21 3 19.881 3 18.5v-13zM5.5 5c-.276 0-.5.224-.5.5v9.086l3-3 3 3 5-5 3 3V5.5c0-.276-.224-.5-.5-.5h-13zM19 15.414l-3-3-5 5-3-3-3 3V18.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-3.086zM9.75 7C8.784 7 8 7.784 8 8.75s.784 1.75 1.75 1.75 1.75-.784 1.75-1.75S10.716 7 9.75 7z"></path></g>
+        </svg>
+
+    )
+}
+
+export const OutlineTick = () => {
+    return (
+        <svg aria-label="Tick" aria-hidden="true" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" >
+            <title>Tick</title>
+            <g><path d="M9.64 18.952l-5.55-4.861 1.317-1.504 3.951 3.459 8.459-10.948L19.4 6.32 9.64 18.952z"></path></g>
+        </svg>
+    )
+}
+
+export const OutlineArtBrush = () => {
+    return (
+        <>
+            <svg aria-label="Display" fill="currentColor" width="1em" height="1em" aria-hidden="true" viewBox="0 0 24 24" >
+                <g><path d="M20 12h2v6.5c0 1.38-1.12 2.5-2.5 2.5h-15C3.12 21 2 19.88 2 18.5v-13C2 4.12 3.12 3 4.5 3H11v2H4.5c-.28 0-.5.22-.5.5v13c0 .28.22.5.5.5h15c.27 0 .5-.22.5-.5V12zm2.31-6.78l-6.33 7.18c-.2 2.02-1.91 3.6-3.98 3.6H8v-4c0-2.07 1.58-3.78 3.6-3.98l7.18-6.33c.99-.88 2.49-.83 3.43.1.93.94.98 2.44.1 3.43zm-1.52-2.01c-.19-.19-.49-.2-.69-.02l-6.08 5.36c.59.35 1.08.84 1.43 1.43l5.36-6.08c.18-.2.17-.5-.02-.69z"></path></g>
+            </svg>
+        </>
+    )
+}
+
 
 
 

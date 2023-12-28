@@ -4,13 +4,14 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import user1avatar from '../data/avatars/jasonstotham.jpg'
 import noUserImage from '../data/avatars/noimage.jpg'
 
-import { OutlineHome, FillHome, OutlineSearch, OutlineExplore, FillExplore, OutlineSaved, FillSaved, OutlineAdd, OutlineBoldSearch } from '../assets/CustomIcons'
+import {
+    OutlineHome, OutlineSearch, OutlineExplore, OutlineSaved, OutlineAdd,
+    FillHome, OutlineBoldSearch, FillExplore, FillSaved,
+    OutlineArtBrush
+} from '../assets/CustomIcons'
 
-import { useTheme } from '../context/ThemeContext';
-
-const Header = ({ openPostModal }) => {
+const Header = ({ openPostModal, openDisplayModal }) => {
     const location = useLocation();
-    const { accentColor, toggleTheme, changeAccentColor } = useTheme();
 
     return (
         <header className="header">
@@ -74,19 +75,12 @@ const Header = ({ openPostModal }) => {
 
                 <div className="header__">
                     <div className="header__">
-                        <button className="header__" onClick={toggleTheme}>Toggle</button>
-                        
-                        <select
-                            name="Accent"
-                            onChange={(e) => changeAccentColor(e.target.value)}
-                        >
-                            <option value="blue">blue</option>
-                            <option value="yellow">yellow</option>
-                            <option value="pink">pink</option>
-                            <option value="purple">purple</option>
-                            <option value="orange">orange</option>
-                            <option value="green">green</option>
-                        </select>
+                        <div className="header__action-btn" onClick={openDisplayModal}>
+                            <span className="header__action-btn__icon"><OutlineArtBrush /></span>
+                            <span className="header__action-btn__text">Display</span>
+                        </div>
+
+
                     </div>
                     <div className="header__logout">Logout</div>
                 </div>

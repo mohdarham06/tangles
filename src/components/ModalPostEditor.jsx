@@ -14,9 +14,8 @@ const ModalPostEditor = ({ closePostModal }) => {
                     className="modal__post-editor__header"
                     onClick={closePostModal}
                 >
-                    <div className="modal__post-editor__header__close">
+                    <div className="modal__close-btn">
                         <OutlineClose />
-                        {/* <OutlineBack /> */}
                     </div>
                 </div>
 

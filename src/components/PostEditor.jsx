@@ -131,7 +131,7 @@ const PostEditor = () => {
                     {/* Post Button */}
                     <div
                         className={
-                            `form__post-button ${isPostButtonDisabled() ? 'disabled' : ''}`
+                            `primary-button ${isPostButtonDisabled() ? 'disabled' : ''}`
                         }
                         onClick={() => handlePostButtonClick()}
                     >

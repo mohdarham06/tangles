@@ -39,16 +39,13 @@ const Home = () => {
     // useEffect(() => {
     //     const options = {
     //         method: 'GET',
-    //         url: 'https://instagram210.p.rapidapi.com/clients/api/ig/media_by_id',
-    //         params: {
-    //           shortcode: 'CL60h4SMCHJ',
-    //           response_type: 'feeds'
-    //         },
+    //         url: 'https://twitter135.p.rapidapi.com/AutoComplete/',
+    //         params: { q: 'Elon' },
     //         headers: {
-    //           'X-RapidAPI-Key': 'd9b652efb4msh6e4040368154c25p1c68bejsn16303a787b72',
-    //           'X-RapidAPI-Host': 'instagram210.p.rapidapi.com'
+    //             'X-RapidAPI-Key': 'd9b652efb4msh6e4040368154c25p1c68bejsn16303a787b72',
+    //             'X-RapidAPI-Host': 'twitter135.p.rapidapi.com'
     //         }
-    //       };
+    //     };
 
 
     //     async function getData() {

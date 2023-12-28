@@ -10,11 +10,9 @@ export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useLocalStorage('theme', 'light');
     const [accentColor, setAccentColor] = useLocalStorage('accentColor', 'blue')
 
-    const toggleTheme = () => {
-        setTheme(
-            (prevTheme) => (prevTheme === 'light' ? 'dark' : 'light')
-        )
-        console.log(theme)
+    const changeTheme = (newTheme) => {
+        setTheme(newTheme)
+        console.log(newTheme)
     }
 
     const changeAccentColor = (newColor) => {
@@ -25,7 +23,7 @@ export const ThemeProvider = ({ children }) => {
 
     return (
         <ThemeContext.Provider
-            value={{ theme, accentColor, toggleTheme, changeAccentColor }}
+            value={{ theme, accentColor, changeTheme, changeAccentColor }}
         >
             {children}
         </ThemeContext.Provider>
