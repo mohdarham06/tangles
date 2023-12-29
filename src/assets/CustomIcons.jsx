@@ -116,17 +116,24 @@ export const OutlineClose = () => {
 // Twitter
 export const OutlineImage = () => {
     return (
-        <svg aria-label="Media" aria-hidden="true" width="1em" height="1em" viewBox="0 0 24 24">
+        <svg aria-label="Media" fill="currentColor" aria-hidden="true" width="1em" height="1em" viewBox="0 0 24 24">
             <title>Media</title>
             <g><path d="M3 5.5C3 4.119 4.119 3 5.5 3h13C19.881 3 21 4.119 21 5.5v13c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 21 3 19.881 3 18.5v-13zM5.5 5c-.276 0-.5.224-.5.5v9.086l3-3 3 3 5-5 3 3V5.5c0-.276-.224-.5-.5-.5h-13zM19 15.414l-3-3-5 5-3-3-3 3V18.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-3.086zM9.75 7C8.784 7 8 7.784 8 8.75s.784 1.75 1.75 1.75 1.75-.784 1.75-1.75S10.716 7 9.75 7z"></path></g>
         </svg>
-
+    )
+}
+export const OutlineFeatherPen = () => {
+    return (
+        <svg aria-hidden="true" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
+            <title>Post</title>
+            <g><path d="M23 3c-6.62-.1-10.38 2.421-13.05 6.03C7.29 12.61 6 17.331 6 22h2c0-1.007.07-2.012.19-3H12c4.1 0 7.48-3.082 7.94-7.054C22.79 10.147 23.17 6.359 23 3zm-7 8h-1.5v2H16c.63-.016 1.2-.08 1.72-.188C16.95 15.24 14.68 17 12 17H8.55c.57-2.512 1.57-4.851 3-6.78 2.16-2.912 5.29-4.911 9.45-5.187C20.95 8.079 19.9 11 16 11zM4 9V6H1V4h3V1h2v3h3v2H6v3H4z"></path></g>
+        </svg>
     )
 }
 
 export const OutlineTick = () => {
     return (
-        <svg aria-label="Tick" aria-hidden="true" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" >
+        <svg aria-label="Tick" fill="currentColor" aria-hidden="true" width="1em" height="1em" viewBox="0 0 24 24">
             <title>Tick</title>
             <g><path d="M9.64 18.952l-5.55-4.861 1.317-1.504 3.951 3.459 8.459-10.948L19.4 6.32 9.64 18.952z"></path></g>
         </svg>

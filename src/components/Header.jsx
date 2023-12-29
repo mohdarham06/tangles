@@ -5,7 +5,7 @@ import user1avatar from '../data/avatars/jasonstotham.jpg'
 import noUserImage from '../data/avatars/noimage.jpg'
 
 import {
-    OutlineHome, OutlineSearch, OutlineExplore, OutlineSaved, OutlineAdd,
+    OutlineHome, OutlineSearch, OutlineExplore, OutlineSaved, OutlineFeatherPen,
     FillHome, OutlineBoldSearch, FillExplore, FillSaved,
     OutlineArtBrush
 } from '../assets/CustomIcons'
@@ -54,12 +54,7 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                                 <span className="nav__item__text">Saved</span>
                             </li>
                         </NavLink>
-                        <Link onClick={openPostModal}>
-                            <li className="nav__item">
-                                <span className="nav__item__icon"><OutlineAdd /></span>
-                                <span className="nav__item__text">Post</span>
-                            </li>
-                        </Link>
+
                         <NavLink to={`/${"mohdarham"}`}>
                             <li className="nav__item">
                                 <img
@@ -71,16 +66,18 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                             </li>
                         </NavLink>
                     </ul>
+                    <div onClick={openPostModal}>
+                        <div className="primary-button nav__post-btn">
+                            <span className="nav__post-btn__icon"><OutlineFeatherPen /></span>
+                            <span className="nav__post-btn__text">Post</span>
+                        </div>
+                    </div>
                 </nav>
 
                 <div className="header__">
-                    <div className="header__">
-                        <div className="header__action-btn" onClick={openDisplayModal}>
-                            <span className="header__action-btn__icon"><OutlineArtBrush /></span>
-                            <span className="header__action-btn__text">Display</span>
-                        </div>
-
-
+                    <div className="header__action-btn" onClick={openDisplayModal}>
+                        <span className="header__action-btn__icon"><OutlineArtBrush /></span>
+                        <span className="header__action-btn__text">Display</span>
                     </div>
                     <div className="header__logout">Logout</div>
                 </div>

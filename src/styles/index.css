@@ -46,6 +46,8 @@ html {
     /* accent color */
     --accent-rgb: 40, 157, 240;
     --accent-color: rgb(40, 157, 240);
+    --accent-hw: 204 11%;
+    --accent-blackness: 6%;
 
 
     /* --NAV SIZES */
@@ -112,31 +114,43 @@ body[data-theme="dark"] {
 body[data-accent="blue"] {
     --accent-color: rgb(29, 155, 240);
     --accent-rgb: 29, 155, 240;
+    --accent-hw: 204 11%;
+    --accent-blackness: 6%;
 }
 
 body[data-accent="yellow"] {
     --accent-color: rgb(255, 212, 0);
     --accent-rgb: 255, 212, 0;
+    --accent-hw: 50 0%;
+    --accent-blackness: 0%;
 }
 
 body[data-accent="pink"] {
     --accent-color: rgb(249, 24, 128);
     --accent-rgb: 249, 24, 128;
+    --accent-hw: 332 9%;
+    --accent-blackness: 2%;
 }
 
 body[data-accent="purple"] {
     --accent-color: rgb(120, 86, 255);
     --accent-rgb: 120, 86, 255;
+    --accent-hw: 252 34%;
+    --accent-blackness: 0%;
 }
 
 body[data-accent="orange"] {
     --accent-color: rgb(255, 122, 0);
     --accent-rgb: 255, 122, 0;
+    --accent-hw: 29 0%;
+    --accent-blackness: 0%;
 }
 
 body[data-accent="green"] {
     --accent-color: rgb(0, 186, 124);
     --accent-rgb: 0, 186, 124;
+    --accent-hw: 160 0%;
+    --accent-blackness: 28%;
 }
 
 
@@ -209,13 +223,15 @@ svg {
 }
 
 .primary-button {
-    display: inline-block;
     background: var(--accent-color);
     color: #ffffff;
     font-weight: var(--font-bold);
     padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     border-radius: 10rem;
-    margin-left: 0.75rem;
     user-select: none;
     cursor: pointer;
     transition: var(--transition-hover);
@@ -227,8 +243,9 @@ svg {
     pointer-events: none;
 }
 
-.primary-button:hover {
-    transform: scale(0.95);
+.primary-button:hover,
+.primary-button:active {
+    background: hwb(var(--accent-hw) calc(var(--accent-blackness) + 12%));
 }
 
 /* --MODAL */
@@ -352,6 +369,30 @@ svg {
     outline-offset: 1px;
     outline: 1px solid var(--font);
 }
+
+.nav__post-btn {
+    padding: 0.625rem 1rem;
+    margin-top: 0.5rem;
+}
+
+
+.nav__post-btn__icon {
+    display: none;
+    font-size: 1.5rem;
+}
+
+/* .nav__post-btn__icon {
+    display: block;
+}
+
+.nav__post-btn {
+    width: 50px;
+    height: 50px;
+}
+
+.nav__post-btn__text {
+    display: none;
+} */
 
 
 .header__action-btn {
@@ -638,11 +679,12 @@ svg {
     width: 100%;
     max-width: 600px;
     max-height: 90vh;
-    padding:2rem;
+    padding: 2rem;
     border-radius: 1rem;
     overflow: auto;
     margin: auto;
 }
+
 .display-editor__heading {
     text-align: center;
     margin-bottom: 1rem;
@@ -795,7 +837,7 @@ svg {
 }
 
 .modal__theme-selector__btn:hover .theme-selector__btn__state::before,
-.modal__theme-selector__btn:active .theme-selector__btn__state::before{
+.modal__theme-selector__btn:active .theme-selector__btn__state::before {
     transform: scale(1);
 }
 
