@@ -727,12 +727,17 @@ svg {
     transform-origin: center;
 }
 
+.panel__accent-option:hover {
+    outline-width: 3px;
+    outline-style: solid;
+}
+
 .panel__accent-option.blue {
     background: rgb(29, 155, 240);
 }
 
 .panel__accent-option.blue:hover {
-    outline: 3px solid rgb(29, 155, 240, 0.3);
+    outline-color: rgb(29, 155, 240, 0.3);
 }
 
 .panel__accent-option.yellow {
@@ -740,7 +745,7 @@ svg {
 }
 
 .panel__accent-option.yellow:hover {
-    outline: 3px solid rgb(255, 212, 0, 0.3);
+    outline-color: rgb(255, 212, 0, 0.3);
 }
 
 .panel__accent-option.pink {
@@ -748,7 +753,7 @@ svg {
 }
 
 .panel__accent-option.pink:hover {
-    outline: 3px solid rgb(249, 24, 128, 0.3);
+    outline-color: rgb(249, 24, 128, 0.3);
 }
 
 .panel__accent-option.purple {
@@ -756,7 +761,7 @@ svg {
 }
 
 .panel__accent-option.purple:hover {
-    outline: 3px solid rgb(120, 86, 255, 0.3);
+    outline-color: rgb(120, 86, 255, 0.3);
 }
 
 .panel__accent-option.orange {
@@ -764,7 +769,7 @@ svg {
 }
 
 .panel__accent-option.orange:hover {
-    outline: 3px solid rgb(255, 122, 0, 0.3);
+    outline-color: rgb(255, 122, 0, 0.3);
 }
 
 .panel__accent-option.green {
@@ -772,7 +777,7 @@ svg {
 }
 
 .panel__accent-option.green:hover {
-    outline: 3px solid rgb(0, 186, 124, 0.3);
+    outline-color: rgb(0, 186, 124, 0.3);
 }
 
 
@@ -795,6 +800,7 @@ svg {
     border-radius: 0.25rem;
     margin: 0.25rem;
     cursor: pointer;
+
 }
 
 .modal__theme-selector__btn.selected {
@@ -894,10 +900,15 @@ svg {
 
 .post__nav__btn__text {
     position: relative;
+    font-weight: var(--font-bold);
     padding: 1rem 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.post__nav__btn__text.inactive {
+    color: hsl(203, 5%, 50%);
 }
 
 .post__nav__btn__text::after {
