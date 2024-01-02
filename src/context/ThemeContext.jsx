@@ -12,12 +12,10 @@ export const ThemeProvider = ({ children }) => {
 
     const changeTheme = (newTheme) => {
         setTheme(newTheme)
-        console.log(newTheme)
     }
 
     const changeAccentColor = (newColor) => {
         setAccentColor(newColor);
-        console.log(newColor)
     };
 
 

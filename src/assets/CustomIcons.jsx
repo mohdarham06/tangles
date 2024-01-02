@@ -4,56 +4,54 @@ import React from 'react'
 // Outline
 export const OutlineHome = () => {
     return (
-        <svg aria-label="Home" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
+        <svg aria-label="Home" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true">
             <title>Home</title>
-            <path d="M9.005 16.545a2.997 2.997 0 0 1 2.997-2.997A2.997 2.997 0 0 1 15 16.545V22h7V11.543L12 2 2 11.543V22h7.005Z" fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></path>
+            <g><path d="M21.591 7.146L12.52 1.157c-.316-.21-.724-.21-1.04 0l-9.071 5.99c-.26.173-.409.456-.409.757v13.183c0 .502.418.913.929.913h6.638c.511 0 .929-.41.929-.913v-7.075h3.008v7.075c0 .502.418.913.929.913h6.639c.51 0 .928-.41.928-.913V7.904c0-.301-.158-.584-.408-.758zM20 20l-4.5.01.011-7.097c0-.502-.418-.913-.928-.913H9.44c-.511 0-.929.41-.929.913L8.5 20H4V8.773l8.011-5.342L20 8.764z"></path></g>
         </svg>
     )
 }
 
 export const OutlineSearch = () => {
     return (
-        <svg aria-label="Search" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
+        <svg aria-label="Search" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true">
             <title>Search</title>
-            <path d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path>
-            <line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="16.511" x2="22" y1="16.511" y2="22"></line>
+            <g><path d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z"></path></g>
         </svg>
     )
 }
+
 export const OutlineBoldSearch = () => {
     return (
-        <svg aria-label="Search" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
+        <svg aria-label="Search" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true">
             <title>Search</title>
-            <path d="M18.5 10.5a8 8 0 1 1-8-8 8 8 0 0 1 8 8Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
-            <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" x1="16.511" x2="21.643" y1="16.511" y2="21.643"></line>
+            <g><path d="M10.25 4.25c-3.314 0-6 2.686-6 6s2.686 6 6 6c1.657 0 3.155-.67 4.243-1.757 1.087-1.088 1.757-2.586 1.757-4.243 0-3.314-2.686-6-6-6zm-9 6c0-4.971 4.029-9 9-9s9 4.029 9 9c0 1.943-.617 3.744-1.664 5.215l4.475 4.474-2.122 2.122-4.474-4.475c-1.471 1.047-3.272 1.664-5.215 1.664-4.971 0-9-4.029-9-9z"></path></g>
         </svg>
     )
 }
 
-
-export const OutlineExplore = () => {
+export const OutlineNotification = () => {
     return (
-        <svg aria-label="Explore" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
-            <title>Explore</title>
-            <polygon fill="none" points="13.941 13.953 7.581 16.424 10.06 10.056 16.42 7.585 13.941 13.953" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></polygon><polygon fillRule="evenodd" points="10.06 10.056 13.949 13.945 7.581 16.424 10.06 10.056"></polygon><circle cx="12.001" cy="12.005" fill="none" r="10.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></circle>
+        <svg aria-label="Notification" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true">
+            <title>Notifications</title>
+            <g><path d="M19.993 9.042C19.48 5.017 16.054 2 11.996 2s-7.49 3.021-7.999 7.051L2.866 18H7.1c.463 2.282 2.481 4 4.9 4s4.437-1.718 4.9-4h4.236l-1.143-8.958zM12 20c-1.306 0-2.417-.835-2.829-2h5.658c-.412 1.165-1.523 2-2.829 2zm-6.866-4l.847-6.698C6.364 6.272 8.941 4 11.996 4s5.627 2.268 6.013 5.295L18.864 16H5.134z"></path></g>
         </svg>
     )
 }
 
 export const OutlineSaved = () => {
     return (
-        <svg aria-label="Saved" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
+        <svg aria-label="Saved" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true">
             <title>Saved</title>
-            <polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></polygon>
+            <g><path d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z"></path></g>
         </svg>
     )
 }
 
-export const OutlineAdd = () => {
+export const OutlineMessages = () => {
     return (
-        <svg aria-label="New post" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
-            <title>New post</title>
-            <path d="M2 12v3.45c0 2.849.698 4.005 1.606 4.944.94.909 2.098 1.608 4.946 1.608h6.896c2.848 0 4.006-.7 4.946-1.608C21.302 19.455 22 18.3 22 15.45V8.552c0-2.849-.698-4.006-1.606-4.945C19.454 2.7 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.547 2 5.703 2 8.552Z" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="6.545" x2="17.455" y1="12.001" y2="12.001"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="12.003" x2="12.003" y1="6.545" y2="17.455"></line>
+        <svg aria-label="Messages" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true">
+            <title>Messages</title>
+            <g><path d="M1.998 5.5c0-1.381 1.119-2.5 2.5-2.5h15c1.381 0 2.5 1.119 2.5 2.5v13c0 1.381-1.119 2.5-2.5 2.5h-15c-1.381 0-2.5-1.119-2.5-2.5v-13zm2.5-.5c-.276 0-.5.224-.5.5v2.764l8 3.638 8-3.636V5.5c0-.276-.224-.5-.5-.5h-15zm15.5 5.463l-8 3.636-8-3.638V18.5c0 .276.224.5.5.5h15c.276 0 .5-.224.5-.5v-8.037z"></path></g>
         </svg>
     )
 }
@@ -62,27 +60,36 @@ export const OutlineAdd = () => {
 // Fill
 export const FillHome = () => {
     return (
-        <svg aria-label="Home" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
+        <svg aria-label="Home" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true">
             <title>Home</title>
-            <path d="M22 23h-6.001a1 1 0 0 1-1-1v-5.455a2.997 2.997 0 1 0-5.993 0V22a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V11.543a1.002 1.002 0 0 1 .31-.724l10-9.543a1.001 1.001 0 0 1 1.38 0l10 9.543a1.002 1.002 0 0 1 .31.724V22a1 1 0 0 1-1 1Z"></path>
+            <g><path d="M21.591 7.146L12.52 1.157c-.316-.21-.724-.21-1.04 0l-9.071 5.99c-.26.173-.409.456-.409.757v13.183c0 .502.418.913.929.913H9.14c.51 0 .929-.41.929-.913v-7.075h3.909v7.075c0 .502.417.913.928.913h6.165c.511 0 .929-.41.929-.913V7.904c0-.301-.158-.584-.408-.758z"></path></g>
         </svg>
     )
 }
 
-export const FillExplore = () => {
+export const FillNotification = () => {
     return (
-        <svg aria-label="Explore" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
-            <title>Explore</title>
-            <path d="m13.173 13.164 1.491-3.829-3.83 1.49ZM12.001.5a11.5 11.5 0 1 0 11.5 11.5A11.513 11.513 0 0 0 12.001.5Zm5.35 7.443-2.478 6.369a1 1 0 0 1-.57.569l-6.36 2.47a1 1 0 0 1-1.294-1.294l2.48-6.369a1 1 0 0 1 .57-.569l6.359-2.47a1 1 0 0 1 1.294 1.294Z"></path>
+        <svg aria-label="Notification" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true">
+            <title>Notifications</title>
+            <g><path d="M11.996 2c-4.062 0-7.49 3.021-7.999 7.051L2.866 18H7.1c.463 2.282 2.481 4 4.9 4s4.437-1.718 4.9-4h4.236l-1.143-8.958C19.48 5.017 16.054 2 11.996 2zM9.171 18h5.658c-.412 1.165-1.523 2-2.829 2s-2.417-.835-2.829-2z"></path></g>
         </svg>
     )
 }
 
 export const FillSaved = () => {
     return (
-        <svg aria-label="Saved" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24">
+        <svg aria-label="Saved" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true">
             <title>Saved</title>
-            <path d="M20 22a.999.999 0 0 1-.687-.273L12 14.815l-7.313 6.912A1 1 0 0 1 3 21V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1Z"></path>
+            <g><path d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5z"></path></g>
+        </svg>
+    )
+}
+
+export const FillMessages = () => {
+    return (
+        <svg aria-label="Messages" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true">
+            <title>Messages</title>
+            <g><path d="M1.998 4.499c0-.828.671-1.499 1.5-1.499h17c.828 0 1.5.671 1.5 1.499v2.858l-10 4.545-10-4.547V4.499zm0 5.053V19.5c0 .828.671 1.5 1.5 1.5h17c.828 0 1.5-.672 1.5-1.5V9.554l-10 4.545-10-4.547z"></path></g>
         </svg>
     )
 }
@@ -113,7 +120,11 @@ export const OutlineClose = () => {
     )
 }
 
-// Twitter
+
+
+
+
+
 export const OutlineImage = () => {
     return (
         <svg aria-label="Media" fill="currentColor" aria-hidden="true" width="1em" height="1em" viewBox="0 0 24 24">

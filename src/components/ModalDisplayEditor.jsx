@@ -33,6 +33,7 @@ const ModalDisplayEditor = ({ closeDisplayModal }) => {
                     <div className="panel__accent-selector">
                         {accentColorOptions.map((option) => (
                             <div
+                                key={option.color}
                                 className={
                                     `panel__accent-option ${option.color} ${option.isSelected ? 'selected' : ''}`
                                 }
@@ -52,6 +53,7 @@ const ModalDisplayEditor = ({ closeDisplayModal }) => {
                     <div className="panel__theme-selector">
                         {themeOptions.map((option) => (
                             <div
+                                key={option.color}
                                 className={
                                     `modal__theme-selector__btn ${option.color} ${option.isSelected ? 'selected' : ''}`
                                 }

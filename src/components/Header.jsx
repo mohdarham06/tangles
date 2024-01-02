@@ -5,8 +5,8 @@ import user1avatar from '../data/avatars/jasonstotham.jpg'
 import noUserImage from '../data/avatars/noimage.jpg'
 
 import {
-    OutlineHome, OutlineSearch, OutlineExplore, OutlineSaved, OutlineFeatherPen,
-    FillHome, OutlineBoldSearch, FillExplore, FillSaved,
+    OutlineHome, OutlineSearch, OutlineNotification, OutlineSaved, OutlineFeatherPen,
+    FillHome, OutlineBoldSearch, FillNotification, FillSaved,
     OutlineArtBrush
 } from '../assets/CustomIcons'
 
@@ -40,11 +40,11 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                                 <span className="nav__item__text">Search</span>
                             </li>
                         </NavLink>
-                        <NavLink to={`/explore`}>
+                        <NavLink to={`/notifications`}>
                             <li className="nav__item">
                                 <span className="nav__item__icon">
-                                    {location.pathname !== '/explore' ? <OutlineExplore /> : <FillExplore />}</span>
-                                <span className="nav__item__text">Explore</span>
+                                    {location.pathname !== '/notifications' ? <OutlineNotification /> : <FillNotification />}</span>
+                                <span className="nav__item__text">Notifications</span>
                             </li>
                         </NavLink>
                         <NavLink to={`/saved`}>

@@ -3,7 +3,7 @@ import AppLayout from './AppLayout';
 
 import Home from './routes/Home';
 import Search from './routes/Search'
-import Explore from './routes/Explore';
+import Notifications from './routes/Notifications';
 import Saved from './routes/Saved';
 import Profile from './routes/Profile';
 import NotFound from './routes/NotFound';
@@ -78,7 +78,7 @@ function App() {
 
                     <Route path='search' element={<Search />} />
 
-                    <Route path='explore' element={<Explore />} />
+                    <Route path='notifications' element={<Notifications />} />
 
                     <Route path='saved' element={<Saved />} />
 
