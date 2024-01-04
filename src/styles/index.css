@@ -51,9 +51,9 @@ html {
 
 
     /* --NAV SIZES */
-    --nav-wide-width: 244px;
-    --nav-medium-width: 200px;
-    --nav-narrow-width: 72px;
+    --nav-wide-width: 335px;
+    --nav-medium-width: 244px;
+    --nav-narrow-width: 74px;
 
     /* --TYPOGRAPHY */
     --h1-font-size: 2rem;
@@ -287,6 +287,14 @@ svg {
 }
 
 
+.section {
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 
 
@@ -302,21 +310,23 @@ svg {
 .header__container {
     width: var(--nav-medium-width);
     border-right: 1px solid var(--thin-border-color);
-
     height: 100%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 
 .header__brand {
-    font-size: var(--font-size-medium);
-    font-weight: var(--font-bold);
-    font-family: cursive;
     padding: 0.75rem;
     margin-top: 0.25rem;
     margin-bottom: 1rem;
     cursor: pointer;
+}
+.header__brand__text {
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-bold);
+    font-family: cursive;
 }
 
 .header__nav {
@@ -360,6 +370,7 @@ svg {
 }
 
 .nav__item__avatar {
+    display: block;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
@@ -375,24 +386,11 @@ svg {
     margin-top: 0.5rem;
 }
 
-
 .nav__post-btn__icon {
     display: none;
     font-size: 1.5rem;
 }
 
-/* .nav__post-btn__icon {
-    display: block;
-}
-
-.nav__post-btn {
-    width: 50px;
-    height: 50px;
-}
-
-.nav__post-btn__text {
-    display: none;
-} */
 
 
 .header__action-btn {
@@ -419,32 +417,13 @@ svg {
     background: rgba(var(--font-rgb), 0.125);
 }
 
-
 .header__logout {
-    padding: 0.75rem;
-    border-radius: 0.5rem;
     color: rgb(221, 65, 59);
-    margin-top: auto;
-    cursor: pointer;
-    transition: var(--transition-hover);
-}
-
-.header__logout:hover,
-.header__logout:active {
-    background: rgba(var(--font-rgb), 0.125);
 }
 
 
 
 
-
-.section {
-    /* border: 1px solid red; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 
 
@@ -1258,6 +1237,26 @@ svg {
     padding-bottom: 0.75rem;
     font-weight: var(--font-light);
 }
+
+
+
+
+
+
+
+
+
+
+/* Notifications */
+.notifications {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
 
 
 

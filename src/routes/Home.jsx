@@ -8,7 +8,6 @@ import userPosts from '../data/userPosts';
 
 import PostEditor from '../components/PostEditor';
 import PostsWrapper from '../components/PostsWrapper';
-import axios from 'axios';
 
 
 const Home = () => {
@@ -36,29 +35,7 @@ const Home = () => {
     }, [postType])
 
 
-    // useEffect(() => {
-    //     const options = {
-    //         method: 'GET',
-    //         url: 'https://twitter135.p.rapidapi.com/AutoComplete/',
-    //         params: { q: 'Elon' },
-    //         headers: {
-    //             'X-RapidAPI-Key': 'd9b652efb4msh6e4040368154c25p1c68bejsn16303a787b72',
-    //             'X-RapidAPI-Host': 'twitter135.p.rapidapi.com'
-    //         }
-    //     };
-
-
-    //     async function getData() {
-    //         try {
-    //             const response = await axios.request(options);
-    //             console.log(response.data);
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     }
-    //     getData()
-    // }, [])
-
+    
 
     return (
         <section id='home' className='section section--home'>

@@ -7,7 +7,7 @@ import noUserImage from '../data/avatars/noimage.jpg'
 import {
     OutlineHome, OutlineSearch, OutlineNotification, OutlineSaved, OutlineFeatherPen,
     FillHome, OutlineBoldSearch, FillNotification, FillSaved,
-    OutlineArtBrush
+    OutlineArtBrush, OutlineLogout
 } from '../assets/CustomIcons'
 
 const Header = ({ openPostModal, openDisplayModal }) => {
@@ -20,7 +20,10 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                 <Link
                     className="header__brand"
                     to={`/`}
-                >Tangles</Link>
+                >
+                    <span className="header__brand__icon"></span>
+                    <span className="header__brand__text"></span>
+                </Link>
 
 
                 <nav className="header__nav">
@@ -79,7 +82,11 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                         <span className="header__action-btn__icon"><OutlineArtBrush /></span>
                         <span className="header__action-btn__text">Display</span>
                     </div>
-                    <div className="header__logout">Logout</div>
+                    <div className="header__action-btn header__logout">
+                        <span className="header__action-btn__icon"><OutlineLogout /></span>
+                        <span className="header__action-btn__text">Logout</span>
+
+                    </div>
                 </div>
 
             </div>

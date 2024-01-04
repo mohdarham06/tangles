@@ -17,6 +17,16 @@ const userProfiles = [
         isFollowing: true
     },
     {
+        username: 'tangles',
+        name: 'Tangles',
+        verified: true,
+        avatar: null,
+        bio: 'Engage in tangle convos, express yourself!',
+        followers: 47050000,
+        following: 100,
+        isFollowing: false
+    },
+    {
         username: 'jasonstotham',
         name: 'Jason Stotham',
         verified: true,

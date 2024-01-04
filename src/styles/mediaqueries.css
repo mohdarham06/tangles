@@ -2,18 +2,82 @@
 /* @media only screen and (min-width: 1200px) {} */
 
 /* --  <992 px  */
-/* @media only screen and (min-width: 992px) {} */
+@media only screen and (max-width: 992px) {
+
+    /* --MAIN */
+    main {
+        --main-width: calc(100% - var(--nav-narrow-width));
+    }
+
+    /* --HEADER */
+    .header__container {
+        width: var(--nav-narrow-width);
+        padding: 0.75rem;
+        align-items: center;
+    }
+    .header__nav {
+    }
+
+    .nav__list {
+        align-items: center;
+    }
+
+    .nav__item {
+        display: block;
+        border-radius: 0.75rem;
+    }
+
+    .nav__item__text {
+        display: none;
+    }
+
+
+    .nav__post-btn__icon {
+        display: block;
+    }
+
+    .nav__post-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .nav__post-btn__text {
+        display: none;
+    }
+
+
+    .header__action-btn {
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: auto;
+        cursor: pointer;
+        transition: var(--transition-hover);
+    }
+
+    .header__action-btn__icon {
+        font-size: 1.2rem;
+    }
+
+    .header__action-btn__text {
+        display: none;
+    }
+
+
+
+
+
+}
 
 
 /* --  >768 px  */
 /* @media only screen and (max-width: 768px) {} */
 
-/* --  >720 px  */
-/* @media only screen and (max-width: 720px) {} */
 
 /* --  >576 px  */
 /* @media only screen and (max-width: 576px) {} */
 
 /* --  >440 px  */
 /* @media only screen and (max-width: 440px) {} */
-

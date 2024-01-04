@@ -155,11 +155,23 @@ export const OutlineArtBrush = () => {
     return (
         <>
             <svg aria-label="Display" fill="currentColor" width="1em" height="1em" aria-hidden="true" viewBox="0 0 24 24" >
+                <title>Display</title>
                 <g><path d="M20 12h2v6.5c0 1.38-1.12 2.5-2.5 2.5h-15C3.12 21 2 19.88 2 18.5v-13C2 4.12 3.12 3 4.5 3H11v2H4.5c-.28 0-.5.22-.5.5v13c0 .28.22.5.5.5h15c.27 0 .5-.22.5-.5V12zm2.31-6.78l-6.33 7.18c-.2 2.02-1.91 3.6-3.98 3.6H8v-4c0-2.07 1.58-3.78 3.6-3.98l7.18-6.33c.99-.88 2.49-.83 3.43.1.93.94.98 2.44.1 3.43zm-1.52-2.01c-.19-.19-.49-.2-.69-.02l-6.08 5.36c.59.35 1.08.84 1.43 1.43l5.36-6.08c.18-.2.17-.5-.02-.69z"></path></g>
             </svg>
         </>
     )
 }
+export const OutlineLogout = () => {
+    return (
+        <>
+            <svg aria-label="Logout" stroke="currentColor" fill="currentColor" stroke-width="0" height="1em" width="1em" viewBox="0 0 24 24">
+                <title>Logout</title>
+                <path d="M16 13v-2H7V8l-5 4 5 4v-3z"></path><path d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z"></path>
+            </svg>
+        </>
+    )
+}
+
 
 
 

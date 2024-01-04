@@ -8,8 +8,10 @@ import Saved from './routes/Saved';
 import Profile from './routes/Profile';
 import NotFound from './routes/NotFound';
 
+import './styles/mediaqueries.css';
+
 import { useTheme } from './context/ThemeContext';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 
@@ -17,10 +19,17 @@ import { useEffect } from 'react';
 
 function App() {
     const { theme, accentColor } = useTheme();
+    const location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        console.log(location.pathname)
+    }, [location.pathname]);
+
 
     useEffect(() => {
         const body = document.querySelector("body");
-        
+
         if (theme === 'light') {
             body.setAttribute("data-theme", 'light')
         }
