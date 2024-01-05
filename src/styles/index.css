@@ -307,7 +307,9 @@ svg {
     height: 100vh;
 }
 
-.header__container {
+
+/* --HEADER DESKTOP*/
+.header__desktop {
     width: var(--nav-medium-width);
     border-right: 1px solid var(--thin-border-color);
     height: 100%;
@@ -317,31 +319,32 @@ svg {
     overflow: auto;
 }
 
-.header__brand {
+.header__desktop__brand {
     padding: 0.75rem;
     margin-top: 0.25rem;
     margin-bottom: 1rem;
     cursor: pointer;
 }
-.header__brand__text {
+
+.header__desktop__brand__text {
     font-size: var(--font-size-medium);
     font-weight: var(--font-bold);
     font-family: cursive;
 }
 
-.header__nav {
+.header__desktop__nav {
     flex-grow: 1;
 }
 
 
-.nav__list {
+.desktop__nav__list {
     display: flex;
     flex-direction: column;
     white-space: nowrap;
 }
 
 
-.nav__item {
+.desktop__nav__item {
     padding: 0.75rem;
     margin: 0.25rem 0;
     border-radius: 0.5rem;
@@ -352,45 +355,48 @@ svg {
     transition: var(--transition-hover), outline 0ms ease-in-out;
 }
 
-.nav__list [aria-current='page'] .nav__item {
+.desktop__nav__list [aria-current='page'] .desktop__nav__item {
     outline: 1px solid var(--thin-border-color);
 }
 
-.nav__item:hover,
-.nav__item:active {
+.desktop__nav__item:hover,
+.desktop__nav__item:active {
     background: rgba(var(--font-rgb), 0.125);
 }
 
-.nav__item__icon {
+.desktop__nav__item__icon {
     font-size: 1.5rem;
 }
 
-.nav__item__text {
+.desktop__nav__item__text {
     padding-left: 0.75rem
 }
 
-.nav__item__avatar {
+.desktop__nav__item__avatar {
     display: block;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
 }
 
-.nav__list [aria-current='page'] .nav__item .nav__item__avatar {
+.desktop__nav__list [aria-current='page'] .desktop__nav__item .desktop__nav__item__avatar {
     outline-offset: 1px;
     outline: 1px solid var(--font);
 }
 
-.nav__post-btn {
+.desktop__nav__post-btn {
     padding: 0.625rem 1rem;
     margin-top: 0.5rem;
 }
 
-.nav__post-btn__icon {
+.desktop__nav__post-btn__icon {
     display: none;
     font-size: 1.5rem;
 }
 
+.header__desktop__ {
+    margin-top: auto;
+}
 
 
 .header__action-btn {
@@ -420,6 +426,13 @@ svg {
 .header__logout {
     color: rgb(221, 65, 59);
 }
+
+
+
+
+
+
+
 
 
 
