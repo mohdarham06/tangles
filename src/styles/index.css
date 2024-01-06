@@ -51,9 +51,16 @@ html {
 
 
     /* --NAV SIZES */
-    --nav-wide-width: 335px;
-    --nav-medium-width: 244px;
-    --nav-narrow-width: 74px;
+    /* Desktop */
+    --desktop-nav-wide-width: 335px;
+    --desktop-nav-medium-width: 244px;
+    --desktop-nav-narrow-width: 74px;
+    /* Mobile */
+    --mobile-header-top-height: 60px;
+    --mobile-header-nav-height: 64px;
+
+
+
 
     /* --TYPOGRAPHY */
     --h1-font-size: 2rem;
@@ -189,8 +196,7 @@ body {
 /* --MAIN */
 main {
     position: relative;
-    --main-width: calc(100% - var(--nav-medium-width));
-    width: var(--main-width);
+    width: calc(100% - var(--desktop-nav-medium-width));
     margin-left: auto;
     display: flex;
     flex-direction: column;
@@ -303,14 +309,15 @@ svg {
 
 /* --HEADER */
 .header {
-    position: fixed;
-    height: 100vh;
+    position: absolute;
+    z-index: var(--z-fixed);
 }
 
 
 /* --HEADER DESKTOP*/
 .header__desktop {
-    width: var(--nav-medium-width);
+    position: fixed;
+    width: var(--desktop-nav-medium-width);
     border-right: 1px solid var(--thin-border-color);
     height: 100%;
     padding: 1rem;
@@ -355,7 +362,7 @@ svg {
     transition: var(--transition-hover), outline 0ms ease-in-out;
 }
 
-.desktop__nav__list [aria-current='page'] .desktop__nav__item {
+.desktop__nav__link[aria-current='page'] .desktop__nav__item {
     outline: 1px solid var(--thin-border-color);
 }
 
@@ -379,7 +386,7 @@ svg {
     border-radius: 50%;
 }
 
-.desktop__nav__list [aria-current='page'] .desktop__nav__item .desktop__nav__item__avatar {
+.desktop__nav__link[aria-current='page'] .desktop__nav__item__avatar {
     outline-offset: 1px;
     outline: 1px solid var(--font);
 }
@@ -394,37 +401,323 @@ svg {
     font-size: 1.5rem;
 }
 
-.header__desktop__ {
-    margin-top: auto;
-}
 
-
-.header__action-btn {
+/* More options btn*/
+.header__desktop__menu-btn {
     padding: 0.75rem;
+    margin: 0.25rem 0;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: auto;
     cursor: pointer;
+    user-select: none;
+    margin-top: auto;
+    transition: var(--transition-hover), outline 0ms ease-in-out;
+}
+
+.header__desktop__menu-btn:hover,
+.header__desktop__menu-btn:active {
+    background: rgba(var(--font-rgb), 0.125);
+}
+
+.header__desktop__menu-btn #menu-checkbox {
+    display: none;
+    visibility: hidden;
+}
+
+.header__desktop__menu-btn__icon {
+    font-size: 1.5rem;
+}
+
+.header__desktop__menu-btn__text {
+    padding-left: 0.75rem
+}
+
+
+
+
+/* Desktop Options Menu */
+.header__desktop__options {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: var(--background);
+    width: var(--desktop-nav-medium-width);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: rgba(var(--font-rgb), 0.2) 0px 0px 15px,
+        rgba(var(--font-rgb), 0.2) 0px 0px 3px 1px;
+
+        margin-left: 1rem;
+        margin-bottom: 4.2rem;
+    /* margin-top: calc(var(--mobile-header-top-height) - 8px);
+    margin-right: 8px; */
+}
+
+.header__desktop__options.hidden {
+    display: none;
+}
+
+.header__desktop__options.visible {
+    display: block;
+}
+
+
+
+.desktop__options__action-btn {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: 1px solid var(--thin-border-color);
+    cursor: pointer;
+    user-select: none;
     transition: var(--transition-hover);
 }
 
-.header__action-btn__icon {
+.desktop__options__action-btn__icon {
     font-size: 1.2rem;
 }
 
-.header__action-btn__text {
+.desktop__options__action-btn__text {
     padding-left: 0.5rem
 }
 
-.header__action-btn:hover,
-.header__action-btn:active {
-    background: rgba(var(--font-rgb), 0.125);
+.desktop__options__action-btn:hover,
+.desktop__options__action-btn:active {
+    background: rgba(var(--font-rgb), 0.1);
 }
 
 .header__logout {
     color: rgb(221, 65, 59);
+}
+
+
+
+
+
+
+
+/* --HEADER MOBILE*/
+.header__desktop {
+    /* display: none; */
+}
+
+.header__mobile {
+    display: none;
+}
+
+.header__mobile__top {
+    position: fixed;
+    width: 100%;
+    height: var(--mobile-header-top-height);
+    top: 0;
+    left: 0;
+    background: rgba(var(--background-rgb), 0.75);
+    backdrop-filter: blur(16px);
+    padding: 0 0.75rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__mobile__brand {
+    padding: 0.5rem;
+}
+
+.header__mobile__brand:hover .header__mobile__brand__text {
+    letter-spacing: 1px;
+}
+
+.header__mobile__brand:active .header__mobile__brand__text {
+    letter-spacing: 0px;
+}
+
+.header__mobile__brand__text {
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-bold);
+    font-family: cursive;
+    transition: var(--transition-hover);
+}
+
+
+/* Hamburger Manu */
+.header__mobile__menu-btn {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.header__mobile__menu-btn #menu-checkbox {
+    display: none;
+    visibility: hidden;
+}
+
+.header__mobile__menu-btn .menu-bar {
+    --bar-width: 20px;
+    width: var(--bar-width);
+    height: 2px;
+    border-radius: 10rem;
+    background: var(--neutral-gray);
+    transition: var(--transition-hover);
+}
+
+.header__mobile__menu-btn .menu-bar--mid {
+    width: calc(var(--bar-width) - 5px);
+    margin-left: 5px;
+}
+
+.header__mobile__menu-btn:hover .menu-bar {
+    background: var(--font);
+}
+
+.header__mobile__menu-btn:active .menu-bar {
+    --bar-width: 17px;
+}
+
+#menu-checkbox[type="checkbox"]:checked~.menu-bar {
+    background: var(--font);
+}
+
+/* Mobile Menu Options*/
+.header__mobile__options {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: var(--background);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: rgba(var(--font-rgb), 0.2) 0px 0px 15px,
+        rgba(var(--font-rgb), 0.2) 0px 0px 3px 1px;
+
+    margin-top: calc(var(--mobile-header-top-height) - 8px);
+    margin-right: 8px;
+}
+
+.header__mobile__options.hidden {
+    display: none;
+}
+
+.header__mobile__options.visible {
+    display: block;
+}
+
+.mobile__options__action-btn {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: 1px solid var(--thin-border-color);
+    cursor: pointer;
+    user-select: none;
+    transition: var(--transition-hover);
+}
+
+.mobile__options__action-btn:first-child {
+    border-top: none;
+}
+
+.mobile__options__action-btn__icon {
+    font-size: 1rem;
+}
+
+.mobile__options__action-btn__text {
+    padding-left: 0.5rem
+}
+
+.mobile__options__action-btn:hover,
+.mobile__options__action-btn:active {
+    background: rgba(var(--font-rgb), 0.1);
+}
+
+
+
+
+
+
+
+
+/* Header Nav */
+.header__mobile__nav {
+    position: fixed;
+    width: 100%;
+    height: var(--mobile-header-nav-height);
+    bottom: 0;
+    left: 0;
+    background: var(--background);
+    border-top: 1px solid hsl(214, 9%, calc(var(--balance) 84%));
+}
+
+.mobile__nav__list {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.mobile__nav__link {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--neutral-gray);
+    transition: var(--transition-hover);
+}
+
+.mobile__nav__link[aria-current='page'] {
+    color: var(--font);
+}
+
+.mobile__nav__link::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    border-radius: 0.5rem;
+    opacity: 0;
+    transform: scale(0.75);
+    transform-origin: center;
+    background: rgba(var(--font-rgb), 0.15);
+    transition: var(--transition-hover);
+}
+
+.mobile__nav__link:hover::before,
+.mobile__nav__link:active::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.mobile__nav__item {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile__nav__item__avatar {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+}
+
+.mobile__nav__link[aria-current='page'] .mobile__nav__item__avatar {
+    outline-offset: 1px;
+    outline: 1px solid var(--font);
 }
 
 

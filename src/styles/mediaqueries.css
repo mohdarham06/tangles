@@ -4,14 +4,9 @@
 /* --  <=992 px  */
 @media only screen and (max-width: 992px) {
 
-    /* --MAIN */
-    main {
-        --main-width: calc(100% - var(--nav-narrow-width));
-    }
-
     /* --HEADER */
     .header__desktop {
-        width: var(--nav-narrow-width);
+        width: var(--desktop-nav-narrow-width);
         padding: 0.75rem;
         align-items: center;
     }
@@ -43,23 +38,9 @@
     }
 
 
-    .header__action-btn {
-        padding: 0.75rem;
-        border-radius: 0.5rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-top: auto;
-        cursor: pointer;
-        transition: var(--transition-hover);
-    }
-
-    .header__action-btn__icon {
-        font-size: 1.2rem;
-    }
-
-    .header__action-btn__text {
-        display: none;
+    /* --MAIN */
+    main {
+        width: calc(100% - var(--desktop-nav-narrow-width));
     }
 
 
@@ -72,7 +53,25 @@
 
 /* --  <=576 px  */
 @media only screen and (max-width: 576px) {
-    
+
+    /* --HEADER */
+    .header__desktop {
+        display: none;
+        visibility: hidden;
+    }
+    .header__mobile {
+        display: block;
+    }
+
+    /* --MAIN */
+    main {
+        margin-top: var(--mobile-header-top-height);
+        width: 100%;
+    }
+
+
+
+
 }
 
 /* --  <=440 px  */
