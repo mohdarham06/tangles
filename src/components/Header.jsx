@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useState, useEffect } from 'react'
 
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import user1avatar from '../data/avatars/jasonstotham.jpg'
@@ -18,13 +19,13 @@ const Header = ({ openPostModal, openDisplayModal }) => {
     const toggleMenu = () => {
         setIsMenuChecked(!isMenuChecked)
     }
+   
 
     return (
         <header className="header">
 
             {/* Header Desktop */}
             <div className="header__desktop">
-
                 <Link
                     className="header__desktop__brand"
                     to={`/`}
@@ -85,6 +86,7 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                     </div>
                 </nav>
 
+
                 <label htmlFor="menu-checkbox" className="header__desktop__menu-btn">
                     <input
                         id="menu-checkbox"
@@ -98,18 +100,16 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                 </label>
 
 
-                <div className={`header__desktop__options ${isMenuChecked ? 'visible' : 'hidden'}`}>
-                    <div className="desktop__options__action-btn" onClick={openDisplayModal}>
-                        <span className="desktop__options__action-btn__icon"><OutlineArtBrush /></span>
-                        <span className="desktop__options__action-btn__text">Display</span>
+                <div className={`header__more__options ${isMenuChecked ? 'visible' : 'hidden'}`}>
+                    <div className="more__options__action-btn" onClick={openDisplayModal}>
+                        <span className="more__options__action-btn__icon"><OutlineArtBrush /></span>
+                        <span className="more__options__action-btn__text">Display</span>
                     </div>
-                    <div className="desktop__options__action-btn header__logout">
-                        <span className="desktop__options__action-btn__icon"><OutlineLogout /></span>
-                        <span className="desktop__options__action-btn__text">Log out</span>
-
+                    <div className="more__options__action-btn header__logout">
+                        <span className="more__options__action-btn__icon"><OutlineLogout /></span>
+                        <span className="more__options__action-btn__text">Log out</span>
                     </div>
                 </div>
-
             </div>
 
 
@@ -117,9 +117,8 @@ const Header = ({ openPostModal, openDisplayModal }) => {
 
             {/* Header Mobile */}
             <div className="header__mobile">
-
                 <div className="header__mobile__top">
-                    <div></div>
+                    <div className="header__mobile__empty-div"></div>
 
                     <Link
                         className="header__mobile__brand"
@@ -141,16 +140,16 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                     </label>
 
 
-                    <div className={`header__mobile__options ${isMenuChecked ? 'visible' : 'hidden'}`}>
-                        <div className="mobile__options__action-btn"
+                    <div className={`header__more__options ${isMenuChecked ? 'visible' : 'hidden'}`}>
+                        <div className="more__options__action-btn"
                             onClick={openDisplayModal}
                         >
-                            <span className="mobile__options__action-btn__icon"><OutlineArtBrush /></span>
-                            <span className="mobile__options__action-btn__text">Display</span>
+                            <span className="more__options__action-btn__icon"><OutlineArtBrush /></span>
+                            <span className="more__options__action-btn__text">Display</span>
                         </div>
-                        <div className="mobile__options__action-btn header__logout">
-                            <span className="mobile__options__action-btn__icon"><OutlineLogout /></span>
-                            <span className="mobile__options__action-btn__text">Log out</span>
+                        <div className="more__options__action-btn header__logout">
+                            <span className="more__options__action-btn__icon"><OutlineLogout /></span>
+                            <span className="more__options__action-btn__text">Log out</span>
                         </div>
                     </div>
                 </div>
@@ -188,7 +187,6 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                             </li>
                         </NavLink>
                     </ul>
-
                 </nav>
             </div>
 

@@ -37,6 +37,19 @@
         display: none;
     }
 
+    .header__desktop__menu-btn__text {
+        display: none;
+    }
+
+    /* More Options Menu */
+    .header__more__options {
+        margin-left: calc(var(--desktop-nav-narrow-width) - 8px);
+        margin-bottom: 2rem;
+        width: 8rem;
+    }
+
+
+
 
     /* --MAIN */
     main {
@@ -59,8 +72,22 @@
         display: none;
         visibility: hidden;
     }
+
     .header__mobile {
         display: block;
+    }
+
+    /* More Options Menu */
+    .header__more__options {
+        margin-left: initial;
+        margin-bottom: initial;
+        bottom: initial;
+        left: initial;
+        top: 0;
+        right: 0;
+
+        margin-top: calc(var(--mobile-header-top-height) - 8px);
+        margin-right: 8px;
     }
 
     /* --MAIN */
@@ -68,6 +95,8 @@
         margin-top: var(--mobile-header-top-height);
         width: 100%;
     }
+
+
 
 
 

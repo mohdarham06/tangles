@@ -4,7 +4,8 @@ const Notifications = () => {
     return (
         <section className='section section--notifications'>
             <div className="notifications">
-                Notifications
+                <h3>Notifications</h3>
+                
             </div>
         </section>
 

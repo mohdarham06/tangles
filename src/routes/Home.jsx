@@ -9,6 +9,8 @@ import userPosts from '../data/userPosts';
 import PostEditor from '../components/PostEditor';
 import PostsWrapper from '../components/PostsWrapper';
 
+import axios from 'axios'
+
 
 const Home = () => {
     const [posts, setPosts] = useState(userPosts);
@@ -34,13 +36,42 @@ const Home = () => {
         }
     }, [postType])
 
+    useEffect(() => {
 
-    
+
+
+
+
+        const options = {
+            method: 'GET',
+            url: 'https://instagram130.p.rapidapi.com/account-feed',
+            params: { username: 'adele' },
+            headers: {
+                'X-RapidAPI-Key': 'd9b652efb4msh6e4040368154c25p1c68bejsn16303a787b72',
+                'X-RapidAPI-Host': 'instagram130.p.rapidapi.com'
+            }
+        };
+
+        async function getData() {
+            try {
+                const response = await axios.request(options);
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getData();
+
+
+
+    }, [])
+
 
     return (
         <section id='home' className='section section--home'>
             <div className="home">
                 <div className="home__header">
+
                     <div className="home__post__nav">
                         <div
                             className="home__post__nav__btn"
@@ -60,6 +91,7 @@ const Home = () => {
                             }>Following</span>
                         </div>
                     </div>
+
                 </div>
 
 
