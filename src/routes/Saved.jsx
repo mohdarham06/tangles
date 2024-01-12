@@ -13,12 +13,18 @@ const Saved = () => {
 
     return (
         <section className='section section--saved'>
+            <div className="saved">
+                <div className="page-header">
+                    <h3>Saved</h3>
+                </div>
 
-            <PostsWrapper 
-                posts={savedPosts}
-                setPosts={setSavedPosts}
-            />
 
+                <PostsWrapper
+                    posts={savedPosts}
+                    setPosts={setSavedPosts}
+                />
+
+            </div>
         </section>
 
     )

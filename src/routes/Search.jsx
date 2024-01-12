@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useState } from "react"
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { OutlineSearch, VerifiedIcon } from '../assets/CustomIcons'
 import userProfiles from '../data/userProfiles';
 import noUserImage from '../data/avatars/noimage.jpg';

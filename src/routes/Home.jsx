@@ -71,27 +71,20 @@ const Home = () => {
         <section id='home' className='section section--home'>
             <div className="home">
                 <div className="home__header">
-
-                    <div className="home__post__nav">
+                    <div className="page-type__nav">
                         <div
-                            className="home__post__nav__btn"
+                            className="page-type__nav__btn"
                             onClick={() => switchPostType('foryou')}
                         >
-                            <span className={
-                                `post__nav__btn__text ${postType === 'foryou' ? "active" : "inactive"}`
-                            }>For you</span>
+                            <span className={`page-type__nav__btn__text ${postType === 'foryou' ? "active" : "inactive"}`}>For you</span>
                         </div>
-
                         <div
-                            className="home__post__nav__btn"
+                            className="page-type__nav__btn"
                             onClick={() => switchPostType('following')}
                         >
-                            <span className={
-                                `post__nav__btn__text ${postType === 'following' ? "active" : "inactive"}`
-                            }>Following</span>
+                            <span className={`page-type__nav__btn__text ${postType === 'following' ? "active" : "inactive"}`}>Following</span>
                         </div>
                     </div>
-
                 </div>
 
 

@@ -238,6 +238,11 @@ svg {
     display: block;
 }
 
+.page-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--thin-border-color);
+}
+
 .primary-button {
     background: var(--accent-color);
     color: #ffffff;
@@ -310,6 +315,61 @@ svg {
     flex-direction: column;
     align-items: center;
 }
+
+
+.page-type__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--thin-border-color);
+}
+
+.page-type__nav__btn {
+    font-weight: var(--font-bold);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-hover);
+}
+
+.page-type__nav__btn:hover {
+    background: hsl(0, 0%, calc(var(--balance) 88%));
+}
+
+
+.page-type__nav__btn__text {
+    position: relative;
+    text-transform: capitalize;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.page-type__nav__btn__text::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 4px;
+    min-width: 48px;
+    width: 100%;
+    border-radius: 10rem;
+    background: var(--accent-color);
+    transition: var(--transition-hover);
+    transform: scaleX(0);
+    transform-origin: center;
+}
+
+.page-type__nav__btn__text.inactive::after {
+    transform: scaleX(0);
+}
+
+.page-type__nav__btn__text.active::after {
+    transform: scaleX(1);
+}
+
+
+
 
 
 
@@ -1226,7 +1286,7 @@ svg {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     cursor: pointer;
 }
 
@@ -1248,7 +1308,7 @@ svg {
 }
 
 .post__username {
-    font-weight: var(--font-semi-bold);
+    font-weight: var(--font-bold);
 }
 
 .post__user-verified {
@@ -1532,6 +1592,48 @@ svg {
     flex-direction: column;
 }
 
+.notifictions__list{
+    padding: 0 1rem;
+}
+
+.notifictions__item {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--thin-border-color);
+}
+
+.notifictions__item__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* .notification__item__text {} */
+
+
+
+
+
+
+
+
+
+
+
+
+/* Saved*/
+.saved {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
 
 
 
@@ -1726,9 +1828,3 @@ svg {
 }
 
 
-
-
-/* --NOTIFICATIONS */
-.notifications {
-    /* padding: 2rem 1rem; */
-}
