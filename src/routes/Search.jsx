@@ -1,40 +1,17 @@
 import React from 'react'
 
-import { useState } from "react"
 import { Link } from 'react-router-dom';
 import { OutlineSearch, VerifiedIcon } from '../assets/CustomIcons'
-import userProfiles from '../data/userProfiles';
 import noUserImage from '../data/avatars/noimage.jpg';
+import { useData } from '../context/DataContext';
 
 const Search = () => {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [searchResults, SetSearchResults] = useState(userProfiles);
+    const {
+        handleSearch, searchResults, searchQuery,
+        handleFollow
+    } = useData();
 
-    const handleSearch = (query) => {
-        setSearchQuery(query)
-        const filteredUsers = userProfiles.filter((user) => {
-            const usernameMatch = user.username.toLowerCase().includes(query.toLowerCase());
-            const nameMatch = user.name.toLowerCase().includes(query.toLowerCase());
-            return usernameMatch || nameMatch;
-        })
-        SetSearchResults(filteredUsers)
-    }
 
-    const handleFollow = (userId) => {
-        SetSearchResults((prevUsers) => {
-            return prevUsers.map((user) =>
-                (user.username === userId)
-                    // Update
-                    ? {
-                        ...user,
-                        followers: user.isFollowing ? (user.followers - 1) : (user.followers + 1),
-                        isFollowing: !user.isFollowing
-                    }
-                    // No Update
-                    : user
-            )
-        });
-    };
 
 
     const formatNumberScale = (number) => {

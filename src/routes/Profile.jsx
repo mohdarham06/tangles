@@ -4,56 +4,52 @@ import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 
 import NotFound from './NotFound';
-import userProfiles from '../data/userProfiles';
-import userPosts from '../data/userPosts'
 import { VerifiedIcon } from '../assets/CustomIcons';
 import noUserImage from '../data/avatars/noimage.jpg';
 
 
-
-
+import { useData } from '../context/DataContext';
 import PostsWrapper from '../components/PostsWrapper';
 
 
-
-
 const Profile = () => {
-    const { profileName } = useParams();
-    const filteredProfile = (username) => {
-        return userProfiles.find((profile) => profile.username === username);
-    }
-    const [profile, setProfile] = useState(filteredProfile(profileName));
+    const {
+        posts, handleFollow,
+        setProfileUsername,
+        profile, profilePosts,
+    } = useData();
 
-    const [profilePosts, setProfilePosts] = useState(
-        userPosts.filter((post) => post.username === profile?.username)
-    );
+    const { profileName } = useParams();
+
+    useEffect(() => {
+        setProfileUsername(profileName)
+    }, [profileName])
+
 
     const [postType, setPostType] = useState('posts');
+    const [userLikedPosts, setUserLikedPosts] = useState([]);
 
-    const switchPostType = (type) => {
+    const switchType = (type) => {
         setPostType(type)
     }
 
+
+
     useEffect(() => {
-        if (postType === 'posts') {
-            const filteredPosts = userPosts.filter((post) => post.username === profile?.username);
-            setProfilePosts(filteredPosts);
-
-        } else if (postType === 'videos') {
-            const filteredVideos = userPosts.filter((post) => post.username === profile?.username && post.liked);
-            setProfilePosts(filteredVideos);
+        const filteredLikedPosts = () => {
+            console.log('debug')
+            return (
+                posts.filter((post) => post.username === profile?.username && post.liked)
+            )
         }
-    }, [postType, profile]);
+        setUserLikedPosts(filteredLikedPosts)
+    }, [posts, profile])
 
 
-    // Follow
-    const handleFollow = () => {
-        setProfile((prevProfile) => ({
-            ...prevProfile,
-            followers: profile.isFollowing ? (profile.followers - 1) : (profile.followers + 1),
-            isFollowing: !profile.isFollowing
-        }))
-    };
+
+
+
+
 
 
     // Share Profile
@@ -145,7 +141,7 @@ const Profile = () => {
                                     }
                                     onClick={(e) => {
                                         e.preventDefault()
-                                        handleFollow()
+                                        handleFollow(profile.username)
                                     }}
                                 >
                                     {!profile.isFollowing
@@ -166,26 +162,21 @@ const Profile = () => {
 
                         {/* content */}
                         <div className="profile__posts">
-                            <div className="profile__post__nav">
 
-
-
+                            <div className="page-type__nav">
                                 <div
-                                    className="profile__post__nav__type"
-                                    onClick={() => switchPostType('posts')}
+                                    className="page-type__nav__btn"
+                                    onClick={() => switchType('posts')}
                                 >
-                                    <span className={
-                                        `post__nav__type__text ${postType === 'posts' ? "active" : "inactive"}`
-                                    }>Posts</span>
+                                    <span className={`page-type__nav__btn__text ${postType === 'posts' ? "active" : "inactive"}`}
+                                    >Posts</span>
                                 </div>
-
                                 <div
-                                    className="profile__post__nav__type"
-                                    onClick={() => switchPostType('videos')}
+                                    className="page-type__nav__btn"
+                                    onClick={() => switchType('liked')}
                                 >
-                                    <span className={
-                                        `post__nav__type__text ${postType === 'videos' ? "active" : "inactive"}`
-                                    }>Videos</span>
+                                    <span className={`page-type__nav__btn__text ${postType === 'liked' ? "active" : "inactive"}`}
+                                    >Liked</span>
                                 </div>
                             </div>
 
@@ -193,16 +184,16 @@ const Profile = () => {
 
 
                             {/* Posts */}
-                            <PostsWrapper
-                                posts={profilePosts}
-                                setPosts={setProfilePosts}
-                            />
-
                             {
-                                (profilePosts.length === 0)
-                                    ? <div className="no-posts">No Posts Yet</div>
-                                    : null
+                                postType === 'posts' ?
+                                    <PostsWrapper
+                                        posts={profilePosts}
+                                    /> :
+                                    <PostsWrapper
+                                        posts={userLikedPosts}
+                                    />
                             }
+
                         </div>
 
                     </div>

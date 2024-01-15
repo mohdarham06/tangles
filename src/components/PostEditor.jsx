@@ -112,7 +112,7 @@ const PostEditor = () => {
                 <div className="form__footer">
                     {/* Media Select */}
                     <label
-                        htmlFor="form__media-input"
+                        htmlFor="media-input"
                         className="form__media-label"
                         onClick={() => mediaInputRef.current.click()}
                     >

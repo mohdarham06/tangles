@@ -106,25 +106,6 @@ const userPosts = [
         username: 'mohdarham',
         verified: false,
         avatar: null,
-        text: 'Once you accept everything is your fault.\n\nYou accept everything is in your control.\n\nYOU decide your future,\n\n You decide how you will catch the wind.',
-        image: null,
-        liked: false,
-        likes: 2548257,
-        saved: false,
-        comments: [
-            {
-                id: 101,
-                username: 'user1',
-                text: 'Amazing shot!',
-            },
-            // More comments...
-        ],
-    },
-    {
-        id: 7,
-        username: 'mohdarham',
-        verified: false,
-        avatar: null,
         text: 'A proud man is always looking down on things and people; and of course, as long as you are looking down, you cannot see something is above you.',
         image: null,
         liked: true,

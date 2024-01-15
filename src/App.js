@@ -23,7 +23,6 @@ function App() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        console.log(location.pathname)
     }, [location.pathname]);
 
 

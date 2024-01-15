@@ -670,6 +670,7 @@ svg {
 
 
 
+
 /* Header Nav */
 .header__mobile__nav {
     position: fixed;
@@ -701,7 +702,7 @@ svg {
 .mobile__nav__link[aria-current='page'] {
     color: var(--font);
 }
-
+/* 
 .mobile__nav__link::before {
     position: absolute;
     content: "";
@@ -721,10 +722,10 @@ svg {
 .mobile__nav__link:active::before {
     opacity: 1;
     transform: scale(1);
-}
+} */
 
 .mobile__nav__item {
-    font-size: 1.5rem;
+    font-size: 1.625rem;
     padding: 0.5rem;
     border-radius: 50%;
     display: flex;
@@ -745,6 +746,22 @@ svg {
     outline: 1px solid var(--font);
 }
 
+.mobile__nav__post-btn {
+    z-index: var(--z-fixed);
+    position: fixed;
+    width: 3.25rem;
+    height: 3.25rem;
+    bottom: calc(var(--mobile-header-nav-height) + 1rem);
+    right: 1rem;
+}
+
+.mobile__nav__post-btn__text {
+    display: none;
+}
+
+.mobile__nav__post-btn__icon {
+    font-size: 1.5rem;
+}
 
 
 
@@ -1035,6 +1052,7 @@ svg {
     outline: 3px solid var(--transparent);
     transition: var(--transition-hover);
     transform-origin: center;
+
 }
 
 .panel__accent-option:hover {
@@ -1189,63 +1207,6 @@ svg {
     flex-direction: column;
 }
 
-.home__post__nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--thin-border-color);
-}
-
-.home__post__nav__btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition-hover);
-}
-
-.home__post__nav__btn:hover {
-    background: hsl(0, 0%, calc(var(--balance) 88%));
-}
-
-
-.post__nav__btn__text {
-    position: relative;
-    font-weight: var(--font-bold);
-    padding: 1rem 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.post__nav__btn__text.inactive {
-    color: hsl(203, 5%, 50%);
-}
-
-.post__nav__btn__text::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 4px;
-    min-width: 56px;
-    width: 100%;
-    border-radius: 10rem;
-    background: var(--accent-color);
-    transition: var(--transition-hover);
-    transform: scaleX(0);
-    transform-origin: center;
-}
-
-.post__nav__btn__text.inactive::after {
-    transform: scaleX(0);
-}
-
-.post__nav__btn__text.active::after {
-    transform: scaleX(1);
-
-}
-
-
-
 
 /* --HOME POST EDITOR */
 .home__post-editor {
@@ -1282,11 +1243,17 @@ svg {
     margin-bottom: auto;
 }
 
+.post__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .post__header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
     cursor: pointer;
 }
 
@@ -1359,7 +1326,7 @@ svg {
     justify-content: center;
     width: 32px;
     height: 32px;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     cursor: pointer;
     transition: var(--transition-hover);
 }
@@ -1646,10 +1613,16 @@ svg {
 
 
 
-/* Profile */
+/* --SEARCH */
+.section--profile{
+    min-height: 100vh;
+}
+
+
 .profile {
     max-width: 600px;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -1775,56 +1748,12 @@ svg {
 .profile__posts {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
-.profile__post__nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--thin-border-color);
-}
-
-.profile__post__nav__type {
-    font-weight: var(--font-bold);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition-hover);
-}
-
-.profile__post__nav__type:hover {
-    background: hsl(0, 0%, calc(var(--balance) 88%));
-}
-
-
-.post__nav__type__text {
-    position: relative;
-    padding: 1rem 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.post__nav__type__text::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 4px;
-    min-width: 48px;
-    width: 100%;
-    border-radius: 10rem;
-    background: var(--accent-color);
-    transition: var(--transition-hover);
-    transform: scaleX(0);
-    transform-origin: center;
-}
-
-.post__nav__type__text.inactive::after {
-    transform: scaleX(0);
-}
-
-.post__nav__type__text.active::after {
-    transform: scaleX(1);
+.no-posts {
+    color: var(--neutral-gray);
+    margin: auto;
 }
 
 

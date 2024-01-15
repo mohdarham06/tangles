@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import user1avatar from '../data/avatars/jasonstotham.jpg'
@@ -11,15 +11,23 @@ import {
     OutlineOptions,
     OutlineArtBrush, OutlineLogout
 } from '../assets/CustomIcons'
+import { useToast } from '../context/ToastContext';
 
 const Header = ({ openPostModal, openDisplayModal }) => {
     const location = useLocation();
     const [isMenuChecked, setIsMenuChecked] = useState(false);
+    const menuBtnRef = useRef(null);
+    const { showToast } = useToast();
 
     const toggleMenu = () => {
         setIsMenuChecked(!isMenuChecked)
     }
-   
+
+    const handleLogout = () => {
+        showToast("Successfully logged out.")
+    }
+
+
 
     return (
         <header className="header">
@@ -87,7 +95,7 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                 </nav>
 
 
-                <label htmlFor="menu-checkbox" className="header__desktop__menu-btn">
+                <label htmlFor="menu-checkbox" className="header__desktop__menu-btn" ref={menuBtnRef}>
                     <input
                         id="menu-checkbox"
                         type="checkbox"
@@ -101,11 +109,17 @@ const Header = ({ openPostModal, openDisplayModal }) => {
 
 
                 <div className={`header__more__options ${isMenuChecked ? 'visible' : 'hidden'}`}>
-                    <div className="more__options__action-btn" onClick={openDisplayModal}>
+                    <div className="more__options__action-btn"
+                        onClick={openDisplayModal}
+                    >
                         <span className="more__options__action-btn__icon"><OutlineArtBrush /></span>
                         <span className="more__options__action-btn__text">Display</span>
                     </div>
-                    <div className="more__options__action-btn header__logout">
+
+                    <div
+                        className="more__options__action-btn header__logout"
+                        onClick={handleLogout}
+                    >
                         <span className="more__options__action-btn__icon"><OutlineLogout /></span>
                         <span className="more__options__action-btn__text">Log out</span>
                     </div>
@@ -128,7 +142,7 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                         <span className="header__mobile__brand__text">Tangles</span>
                     </Link>
 
-                    <label htmlFor="menu-checkbox" className="header__mobile__menu-btn">
+                    <label htmlFor="menu-checkbox" className="header__mobile__menu-btn" ref={menuBtnRef}>
                         <input
                             id="menu-checkbox"
                             type="checkbox"
@@ -147,7 +161,10 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                             <span className="more__options__action-btn__icon"><OutlineArtBrush /></span>
                             <span className="more__options__action-btn__text">Display</span>
                         </div>
-                        <div className="more__options__action-btn header__logout">
+                        <div
+                            className="more__options__action-btn header__logout"
+                            onClick={handleLogout}
+                        >
                             <span className="more__options__action-btn__icon"><OutlineLogout /></span>
                             <span className="more__options__action-btn__text">Log out</span>
                         </div>
@@ -188,6 +205,13 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                         </NavLink>
                     </ul>
                 </nav>
+
+                <div onClick={openPostModal}>
+                    <div className="primary-button mobile__nav__post-btn">
+                        <span className="mobile__nav__post-btn__icon"><OutlineFeatherPen /></span>
+                        <span className="mobile__nav__post-btn__text">Post</span>
+                    </div>
+                </div>
             </div>
 
         </header>

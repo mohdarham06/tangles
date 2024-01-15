@@ -2,69 +2,49 @@ import React from 'react'
 
 import { useState, useEffect } from 'react';
 
-import userProfiles from '../data/userProfiles';
-import userPosts from '../data/userPosts';
-
-
 import PostEditor from '../components/PostEditor';
 import PostsWrapper from '../components/PostsWrapper';
-
-import axios from 'axios'
+import { useData } from '../context/DataContext';
 
 
 const Home = () => {
-    const [posts, setPosts] = useState(userPosts);
+    const { posts, users } = useData();
+
+    // Home
     const [postType, setPostType] = useState('foryou');
+    const [foryouPosts, setForyouPosts] = useState([]);
+    const [followingPosts, setFollowingPosts] = useState([]);
 
     const switchPostType = (type) => {
         setPostType(type)
     }
 
     useEffect(() => {
-        if (postType === 'foryou') {
-            const shuffledPosts = userPosts.sort(() => Math.random() - 0.5);
-            setPosts(shuffledPosts);
+        // const shuffledPosts = () => {
+        //     const shuffledPosts = posts.sort(() => Math.random() - 0.5);
+        //     return shuffledPosts;
+        // }
 
-            // do this
-        } else if (postType === 'following') {
-            const followingPosts = userPosts.filter(
-                (post) => userProfiles.find(
+        setForyouPosts(posts)
+    }, [posts])
+
+
+
+
+    useEffect(() => {
+        const followingUsersPost = () => {
+            const filteredFollowingPosts = posts.filter(
+                (post) => users.find(
                     (profile) => profile.username === post.username
                 )?.isFollowing
             )
-            setPosts(followingPosts)
+            return filteredFollowingPosts;
         }
-    }, [postType])
-
-    useEffect(() => {
-
-
+        
+        setFollowingPosts(followingUsersPost)
+    }, [posts, users])
 
 
-
-        const options = {
-            method: 'GET',
-            url: 'https://instagram130.p.rapidapi.com/account-feed',
-            params: { username: 'adele' },
-            headers: {
-                'X-RapidAPI-Key': 'd9b652efb4msh6e4040368154c25p1c68bejsn16303a787b72',
-                'X-RapidAPI-Host': 'instagram130.p.rapidapi.com'
-            }
-        };
-
-        async function getData() {
-            try {
-                const response = await axios.request(options);
-                console.log(response.data);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        getData();
-
-
-
-    }, [])
 
 
     return (
@@ -94,10 +74,16 @@ const Home = () => {
                     <PostEditor />
                 </div>
 
-                <PostsWrapper
-                    posts={posts}
-                    setPosts={setPosts}
-                />
+                {
+                    postType === 'foryou' ?
+                        <PostsWrapper
+                            posts={foryouPosts}
+                        /> :
+                        <PostsWrapper
+                            posts={followingPosts}
+                        />
+                }
+
             </div>
 
         </section>

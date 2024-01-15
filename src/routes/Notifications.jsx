@@ -1,11 +1,18 @@
 import React from 'react'
 
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { VerifiedIcon } from '../assets/CustomIcons';
 import noUserImage from '../data/avatars/noimage.jpg';
 
 const Notifications = () => {
+    const [notificationType, setNotificationType] = useState('all');
+
+    const switchType = (type) => {
+        setNotificationType(type)
+    }
+
     return (
         <section className='section section--notifications'>
             <div className="notifications">
@@ -13,15 +20,21 @@ const Notifications = () => {
                     <h3>Notifications</h3>
                 </div>
 
-
                 <div className="page-type__nav">
-                    <div className="page-type__nav__btn">
-                        <span className="page-type__nav__btn__text active">All</span>
+                    <div
+                        className="page-type__nav__btn"
+                        onClick={() => switchType('all')}
+                    >
+                        <span className={`page-type__nav__btn__text ${notificationType === 'all' ? "active" : "inactive"}`}>All</span>
                     </div>
-                    <div className="page-type__nav__btn">
-                        <span className="page-type__nav__btn__text inactive">Mentions</span>
+                    <div
+                        className="page-type__nav__btn"
+                        onClick={() => switchType('mentions')}
+                    >
+                        <span className={`page-type__nav__btn__text ${notificationType === 'mentions' ? "active" : "inactive"}`}>Mentions</span>
                     </div>
                 </div>
+                
 
 
                 <div className="notifictions__list">
@@ -54,7 +67,7 @@ const Notifications = () => {
                         </div>
 
 
-                        
+
                     </div>
 
 

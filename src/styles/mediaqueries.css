@@ -37,6 +37,7 @@
         display: none;
     }
 
+
     .header__desktop__menu-btn__text {
         display: none;
     }
@@ -94,6 +95,46 @@
     main {
         margin-top: var(--mobile-header-top-height);
         width: 100%;
+    }
+
+
+
+    /* --MODALS*/
+    /* post editor modal */
+    .modal__post-editor {
+        max-width: none;
+        max-height: none;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    /* display editor modal */
+    .modal__display-editor {
+        max-width: none;
+        max-height: none;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .panel__accent-selector {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem 0;
+    }
+
+    .panel__accent-option {
+        justify-self: center;
+    }
+
+    .panel__theme-selector {
+        display: flex;
+        flex-direction: column;
+        padding: 0 0.75rem;
     }
 
 
