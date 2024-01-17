@@ -1658,6 +1658,11 @@ svg {
 }
 
 
+/* bio */
+.profile__bio {
+    white-space: pre-line;
+}
+
 
 /* stats */
 .profile__stats {
@@ -1683,12 +1688,6 @@ svg {
 .stat__label {
     color: var(--neutral-gray);
 }
-
-/* bio */
-.profile__bio {
-    margin-top: 1rem;
-}
-
 
 
 /* actions */
