@@ -14,9 +14,9 @@ import PostsWrapper from '../components/PostsWrapper';
 
 const Profile = () => {
     const {
-        posts, handleFollow,
+        handleFollow,
         setProfileUsername,
-        profile, profilePosts,
+        profile, profilePosts, userLikedPosts
     } = useData();
 
     const { profileName } = useParams();
@@ -27,26 +27,10 @@ const Profile = () => {
 
 
     const [postType, setPostType] = useState('posts');
-    const [userLikedPosts, setUserLikedPosts] = useState([]);
 
     const switchType = (type) => {
         setPostType(type)
     }
-
-
-
-    useEffect(() => {
-        const filteredLikedPosts = () => {
-            console.log('debug')
-            return (
-                posts.filter((post) => post.username === profile?.username && post.liked)
-            )
-        }
-        setUserLikedPosts(filteredLikedPosts)
-    }, [posts, profile])
-
-
-
 
 
 

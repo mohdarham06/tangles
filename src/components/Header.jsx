@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import user1avatar from '../data/avatars/jasonstotham.jpg'
+import mohdarham from '../data/avatars/mohdarham.png';
 import noUserImage from '../data/avatars/noimage.jpg'
 
 import {
@@ -39,7 +39,7 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                     to={`/`}
                 >
                     <span className="header__desktop__brand__icon"></span>
-                    <span className="header__desktop__brand__text"></span>
+                    <span className="header__desktop__brand__text">Tangles</span>
                 </Link>
 
 
@@ -79,7 +79,7 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                             <li className="desktop__nav__item">
                                 <img
                                     className="desktop__nav__item__avatar"
-                                    src={user1avatar ? user1avatar : noUserImage}
+                                    src={mohdarham ? mohdarham : noUserImage}
                                     alt=""
                                 />
                                 <span className="desktop__nav__item__text">Profile</span>
@@ -198,7 +198,7 @@ const Header = ({ openPostModal, openDisplayModal }) => {
                             <li className="mobile__nav__item">
                                 <img
                                     className="mobile__nav__item__avatar"
-                                    src={user1avatar ? user1avatar : noUserImage}
+                                    src={mohdarham ? mohdarham : noUserImage}
                                     alt=""
                                 />
                             </li>

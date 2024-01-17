@@ -11,6 +11,10 @@
         align-items: center;
     }
 
+    .header__desktop__brand__text {
+        display: none;
+    }
+
     .desktop__nav__list {
         align-items: center;
     }
@@ -93,10 +97,17 @@
 
     /* --MAIN */
     main {
-        margin-top: var(--mobile-header-top-height);
         width: 100%;
+        margin-top: var(--mobile-header-top-height);
+        margin-bottom: var(--mobile-header-nav-height);
     }
 
+
+    /* --REUSABLE */
+    /* SECTION */
+    .section {
+        min-height: calc(100vh - (var(--mobile-header-top-height) + var(--mobile-header-nav-height)));
+    }
 
 
     /* --MODALS*/

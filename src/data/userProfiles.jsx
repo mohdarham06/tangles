@@ -1,4 +1,5 @@
 
+import mohdarham from './avatars/mohdarham.png';
 import jasonstotham from './avatars/jasonstotham.jpg';
 import lukebelmar from './avatars/lukebelmar.jpg';
 import davidgoggins from './avatars/davidgoggins.jpg';
@@ -10,11 +11,11 @@ const userProfiles = [
         username: 'mohdarham',
         name: 'Mohd Arham',
         verified: false,
-        avatar: null,
+        avatar: mohdarham,
         bio: 'Software Developer | React Enthusiast',
         followers: 12410,
         following: 500,
-        isFollowing: true
+        isFollowing: false,
     },
     {
         username: 'tangles',
@@ -44,7 +45,7 @@ const userProfiles = [
         bio: 'Photographer | Traveler',
         followers: 385000,
         following: 472,
-        isFollowing: true
+        isFollowing: false,
     },
     {
         username: 'davidgoggins',

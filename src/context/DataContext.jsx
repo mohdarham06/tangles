@@ -15,7 +15,37 @@ export const DataProvider = ({ children }) => {
     const [posts, setPosts] = useState(userPosts);
     const [users, setUsers] = useState(userProfiles);
 
-    
+
+    // HOME
+    const [foryouPosts, setForyouPosts] = useState([]);
+    const [followingPosts, setFollowingPosts] = useState([]);
+
+    // For You Posts
+    useEffect(() => {
+        // const shuffledPosts = () => {
+        //     const shuffledPosts = posts.sort(() => Math.random() - 0.5);
+        //     return shuffledPosts;
+        // }
+
+        setForyouPosts(posts)
+    }, [posts])
+
+
+    // Following Posts
+    useEffect(() => {
+        const followingUsersPost = () => {
+            const filteredFollowingPosts = posts.filter(
+                (post) => users.find(
+                    (profile) => profile.username === post.username
+                )?.isFollowing
+            )
+            return filteredFollowingPosts;
+        }
+        
+        setFollowingPosts(followingUsersPost)
+    }, [posts, users])
+
+
 
 
     // POST ACTIONS
@@ -109,6 +139,8 @@ export const DataProvider = ({ children }) => {
 
     const [profile, setProfile] = useState([]);
     const [profilePosts, setProfilePosts] = useState([]);
+    const [userLikedPosts, setUserLikedPosts] = useState([]);
+
 
     // Filtered Profile
     useEffect(() => {
@@ -127,6 +159,17 @@ export const DataProvider = ({ children }) => {
         setProfilePosts(filteredProfilePosts(profile))
     }, [profile, posts])
 
+    // Profile Liked Posts
+    useEffect(() => {
+        const filteredLikedPosts = () => {
+            return (
+                posts.filter((post) => post.username === profile?.username && post.liked)
+            )
+        }
+        setUserLikedPosts(filteredLikedPosts)
+    }, [profile, posts])
+
+
 
 
 
@@ -139,13 +182,13 @@ export const DataProvider = ({ children }) => {
     return (
         <DataContext.Provider
             value={{
-                posts,
+                foryouPosts, followingPosts,
                 handleLike, handleSave,
-                users, handleFollow,
+                handleFollow,
                 handleSearch, searchResults, searchQuery,
                 savedPosts,
                 setProfileUsername,
-                profile, profilePosts,
+                profile, profilePosts, userLikedPosts
             }}
         >
             {children}

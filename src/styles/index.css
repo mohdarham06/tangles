@@ -64,6 +64,8 @@ html {
     --mobile-header-top-height: 56px;
     --mobile-header-nav-height: 56px;
 
+    /* MAIN */
+    --main-content-width: 600px;
 
 
 
@@ -167,6 +169,7 @@ body[data-accent="green"] {
 
 
 body {
+    overflow-y: scroll;
     background: var(--background);
     color: var(--font);
     font-size: var(--font-size-regular);
@@ -174,16 +177,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.theme--light {
-    background: var(--background);
-    color: var(--font);
-}
-
-.theme--dark {
-    background: var(--background);
-    color: var(--font);
 }
 
 
@@ -211,6 +204,15 @@ main {
 
 
 /* --REUSABLE */
+/* SECTION */
+.section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -308,15 +310,9 @@ svg {
 }
 
 
-.section {
-    /* border: 1px solid red; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 
+/* Page Type Navigation */
 .page-type__nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -405,8 +401,17 @@ svg {
 
 .header__desktop__brand__text {
     font-size: var(--font-size-medium);
-    font-weight: var(--font-bold);
+    font-weight: var(--font-extra-bold);
     font-family: cursive;
+    transition: var(--transition-hover);
+}
+
+.header__desktop__brand:hover .header__desktop__brand__text {
+    letter-spacing: 1px;
+}
+
+.header__desktop__brand:active .header__desktop__brand__text {
+    letter-spacing: 0px;
 }
 
 .header__desktop__nav {
@@ -596,6 +601,13 @@ svg {
     padding: 0.5rem;
 }
 
+.header__mobile__brand__text {
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-extra-bold);
+    font-family: cursive;
+    transition: var(--transition-hover);
+}
+
 .header__mobile__brand:hover .header__mobile__brand__text {
     letter-spacing: 1px;
 }
@@ -604,12 +616,6 @@ svg {
     letter-spacing: 0px;
 }
 
-.header__mobile__brand__text {
-    font-size: var(--font-size-medium);
-    font-weight: var(--font-bold);
-    font-family: cursive;
-    transition: var(--transition-hover);
-}
 
 .header__mobile__empty-div {
     width: 3rem;
@@ -781,7 +787,7 @@ svg {
 .modal__post-editor {
     background: var(--background);
     width: 100%;
-    max-width: 600px;
+    max-width: var(--main-content-width);
     max-height: 90vh;
     margin: auto;
     overflow: auto;
@@ -917,7 +923,7 @@ svg {
 }
 
 .media-preview__img {
-    width: 520px;
+    width: 480px;
     max-width: 100%;
     border-radius: 0.5rem;
 }
@@ -1004,7 +1010,7 @@ svg {
 .modal__display-editor {
     background: var(--background);
     width: 100%;
-    max-width: 600px;
+    max-width: var(--main-content-width);
     max-height: 90vh;
     padding: 2rem;
     border-radius: 1rem;
@@ -1201,7 +1207,8 @@ svg {
 
 /* --HOME */
 .home {
-    max-width: 600px;
+    height: 100%;
+    max-width: var(--main-content-width);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1283,10 +1290,6 @@ svg {
     margin-left: 0.25rem;
 }
 
-.post__content {
-    margin-right: 0 1rem;
-}
-
 .post__text {
     padding-bottom: 0.75rem;
     white-space: pre-line;
@@ -1296,7 +1299,6 @@ svg {
     display: flex;
     flex-direction: row;
     overflow: hidden;
-    border: 1px solid #00000066;
     border-radius: 0.5rem;
 }
 
@@ -1382,13 +1384,9 @@ svg {
 
 
 /* --SEARCH */
-.section--search {
-    min-height: 100vh;
-}
-
 .search {
     height: 100%;
-    max-width: 600px;
+    max-width: var(--main-content-width);
     width: 100%;
     padding: 2rem 1rem;
     display: flex;
@@ -1440,9 +1438,9 @@ svg {
 
 /* SEARCH RESULTS */
 .search__results {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
 .search__results__empty {
@@ -1553,7 +1551,8 @@ svg {
 
 /* Notifications */
 .notifications {
-    max-width: 600px;
+    height: 100%;
+    max-width: var(--main-content-width);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1589,9 +1588,10 @@ svg {
 
 
 
-/* Saved*/
+/* SAVED*/
 .saved {
-    max-width: 600px;
+    height: 100%;
+    max-width: var(--main-content-width);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1614,13 +1614,8 @@ svg {
 
 
 /* --SEARCH */
-.section--profile{
-    min-height: 100vh;
-}
-
-
 .profile {
-    max-width: 600px;
+    max-width: var(--main-content-width);
     width: 100%;
     height: 100%;
     display: flex;
