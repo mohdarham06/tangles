@@ -48,11 +48,11 @@ html {
     --inline-link: #42eba4;
 
 
-    /* accent color */
-    --accent-rgb: 40, 157, 240;
-    --accent-color: rgb(40, 157, 240);
-    --accent-hw: 204 11%;
-    --accent-blackness: 6%;
+    /* default accent color */
+    --accent-color: rgb(120, 86, 255);
+    --accent-rgb: 120, 86, 255;
+    --accent-hw: 252 34%;
+    --accent-blackness: 0%;
 
 
     /* --NAV SIZES */
@@ -125,11 +125,11 @@ body[data-theme="dark"] {
     --thin-border-color: hsl(0, 0%, calc(var(--balance) 75%));
 }
 
-body[data-accent="blue"] {
-    --accent-color: rgb(29, 155, 240);
-    --accent-rgb: 29, 155, 240;
-    --accent-hw: 204 11%;
-    --accent-blackness: 6%;
+body[data-accent="purple"] {
+    --accent-color: rgb(120, 86, 255);
+    --accent-rgb: 120, 86, 255;
+    --accent-hw: 252 34%;
+    --accent-blackness: 0%;
 }
 
 body[data-accent="yellow"] {
@@ -146,11 +146,11 @@ body[data-accent="pink"] {
     --accent-blackness: 2%;
 }
 
-body[data-accent="purple"] {
-    --accent-color: rgb(120, 86, 255);
-    --accent-rgb: 120, 86, 255;
-    --accent-hw: 252 34%;
-    --accent-blackness: 0%;
+body[data-accent="blue"] {
+    --accent-color: rgb(29, 155, 240);
+    --accent-rgb: 29, 155, 240;
+    --accent-hw: 204 11%;
+    --accent-blackness: 6%;
 }
 
 body[data-accent="orange"] {
@@ -1300,6 +1300,7 @@ svg {
     flex-direction: row;
     overflow: hidden;
     border-radius: 0.5rem;
+    border: 1px solid hsla(0, 0%, 50%, 0.4);
 }
 
 .post__image {

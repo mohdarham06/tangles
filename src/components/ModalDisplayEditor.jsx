@@ -10,10 +10,10 @@ const ModalDisplayEditor = ({ closeDisplayModal }) => {
     const { theme, accentColor, changeTheme, changeAccentColor } = useTheme();
 
     const accentColorOptions = [
-        { color: "blue", isSelected: accentColor === "blue" },
+        { color: "purple", isSelected: accentColor === "purple" },
         { color: "yellow", isSelected: accentColor === "yellow" },
         { color: "pink", isSelected: accentColor === "pink" },
-        { color: "purple", isSelected: accentColor === "purple" },
+        { color: "blue", isSelected: accentColor === "blue" },
         { color: "orange", isSelected: accentColor === "orange" },
         { color: "green", isSelected: accentColor === "green" }
     ]

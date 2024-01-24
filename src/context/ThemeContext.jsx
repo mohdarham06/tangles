@@ -8,7 +8,7 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useLocalStorage('theme', 'light');
-    const [accentColor, setAccentColor] = useLocalStorage('accentColor', 'blue')
+    const [accentColor, setAccentColor] = useLocalStorage('accentColor', 'purple')
 
     const changeTheme = (newTheme) => {
         setTheme(newTheme)

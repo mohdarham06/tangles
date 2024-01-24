@@ -26,13 +26,11 @@ const PostEditor = () => {
         // Replace newline characters with \n
         const sanitizedText = DOMPurify.sanitize(text, { ALLOWED_TAGS: [] }).replace(/<br>/g, '\n');
         setPostText(sanitizedText);
-        console.log(sanitizedText);
     };
 
     const handleMediaInputChange = (e) => {
         const file = e.target.files[0];
         setMediaFile(file);
-        console.log(file);
 
         // Create a preview URL for images and videos
         const previewURL = file.type.startsWith('image/') || file.type.startsWith('video/')

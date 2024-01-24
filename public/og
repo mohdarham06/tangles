@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 100vh;
+            font-family: cursive;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 1200px;
+            height: 630px;
+
+            background-color: black;
+            background: radial-gradient(circle closest-corner at center,
+                    #222,
+                    black 50%) no-repeat;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .text {
+            color: #fff;
+            font-size: 6rem;
+            text-transform: uppercase;
+            background: radial-gradient(circle farthest-corner at center center,
+                    #f0f0f0,
+                    #5a5e61) no-repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="text">
+            Tangles
+        </h1>
+    </div>
+
+</body>
+
+</html>

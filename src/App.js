@@ -46,7 +46,7 @@ function App() {
         const body = document.querySelector("body");
 
         switch (accentColor) {
-            case 'blue':
+            case 'purple':
                 body.setAttribute("data-accent", accentColor)
 
                 break;
@@ -58,7 +58,7 @@ function App() {
                 body.setAttribute("data-accent", accentColor)
 
                 break;
-            case 'purple':
+            case 'blue':
                 body.setAttribute("data-accent", accentColor)
 
                 break;
