@@ -40,11 +40,14 @@ const Profile = () => {
     const handleShare = async () => {
         try {
             if (navigator.share) {
-                await navigator.share({
+                const shareData = {
                     title: profile.name,
-                    text: `Check out ${profile.name}'s profile on our app!`,
+                    text: `Check out ${profile.name}'s Profile on Tangles!`,
                     url: window.location.href,
-                });
+                };
+
+                await navigator.share(shareData);
+
             } else {
                 // Fallback for browsers that do not support the Web Share API
                 alert('Sharing is not supported on this browser.');

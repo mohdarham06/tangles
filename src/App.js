@@ -27,47 +27,47 @@ function App() {
 
 
     useEffect(() => {
-        const body = document.querySelector("body");
+        const rootElement = document.documentElement;
 
         if (theme === 'light') {
-            body.setAttribute("data-theme", 'light')
+            rootElement.setAttribute("data-theme", 'light')
         }
         if (theme === 'dark') {
-            body.setAttribute("data-theme", 'dark')
+            rootElement.setAttribute("data-theme", 'dark')
         }
 
         return () => {
             // Reset any other attributes as needed
-            body.removeAttribute("data-theme");
+            rootElement.removeAttribute("data-theme");
         };
     }, [theme])
 
     useEffect(() => {
-        const body = document.querySelector("body");
+        const rootElement = document.documentElement;
 
         switch (accentColor) {
             case 'purple':
-                body.setAttribute("data-accent", accentColor)
+                rootElement.setAttribute("data-accent", accentColor)
 
                 break;
             case 'yellow':
-                body.setAttribute("data-accent", accentColor)
+                rootElement.setAttribute("data-accent", accentColor)
 
                 break;
             case 'pink':
-                body.setAttribute("data-accent", accentColor)
+                rootElement.setAttribute("data-accent", accentColor)
 
                 break;
             case 'blue':
-                body.setAttribute("data-accent", accentColor)
+                rootElement.setAttribute("data-accent", accentColor)
 
                 break;
             case 'orange':
-                body.setAttribute("data-accent", accentColor)
+                rootElement.setAttribute("data-accent", accentColor)
 
                 break;
             case 'green':
-                body.setAttribute("data-accent", accentColor)
+                rootElement.setAttribute("data-accent", accentColor)
 
                 break;
             default:

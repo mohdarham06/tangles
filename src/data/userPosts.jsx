@@ -219,7 +219,7 @@ const userPosts = [
         username: 'mohdarham',
         verified: false,
         avatar: mohdarhamAvatar,
-        text: "Once I realised,\n\nI dont have to impress you.\n\n You dont have to impress me.\n\nI dont have to be subjugated to the idealogies of the people around me or what television is telling me.\n\n I can be who I was created to be; I can be my authentic self.\n\n Now, you begin to live life with no pressure.\n\nNow the question is, what do you want to become?",
+        text: "The quality of your Mind\n\nIs the quality of your Life.",
         isVideo: false,
         image: null,
         liked: false,

@@ -21,11 +21,6 @@
 
 
 
-html {
-    scroll-behavior: smooth;
-}
-
-
 /* || ROOT || */
 :root {
     /* --COLORS */
@@ -47,6 +42,8 @@ html {
     --scrollbar-active: #62e2d3;
     --inline-link: #42eba4;
 
+    --scheme: light;
+
 
     /* default accent color */
     --accent-color: rgb(120, 86, 255);
@@ -66,7 +63,6 @@ html {
 
     /* MAIN */
     --main-content-width: 600px;
-
 
 
     /* --TYPOGRAPHY */
@@ -101,7 +97,8 @@ html {
     --transition-navigation-toggle: all 250ms ease-in-out;
 }
 
-body[data-theme="light"] {
+html[data-theme="light"] {
+    --scheme: light;
     /* light */
     --background: #ffffff;
     --font: #000000;
@@ -113,7 +110,8 @@ body[data-theme="light"] {
     --thin-border-color: hsl(0, 0%, calc(var(--balance) 75%));
 }
 
-body[data-theme="dark"] {
+html[data-theme="dark"] {
+    --scheme: dark;
     /* dark */
     --background: #000000;
     --font: #ffffff;
@@ -125,46 +123,52 @@ body[data-theme="dark"] {
     --thin-border-color: hsl(0, 0%, calc(var(--balance) 75%));
 }
 
-body[data-accent="purple"] {
+html[data-accent="purple"] {
     --accent-color: rgb(120, 86, 255);
     --accent-rgb: 120, 86, 255;
     --accent-hw: 252 34%;
     --accent-blackness: 0%;
 }
 
-body[data-accent="yellow"] {
+html[data-accent="yellow"] {
     --accent-color: rgb(255, 212, 0);
     --accent-rgb: 255, 212, 0;
     --accent-hw: 50 0%;
     --accent-blackness: 0%;
 }
 
-body[data-accent="pink"] {
+html[data-accent="pink"] {
     --accent-color: rgb(249, 24, 128);
     --accent-rgb: 249, 24, 128;
     --accent-hw: 332 9%;
     --accent-blackness: 2%;
 }
 
-body[data-accent="blue"] {
+html[data-accent="blue"] {
     --accent-color: rgb(29, 155, 240);
     --accent-rgb: 29, 155, 240;
     --accent-hw: 204 11%;
     --accent-blackness: 6%;
 }
 
-body[data-accent="orange"] {
+html[data-accent="orange"] {
     --accent-color: rgb(255, 122, 0);
     --accent-rgb: 255, 122, 0;
     --accent-hw: 29 0%;
     --accent-blackness: 0%;
 }
 
-body[data-accent="green"] {
+html[data-accent="green"] {
     --accent-color: rgb(0, 186, 124);
     --accent-rgb: 0, 186, 124;
     --accent-hw: 160 0%;
     --accent-blackness: 28%;
+}
+
+
+html {
+    scroll-behavior: smooth;
+    color-scheme: var(--scheme);
 }
 
 
@@ -708,6 +712,7 @@ svg {
 .mobile__nav__link[aria-current='page'] {
     color: var(--font);
 }
+
 /* 
 .mobile__nav__link::before {
     position: absolute;
@@ -1559,7 +1564,7 @@ svg {
     flex-direction: column;
 }
 
-.notifictions__list{
+.notifictions__list {
     padding: 0 1rem;
 }
 
@@ -1750,5 +1755,3 @@ svg {
     color: var(--neutral-gray);
     margin: auto;
 }
-
-

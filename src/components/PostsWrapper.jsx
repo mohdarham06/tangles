@@ -18,6 +18,38 @@ const PostsWrapper = ({ posts }) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    // Share Post
+    const handleSharePost = async (post) => {
+        try {
+            if (navigator.share) {
+                const shareData = {
+                    title: `Checkout ${post.username}'s Post on Tangles`,
+                    text: post.text,
+                    url: `${window.location.origin}/${post.username}`,
+                };
+
+                // Check if the post has an image
+                if (post.image) {
+                    // Fetch the post image as a blob
+                    const postImageBlob = await fetch(post.image).then((response) => response.blob());
+                    // Create a File object for the post image
+                    const postImageFile = new File([postImageBlob], `${post.username}-${post.id}.jpg`, { type: 'image/jpeg' });
+                    // Add the post image to the share data
+                    shareData.files = [postImageFile];
+                }
+
+                // Share post data along with the post image (if available)
+                await navigator.share(shareData);
+
+            } else {
+                // Fallback for browsers that do not support the Web Share API
+                alert('Sharing is not supported on this browser.');
+            }
+        } catch (error) {
+            console.error('Error sharing post:', error);
+        }
+    };
+
 
 
 
@@ -70,7 +102,10 @@ const PostsWrapper = ({ posts }) => {
                                 </button>
 
                                 <button className="post__actions__btn"><OutlineComment /></button>
-                                <button className="post__actions__btn"><OutlineShare /></button>
+
+                                <button className="post__actions__btn" onClick={() => handleSharePost(post)}>
+                                    <OutlineShare />
+                                </button>
 
                                 <button className="post__actions__btn" onClick={() => handleSave(post.id)}>
                                     {!post.saved ? <OutlineSave /> : <FillSave />}
